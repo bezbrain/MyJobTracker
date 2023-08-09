@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
 const Wrapper = styled.main`
-  width: 250px;
-
   nav {
     /* border: 2px solid red; */
+    width: 300px;
     margin-top: 2rem;
+    transition: ease 0.5s all;
+  }
+  .remove-nav {
+    width: 0px;
+  }
+  @media screen and (max-width: 1100px) {
+    nav {
+      display: none;
+    }
   }
 
   nav ul li {
@@ -14,6 +22,10 @@ const Wrapper = styled.main`
     display: flex;
     cursor: pointer;
     /* align-items: center; */
+    padding: 15px 15px 15px 4vw;
+  }
+  .add-hover {
+    background-color: var(--verylight);
   }
 
   nav ul li p:first-child {

@@ -7,7 +7,7 @@ const Wrapper = styled.main`
     /* border: 2px solid red; */
     border-radius: 5px;
     background-color: #fff;
-    padding: 20px;
+    padding: 40px 20px;
   }
 
   .add-pending-border {
@@ -60,7 +60,7 @@ const Wrapper = styled.main`
   section > p {
     font-size: var(--header-md);
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 30px;
   }
 `;
 
