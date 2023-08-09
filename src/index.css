@@ -1,6 +1,6 @@
 :root {
   /* colors */
-  --verylight: #e5dcd3;
+  --verylight: #faf7f3;
   --light: #d4bd9d;
   --dark: #a68660;
   --lightgreen: rgb(159, 163, 82);
@@ -10,7 +10,7 @@
   --font: 2rem;
 
   /* Page side space */
-  --page-side-space: 20px 4vw;
+  --page-side-space: 2vh 4vw;
 
   /* Fonts */
   --header: 2.5rem;
