@@ -3,13 +3,22 @@
   --verylight: #e5dcd3;
   --light: #d4bd9d;
   --dark: #a68660;
-  --lightgreen: #a1a461;
+  --lightgreen: rgb(159, 163, 82);
   --blackred: #a62f03;
 
+  /* Logo font */
+  --font: 2rem;
+
+  /* Page side space */
+  --page-side-space: 20px 4vw;
+
   /* Fonts */
-  --header: 2rem;
+  --header: 2.5rem;
   --header-md: 20px;
   --header-sm: 16px;
+
+  /* Sidebar Fonts */
+  --font-lg: 20px;
 }
 
 * {
