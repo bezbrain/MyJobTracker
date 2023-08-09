@@ -24,6 +24,14 @@ const Wrapper = styled.main`
     font-size: var(--font-lg);
     margin-left: 20px;
   }
+
+  /* Add active page */
+  .add-color {
+    color: var(--dark);
+  }
+  .add-color:active {
+    transform: scale(0.5);
+  }
 `;
 
 export default Wrapper;

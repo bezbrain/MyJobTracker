@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Wrapper from "../../StylesWrappers/General/sideBar";
 import { sideBarData } from "../../data";
 
 const SideBar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <Wrapper>
@@ -12,8 +13,14 @@ const SideBar = () => {
           {sideBarData.map((each) => {
             const { id, icon, navName, link } = each;
             return (
-              <li key={id} onClick={() => navigate(`${link}`)}>
-                <p>{icon}</p>
+              <li key={id} onClick={() => navigate(`/${link}`)}>
+                <p
+                  className={`${
+                    location.pathname === `/${link}` ? "add-color" : ""
+                  }`}
+                >
+                  {icon}
+                </p>
                 <p>{navName}</p>
               </li>
             );

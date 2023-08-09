@@ -5,7 +5,7 @@ export const sideBarData = [
     id: 1,
     icon: <StatIcon />,
     navName: "Stats",
-    link: "/",
+    link: "",
   },
   {
     id: 2,
