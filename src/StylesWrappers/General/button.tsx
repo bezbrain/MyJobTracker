@@ -8,7 +8,27 @@ const ButtonWrapper = styled.div`
   button {
     width: 48%;
     height: var(--input-height);
-    /* gap: 15px; */
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button:first-child {
+    background-color: var(--lightgreen);
+    transition: ease 0.5s all;
+  }
+  button:first-child:hover {
+    opacity: var(--opacity);
+  }
+
+  button:last-child {
+    background-color: var(--dark);
+    transition: ease 0.5s all;
+  }
+  button:last-child:hover {
+    opacity: var(--opacity);
   }
 `;
 

@@ -7,6 +7,12 @@ const Wrapper = styled.main`
     color: var(--dark);
     font-weight: 700;
   }
+
+  @media screen and (max-width: 1000px) {
+    div p {
+      font-size: 4vw;
+    }
+  }
 `;
 
 export default Wrapper;

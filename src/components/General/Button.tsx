@@ -1,7 +1,11 @@
-const Button = () => {
+interface Props {
+  button: string;
+}
+
+const Button: React.FC<Props> = ({ button }) => {
   return (
     <>
-      <button>Button</button>
+      <button>{button}</button>
     </>
   );
 };

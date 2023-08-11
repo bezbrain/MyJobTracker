@@ -13,13 +13,23 @@ const Wrapper = styled.main`
     /* align-items: center; */
     width: 25%;
   }
+  @media screen and (max-width: 1100px) {
+    .logo-and-icon {
+      width: 35%;
+    }
+  }
 
   .header-text {
     /* border: 2px solid green; */
     width: 60%;
     text-align: center;
     font-size: var(--header);
-    /* font-weight: 700; */
+    font-weight: 700;
+  }
+  @media screen and (max-width: 1000px) {
+    .header-text {
+      font-size: 4vw;
+    }
   }
 
   .profile {

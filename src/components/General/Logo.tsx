@@ -4,7 +4,7 @@ const Logo = () => {
   return (
     <Wrapper>
       <div>
-        <p>Jobtracked</p>
+        <p>Jobtrack</p>
       </div>
     </Wrapper>
   );
