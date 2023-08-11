@@ -19,6 +19,9 @@
 
   /* Sidebar Fonts */
   --font-lg: 20px;
+
+  /* Input */
+  --input-height: 40px;
 }
 
 * {

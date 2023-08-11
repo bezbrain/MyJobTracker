@@ -23,9 +23,11 @@ const Wrapper = styled.main`
     cursor: pointer;
     /* align-items: center; */
     padding: 15px 15px 15px 4vw;
+    transition: ease 0.5s all;
   }
   .add-hover {
     background-color: var(--verylight);
+    padding-left: 30px;
   }
 
   nav ul li p:first-child {

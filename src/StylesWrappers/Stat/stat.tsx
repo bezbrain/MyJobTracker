@@ -6,7 +6,7 @@ const Wrapper = styled.main`
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     justify-items: center;
-    padding: 2.5rem 4vw;
+    margin: 2.5rem 4vw;
   }
 `;
 

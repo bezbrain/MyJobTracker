@@ -9,15 +9,15 @@ export const sideBarData = [
   },
   {
     id: 2,
-    icon: <AllJobIcon />,
-    navName: "All Jobs",
-    link: "all-jobs",
-  },
-  {
-    id: 3,
     icon: <AddJobsIcon />,
     navName: "Add Job",
     link: "add-job",
+  },
+  {
+    id: 3,
+    icon: <AllJobIcon />,
+    navName: "All Jobs",
+    link: "all-jobs",
   },
   {
     id: 4,
