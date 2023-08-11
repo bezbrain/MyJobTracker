@@ -17,8 +17,9 @@ const Wrapper = styled.main`
   }
 
   nav ul li {
+    /* border: 2px solid red; */
     list-style-type: none;
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     cursor: pointer;
     /* align-items: center; */

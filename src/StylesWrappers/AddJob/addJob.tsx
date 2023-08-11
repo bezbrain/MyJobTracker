@@ -3,7 +3,7 @@ import styled from "styled-components";
 const AddJob = styled.main`
   background-color: #fff;
   margin: 2.5rem 4vw;
-  padding: 6vh 3vw;
+  padding: 7vh 3vw;
   border-radius: 5px;
 
   > p {
