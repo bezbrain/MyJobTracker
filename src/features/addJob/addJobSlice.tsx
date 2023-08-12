@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface State {
   addJobArr: Array<string | number>;
@@ -24,6 +24,15 @@ const initialState: State = {
   },
 };
 
+export const submitData = createAsyncThunk("addJob/submitData", async () => {
+  try {
+    console.log("Anything");
+    // Your asynchronous logic here
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 const addJobSlice = createSlice({
   name: "addJob",
   initialState,
@@ -37,13 +46,22 @@ const addJobSlice = createSlice({
       };
       return update;
     },
+  },
 
-    submitData: (state) => {
-      console.log(state);
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(submitData.pending, (state) => {
+        console.log(state);
+      })
+      .addCase(submitData.fulfilled, (state) => {
+        console.log(state);
+      })
+      .addCase(submitData.rejected, (state) => {
+        console.log(state);
+      });
   },
 });
 
-export const { collectInput, submitData } = addJobSlice.actions;
+export const { collectInput } = addJobSlice.actions;
 
 export default addJobSlice.reducer;

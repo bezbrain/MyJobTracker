@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
 import { submitData } from "../../features/addJob/addJobSlice";
 
 interface Props {
@@ -6,13 +7,13 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({ button }) => {
-  const { addJobArr } = useSelector((store: any) => store.addJobStore);
+  const { addJobArr } = useSelector((store: RootState) => store.addJobStore);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(submitData());
+    await dispatch(submitData());
   };
 
   return (
