@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
 import { submitData } from "../../features/addJob/addJobSlice";
+import { toast } from "react-toastify";
 
 interface Props {
   button: string;
@@ -19,7 +20,7 @@ const Button: React.FC<Props> = ({ button }) => {
     e.preventDefault();
 
     if (!position || !company || !joblocation || !status || !jobType) {
-      console.log("I cannot be empty");
+      toast.error("No field should be empty");
     } else {
       await dispatch(submitData(inputs));
     }

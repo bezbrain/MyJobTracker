@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddJobs, AllJobs, Profile, SharedLayout, Stat, Error } from "./pages";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -13,6 +15,7 @@ const App = () => {
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>
+      <ToastContainer position="top-center" />
     </BrowserRouter>
   );
 };

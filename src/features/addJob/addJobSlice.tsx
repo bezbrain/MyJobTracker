@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addData, colRef } from "../../firebaseStore";
+import { toast } from "react-toastify";
 
 interface State {
   addJobArr: Array<string | number>;
@@ -67,6 +68,7 @@ const addJobSlice = createSlice({
         state.inputs.status = "";
         state.inputs.jobType = "";
         state.isLoading = false;
+        toast.success("Job Add Successfully");
       })
       .addCase(submitData.rejected, (state, { payload }) => {
         console.log(state);
