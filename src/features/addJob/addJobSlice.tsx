@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { addData, colRef } from "../../firebaseStore";
 
 interface State {
   addJobArr: Array<string | number>;
   isRemove: boolean;
+  isLoading: boolean;
   inputs: {
     position: string;
     company: string;
@@ -14,7 +16,8 @@ interface State {
 
 const initialState: State = {
   addJobArr: [],
-  isRemove: true,
+  isRemove: true, // to toggle side base
+  isLoading: false, // to activate and deactivate button
   inputs: {
     position: "",
     company: "",
@@ -24,14 +27,17 @@ const initialState: State = {
   },
 };
 
-export const submitData = createAsyncThunk("addJob/submitData", async () => {
-  try {
-    console.log("Anything");
-    // Your asynchronous logic here
-  } catch (error) {
-    console.log(error);
+export const submitData = createAsyncThunk(
+  "addJob/submitData",
+  async (jobData: any, thunkAPI) => {
+    try {
+      await addData(colRef, jobData);
+      return jobData;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 const addJobSlice = createSlice({
   name: "addJob",
@@ -51,13 +57,20 @@ const addJobSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(submitData.pending, (state) => {
-        console.log(state);
+        state.isLoading = true;
       })
-      .addCase(submitData.fulfilled, (state) => {
-        console.log(state);
+      .addCase(submitData.fulfilled, (state, { payload }) => {
+        state.inputs = payload;
+        state.inputs.position = "";
+        state.inputs.company = "";
+        state.inputs.joblocation = "";
+        state.inputs.status = "";
+        state.inputs.jobType = "";
+        state.isLoading = false;
       })
-      .addCase(submitData.rejected, (state) => {
+      .addCase(submitData.rejected, (state, { payload }) => {
         console.log(state);
+        console.log(payload);
       });
   },
 });

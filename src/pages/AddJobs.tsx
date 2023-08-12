@@ -5,14 +5,12 @@ import InputWrapper from "../StylesWrappers/General/inputBox";
 import Button from "../components/General/Button";
 import InputBox from "../components/General/InputBox";
 import SelectOption from "../components/General/SelectOption";
-import { useDispatch } from "react-redux";
+import { RootState } from "../store";
 
 const AddJobs = () => {
   const { position, company, joblocation, status, jobType } = useSelector(
-    (store: any) => store.addJobStore.inputs
+    (store: RootState) => store.addJobStore.inputs
   );
-
-  // console.log(position);
 
   return (
     <AddJob>

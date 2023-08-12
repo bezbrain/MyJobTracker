@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { collectInput } from "../../features/addJob/addJobSlice";
+import { AppDispatch } from "../../store";
 
 interface Props {
   jobName: string;
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const InputBox: React.FC<Props> = ({ jobName, inputName, inputValue }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;

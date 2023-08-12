@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -17,3 +17,5 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 export const colRef = collection(db, "allJobs");
+
+export const addData = addDoc;

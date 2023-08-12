@@ -3,9 +3,10 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate, useLocation } from "react-router-dom";
 import Wrapper from "../../StylesWrappers/General/sideBar";
 import { sideBarData } from "../../data";
+import { RootState } from "../../store";
 
 const SideBar = () => {
-  const { isOpenNav } = useSelector((store: any) => store.navStore);
+  const { isOpenNav } = useSelector((store: RootState) => store.navStore);
 
   const [isHoverIndex, setIsHoverIndex] = useState<number | null>(null);
 

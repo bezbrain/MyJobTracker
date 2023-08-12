@@ -7,18 +7,29 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({ button }) => {
-  const { addJobArr } = useSelector((store: RootState) => store.addJobStore);
+  const { inputs, isLoading } = useSelector(
+    (store: RootState) => store.addJobStore
+  );
+
+  const { position, company, joblocation, status, jobType } = inputs;
 
   const dispatch = useDispatch<AppDispatch>();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await dispatch(submitData());
+
+    if (!position || !company || !joblocation || !status || !jobType) {
+      console.log("I cannot be empty");
+    } else {
+      await dispatch(submitData(inputs));
+    }
   };
 
   return (
     <>
-      <button onClick={handleSubmit}>{button}</button>
+      <button onClick={handleSubmit} disabled={isLoading}>
+        {button}
+      </button>
     </>
   );
 };

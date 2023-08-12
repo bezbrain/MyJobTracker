@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import SelectWrapper from "../../StylesWrappers/General/selectOption";
 import { collectInput } from "../../features/addJob/addJobSlice";
+import { AppDispatch, RootState } from "../../store";
 
 interface Props {
   statusName: string;
@@ -21,9 +22,9 @@ const SelectOption: React.FC<Props> = ({
   optionThree,
   optionFour,
 }) => {
-  const { isRemove } = useSelector((store: any) => store.addJobStore);
+  const { isRemove } = useSelector((store: RootState) => store.addJobStore);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let name = e.target.name;
@@ -36,7 +37,7 @@ const SelectOption: React.FC<Props> = ({
     <SelectWrapper>
       <p>{selectName}</p>
       <select name={statusName} value={statusValue} onChange={handleSelect}>
-        {/* <option value=""></option> */}
+        <option value=""></option>
         <option value={optionOne}>{optionOne}</option>
         <option value={optionTwo}>{optionTwo}</option>
         <option value={optionThree}>{optionThree}</option>
