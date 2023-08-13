@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import { AddJobs, AllJobs, Profile, SharedLayout, Stat, Error } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { colRef, trackDataInDB } from "./firebaseStore";
-import { useEffect } from "react";
 
 const getData = async () => {
   trackDataInDB(colRef, (snapshot) => {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const AddJob = styled.main`
+const AddAndAllJobs = styled.main`
   background-color: #fff;
   margin: 2.5rem 4vw;
   padding: 7vh 3vw;
@@ -12,4 +12,4 @@ const AddJob = styled.main`
   }
 `;
 
-export default AddJob;
+export default AddAndAllJobs;

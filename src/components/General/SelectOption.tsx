@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SelectWrapper from "../../StylesWrappers/General/selectOption";
-import { collectInput } from "../../features/addJob/addJobSlice";
-import { AppDispatch, RootState } from "../../store";
+import { RootState } from "../../store";
 
 interface Props {
   statusName: string;
@@ -11,6 +10,8 @@ interface Props {
   optionTwo: string;
   optionThree: string;
   optionFour?: string | null;
+  optionFive?: string | null;
+  handleSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const SelectOption: React.FC<Props> = ({
@@ -21,17 +22,10 @@ const SelectOption: React.FC<Props> = ({
   optionTwo,
   optionThree,
   optionFour,
+  optionFive,
+  handleSelect,
 }) => {
   const { isRemove } = useSelector((store: RootState) => store.addJobStore);
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    let name = e.target.name;
-    let value = e.target.value;
-
-    dispatch(collectInput({ name, value }));
-  };
 
   return (
     <SelectWrapper>
@@ -41,8 +35,14 @@ const SelectOption: React.FC<Props> = ({
         <option value={optionOne}>{optionOne}</option>
         <option value={optionTwo}>{optionTwo}</option>
         <option value={optionThree}>{optionThree}</option>
-        {optionFour === "Internship"
+        {optionFour === "Internship" ||
+        optionFour === "Pending" ||
+        optionFour === "Remote" ||
+        optionFour === "z-a"
           ? isRemove && <option value={optionFour}>{optionFour}</option>
+          : ""}
+        {optionFive === "Internship"
+          ? isRemove && <option value={optionFive}>{optionFive}</option>
           : ""}
       </select>
     </SelectWrapper>

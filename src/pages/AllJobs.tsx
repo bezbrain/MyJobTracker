@@ -1,5 +1,13 @@
+import AddAndAllJobs from "../StylesWrappers/General/AddAndAllJobs";
+import InputSection from "../components/AllJobs/InputSection";
+
 const AllJobs = () => {
-  return <div>All Jobs</div>;
+  return (
+    <AddAndAllJobs>
+      <p>Search Form</p>
+      <InputSection />
+    </AddAndAllJobs>
+  );
 };
 
 export default AllJobs;

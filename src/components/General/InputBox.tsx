@@ -1,23 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { collectInput } from "../../features/addJob/addJobSlice";
-import { AppDispatch } from "../../store";
+import { ChangeEvent } from "react";
 
 interface Props {
   jobName: string;
   inputName: string;
   inputValue: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputBox: React.FC<Props> = ({ jobName, inputName, inputValue }) => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let name = e.target.name;
-    let value = e.target.value;
-
-    dispatch(collectInput({ name, value }));
-  };
-
+const InputBox: React.FC<Props> = ({
+  jobName,
+  inputName,
+  inputValue,
+  handleChange,
+}) => {
   return (
     <div>
       <p>{jobName}</p>

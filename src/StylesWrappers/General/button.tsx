@@ -30,6 +30,15 @@ const ButtonWrapper = styled.div`
   button:last-child:hover {
     opacity: var(--opacity);
   }
+
+  .add-allJobs-btn {
+    background-color: #e0b3a6 !important;
+    width: 100%;
+    transition: ease 0.5s all;
+  }
+  .add-allJobs-btn:hover {
+    background-color: var(--blackred) !important;
+  }
 `;
 
 export default ButtonWrapper;
