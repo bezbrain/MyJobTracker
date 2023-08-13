@@ -1,34 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store";
-import { submitData } from "../../features/addJob/addJobSlice";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 interface Props {
   button: string;
+  handleSubmit: (e: React.FormEvent) => void;
+  type: "button" | "reset" | "submit" | undefined;
 }
 
-const Button: React.FC<Props> = ({ button }) => {
-  const { inputs, isLoading } = useSelector(
-    (store: RootState) => store.addJobStore
-  );
-
-  const { position, company, joblocation, status, jobType } = inputs;
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!position || !company || !joblocation || !status || !jobType) {
-      toast.error("No field should be empty");
-    } else {
-      await dispatch(submitData(inputs));
-    }
-  };
+const Button: React.FC<Props> = ({ button, handleSubmit, type }) => {
+  const { isLoading } = useSelector((store: RootState) => store.addJobStore);
 
   return (
     <>
-      <button onClick={handleSubmit} disabled={isLoading}>
+      <button onClick={(e) => handleSubmit(e)} disabled={isLoading} type={type}>
         {button}
       </button>
     </>

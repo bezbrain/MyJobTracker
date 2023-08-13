@@ -5,12 +5,33 @@ import InputWrapper from "../StylesWrappers/General/inputBox";
 import Button from "../components/General/Button";
 import InputBox from "../components/General/InputBox";
 import SelectOption from "../components/General/SelectOption";
-import { RootState } from "../store";
+import { AppDispatch, RootState } from "../store";
+import { useDispatch } from "react-redux";
+import { clearInput, submitData } from "../features/addJob/addJobSlice";
+import { toast } from "react-toastify";
 
 const AddJobs = () => {
-  const { position, company, joblocation, status, jobType } = useSelector(
-    (store: RootState) => store.addJobStore.inputs
-  );
+  const { inputs } = useSelector((store: RootState) => store.addJobStore);
+
+  const { position, company, joblocation, status, jobType } = inputs;
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!position || !company || !joblocation || !status || !jobType) {
+      toast.error("No field should be empty");
+    } else {
+      await dispatch(submitData(inputs));
+    }
+  };
+
+  const handleReset = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(clearInput());
+    toast.success("Field Cleared");
+  };
 
   return (
     <AddJob>
@@ -47,8 +68,8 @@ const AddJobs = () => {
         />
 
         <ButtonWrapper>
-          <Button button="Clear" />
-          <Button button="Submit" />
+          <Button button="Clear" type="reset" handleSubmit={handleReset} />
+          <Button button="Submit" handleSubmit={handleSubmit} type="submit" />
         </ButtonWrapper>
       </InputWrapper>
     </AddJob>

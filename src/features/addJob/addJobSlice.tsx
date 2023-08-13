@@ -7,6 +7,7 @@ interface State {
   isRemove: boolean;
   isLoading: boolean;
   inputs: {
+    id: number;
     position: string;
     company: string;
     joblocation: string;
@@ -20,6 +21,7 @@ const initialState: State = {
   isRemove: true, // to toggle side base
   isLoading: false, // to activate and deactivate button
   inputs: {
+    id: 0,
     position: "",
     company: "",
     joblocation: "",
@@ -49,9 +51,17 @@ const addJobSlice = createSlice({
 
       const update: State = {
         ...state,
-        inputs: { ...state.inputs, [name]: value },
+        inputs: { ...state.inputs, id: Date.now(), [name]: value },
       };
       return update;
+    },
+
+    clearInput: (state) => {
+      state.inputs.position = "";
+      state.inputs.company = "";
+      state.inputs.joblocation = "";
+      state.inputs.status = "";
+      state.inputs.jobType = "";
     },
   },
 
@@ -77,6 +87,6 @@ const addJobSlice = createSlice({
   },
 });
 
-export const { collectInput } = addJobSlice.actions;
+export const { collectInput, clearInput } = addJobSlice.actions;
 
 export default addJobSlice.reducer;
