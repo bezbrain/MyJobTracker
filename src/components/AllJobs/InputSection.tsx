@@ -1,26 +1,32 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import InputBox from "../General/InputBox";
-import { RootState } from "../../store";
+import { AppDispatch, RootState } from "../../store";
 import InputWrapper from "../../StylesWrappers/General/inputBox";
 import SelectOption from "../General/SelectOption";
+import { ChangeEvent } from "react";
 import Button from "../General/Button";
 import ButtonWrapper from "../../StylesWrappers/General/button";
+import { useDispatch } from "react-redux";
+import { collectInputs } from "../../features/allJobs/allJobsSlice";
 
 const InputSection = () => {
   const { search, status, type, sort } = useSelector(
     (store: RootState) => store.allJobsStore.allJobsInputs
   );
 
+  const dispatch = useDispatch<AppDispatch>();
+
   //   Handle input change
-  const handleChange = (e: React.FormEvent<Element>) => {
-    // let name = e.target.name;
-    // let value = e.target.value;
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    dispatch(collectInputs({ name, value }));
   };
 
   //   Handle select change
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    // let name = e.target.name;
-    // let value = e.target.value;
+    let name = e.target.name;
+    let value = e.target.value;
   };
 
   const handleClear = (e: React.FormEvent) => {

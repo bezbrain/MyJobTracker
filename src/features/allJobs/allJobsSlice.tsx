@@ -22,8 +22,24 @@ const allJobsSlice = createSlice({
   name: "allJobs",
   initialState,
   reducers: {
-    //
+    collectInputs: (state, { payload }) => {
+      // console.log(state);
+      const { name, value } = payload;
+
+      const update = {
+        ...state,
+        allJobsInputs: {
+          ...state.allJobsInputs,
+          id: Date.now(),
+          [name]: value,
+        },
+      };
+
+      return update;
+    },
   },
 });
 
 export default allJobsSlice.reducer;
+
+export const { collectInputs } = allJobsSlice.actions;
