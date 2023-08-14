@@ -9,15 +9,18 @@ const ShowAllJobs = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getData = () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     trackDataInDB(colRef, (snapshot) => {
       const jobs = snapshot.docs.map((each) => {
-        return each.data();
+        return {
+          ...each.data(),
+          id: each.id,
+        };
       });
-      console.log(jobs);
+      // console.log(jobs);
 
       setDataInDB(jobs);
-      setIsLoading(false);
+      // setIsLoading(false);
     });
   };
 
@@ -27,6 +30,10 @@ const ShowAllJobs = () => {
 
   if (dataInDB.length === 0) {
     return <p>NO JOB TO DISPLAY</p>;
+  }
+
+  if (dataInDB.length > 0) {
+    <p>LOADING...</p>;
   }
 
   return (

@@ -53,6 +53,7 @@ const AllJobsWrapper = styled.main`
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   .location__and__date p {
     font-size: 20px;
@@ -68,6 +69,7 @@ const AllJobsWrapper = styled.main`
   .type__and__status {
     margin-top: 15px;
     display: flex;
+    align-items: center;
     /* justify-content: space-between; */
   }
   .type__and__status p {
@@ -99,7 +101,7 @@ const AllJobsWrapper = styled.main`
   }
 
   .buttons {
-    margin-top: 15px;
+    margin-top: 30px;
   }
 
   .buttons button {

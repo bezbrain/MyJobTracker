@@ -1,14 +1,14 @@
-import AddAndAllJobs from "../StylesWrappers/General/AddAndAllJobs";
+import AddJobAllJobsProfile from "../StylesWrappers/General/AddJobAllJobsProfile";
 import InputSection from "../components/AllJobs/InputSection";
 import ShowAllJobs from "../components/AllJobs/ShowAllJobs";
 
 const AllJobs = () => {
   return (
     <>
-      <AddAndAllJobs>
+      <AddJobAllJobsProfile>
         <p>Search Form</p>
         <InputSection />
-      </AddAndAllJobs>
+      </AddJobAllJobsProfile>
       <ShowAllJobs />
     </>
   );

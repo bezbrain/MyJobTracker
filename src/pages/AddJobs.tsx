@@ -9,7 +9,7 @@ import { AppDispatch, RootState } from "../store";
 import { useDispatch } from "react-redux";
 import { clearInput, submitData } from "../features/addJob/addJobSlice";
 import { toast } from "react-toastify";
-import AddAndAllJobs from "../StylesWrappers/General/AddAndAllJobs";
+import AddJobAllJobsProfile from "../StylesWrappers/General/AddJobAllJobsProfile";
 import { collectInput } from "../features/addJob/addJobSlice";
 
 const AddJobs = () => {
@@ -54,7 +54,7 @@ const AddJobs = () => {
   };
 
   return (
-    <AddAndAllJobs>
+    <AddJobAllJobsProfile>
       <p>Add Job</p>
       <InputWrapper>
         <InputBox
@@ -101,7 +101,7 @@ const AddJobs = () => {
           <Button button="Submit" handleSubmit={handleSubmit} type="submit" />
         </ButtonWrapper>
       </InputWrapper>
-    </AddAndAllJobs>
+    </AddJobAllJobsProfile>
   );
 };
 

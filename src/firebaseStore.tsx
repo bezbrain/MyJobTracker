@@ -4,7 +4,8 @@ import {
   collection,
   onSnapshot,
   addDoc,
-  // getDocs,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -20,10 +21,14 @@ const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 
-const db = getFirestore();
+export const db = getFirestore();
 
 export const colRef = collection(db, "allJobs");
 
 export const trackDataInDB = onSnapshot;
 
 export const addData = addDoc;
+
+export const singleDoc = doc;
+
+export const deleteSingleDoc = deleteDoc;

@@ -56,7 +56,7 @@ const addJobSlice = createSlice({
 
       const update: State = {
         ...state,
-        inputs: { ...state.inputs, id: Date.now(), date: date, [name]: value },
+        inputs: { ...state.inputs, date: date, [name]: value },
       };
       return update;
     },

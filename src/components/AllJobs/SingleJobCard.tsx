@@ -1,6 +1,9 @@
 import { FaCalendar, FaLocationArrow, FaBox } from "react-icons/fa";
+import { colRef, db, deleteSingleDoc, singleDoc } from "../../firebaseStore";
+import { DocumentReference } from "firebase/firestore";
 
 interface Props {
+  id: string;
   position: string;
   company: string;
   joblocation: string;
@@ -10,6 +13,7 @@ interface Props {
 }
 
 const SingleJobCard: React.FC<Props> = ({
+  id,
   position,
   company,
   joblocation,
@@ -19,6 +23,12 @@ const SingleJobCard: React.FC<Props> = ({
 }) => {
   // Capitalize the first letter of of company input
   const capitalizeFirstLetter: string = company.charAt(0).toUpperCase();
+
+  const handleDelete = async (index: string) => {
+    // console.log(index);
+    const docRef: DocumentReference = singleDoc(db, "allJobs", index);
+    await deleteSingleDoc(docRef);
+  };
 
   return (
     <section>
@@ -67,7 +77,7 @@ const SingleJobCard: React.FC<Props> = ({
       </div>
       <div className="buttons">
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => handleDelete(id)}>Delete</button>
       </div>
     </section>
   );

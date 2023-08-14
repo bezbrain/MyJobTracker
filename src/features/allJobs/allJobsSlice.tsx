@@ -30,7 +30,6 @@ const allJobsSlice = createSlice({
         ...state,
         allJobsInputs: {
           ...state.allJobsInputs,
-          id: Date.now(),
           [name]: value,
         },
       };
