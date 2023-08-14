@@ -6,6 +6,11 @@
   --lightgreen: rgb(159, 163, 82);
   --blackred: #a62f03;
 
+  /* Status color */
+  --pendingColor: rgb(233, 206, 211);
+  --InterviewColor: rgb(208, 209, 179);
+  --DeclineColor: rgb(219, 111, 111);
+
   /* Logo font */
   --font: 2rem;
 

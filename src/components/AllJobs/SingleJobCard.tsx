@@ -1,5 +1,6 @@
+import { FaCalendar, FaLocationArrow, FaBox } from "react-icons/fa";
+
 interface Props {
-  firstLetter: string;
   position: string;
   company: string;
   joblocation: string;
@@ -9,7 +10,6 @@ interface Props {
 }
 
 const SingleJobCard: React.FC<Props> = ({
-  firstLetter,
   position,
   company,
   joblocation,
@@ -17,11 +17,14 @@ const SingleJobCard: React.FC<Props> = ({
   jobType,
   status,
 }) => {
+  // Capitalize the first letter of of company input
+  const capitalizeFirstLetter: string = company.charAt(0).toUpperCase();
+
   return (
     <section>
       <div className="job__card__head">
         <div className="company__first__letter">
-          <p>{firstLetter}</p>
+          <p>{capitalizeFirstLetter}</p>
         </div>
         <div className="job__and__company">
           <p>{position}</p>
@@ -30,12 +33,37 @@ const SingleJobCard: React.FC<Props> = ({
       </div>
       <hr />
       <div className="location__and__date">
-        <p>{joblocation}</p>
-        <p>20th Aug, 2023{date}</p>
+        <p>
+          <span>
+            <FaLocationArrow />
+          </span>
+          {joblocation}
+        </p>
+        <p>
+          <span>
+            <FaCalendar />
+          </span>
+          {date}
+        </p>
       </div>
       <div className="type__and__status">
-        <p>{jobType}</p>
-        <p>{status}</p>
+        <p>
+          <span>
+            <FaBox />
+          </span>
+          {jobType}
+        </p>
+        <p
+          className={`${
+            status === "Interview"
+              ? "addInterviewColor"
+              : status === "Pending"
+              ? "addPendingColor"
+              : "addDelineColor"
+          }`}
+        >
+          {status}
+        </p>
       </div>
       <div className="buttons">
         <button>Edit</button>

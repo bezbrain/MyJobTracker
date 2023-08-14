@@ -4,7 +4,7 @@ import {
   collection,
   onSnapshot,
   addDoc,
-  getDocs,
+  // getDocs,
 } from "firebase/firestore";
 
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -27,5 +27,3 @@ export const colRef = collection(db, "allJobs");
 export const trackDataInDB = onSnapshot;
 
 export const addData = addDoc;
-
-export const getDataDocs = getDocs;

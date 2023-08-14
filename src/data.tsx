@@ -26,9 +26,3 @@ export const sideBarData = [
     link: "profile",
   },
 ];
-
-// export const optionData  [
-//   {
-//     // id:
-//   }
-// ]

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { colRef, getDataDocs, trackDataInDB } from "../../firebaseStore";
+import { colRef, trackDataInDB } from "../../firebaseStore";
 import SingleJobCard from "./SingleJobCard";
 import { DocumentData } from "firebase/firestore";
-
-// let dataInDB: DocumentData[] = [];
+import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";
 
 const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
@@ -13,7 +12,6 @@ const ShowAllJobs = () => {
     setIsLoading(true);
     trackDataInDB(colRef, (snapshot) => {
       const jobs = snapshot.docs.map((each) => {
-        // console.log(each);
         return each.data();
       });
       console.log(jobs);
@@ -32,12 +30,12 @@ const ShowAllJobs = () => {
   }
 
   return (
-    <main>
+    <AllJobsWrapper>
       {isLoading && <p>Loading...</p>}
       {dataInDB.map((each: any) => (
         <SingleJobCard key={each.id} {...each} />
       ))}
-    </main>
+    </AllJobsWrapper>
   );
 };
 

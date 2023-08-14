@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addData, colRef } from "../../firebaseStore";
 import { toast } from "react-toastify";
+import { dateFunc } from "../../date";
+
+const date: string = dateFunc(); // Function to get the current date
 
 interface State {
   addJobArr: Array<string | number>;
@@ -13,6 +16,7 @@ interface State {
     joblocation: string;
     status: string;
     jobType: string;
+    date: string;
   };
 }
 
@@ -27,6 +31,7 @@ const initialState: State = {
     joblocation: "",
     status: "",
     jobType: "",
+    date: "",
   },
 };
 
@@ -51,7 +56,7 @@ const addJobSlice = createSlice({
 
       const update: State = {
         ...state,
-        inputs: { ...state.inputs, id: Date.now(), [name]: value },
+        inputs: { ...state.inputs, id: Date.now(), date: date, [name]: value },
       };
       return update;
     },
