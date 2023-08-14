@@ -23,7 +23,6 @@ const allJobsSlice = createSlice({
   initialState,
   reducers: {
     collectInputs: (state, { payload }) => {
-      // console.log(state);
       const { name, value } = payload;
 
       const update = {

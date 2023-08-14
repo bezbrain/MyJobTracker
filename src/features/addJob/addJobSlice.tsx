@@ -10,7 +10,6 @@ interface State {
   isRemove: boolean;
   isLoading: boolean;
   inputs: {
-    id: number;
     position: string;
     company: string;
     joblocation: string;
@@ -25,7 +24,6 @@ const initialState: State = {
   isRemove: true, // to toggle side base
   isLoading: false, // to activate and deactivate button
   inputs: {
-    id: 0,
     position: "",
     company: "",
     joblocation: "",

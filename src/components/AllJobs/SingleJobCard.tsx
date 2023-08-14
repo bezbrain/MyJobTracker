@@ -1,6 +1,7 @@
 import { FaCalendar, FaLocationArrow, FaBox } from "react-icons/fa";
-import { colRef, db, deleteSingleDoc, singleDoc } from "../../firebaseStore";
+import { db, deleteSingleDoc, singleDoc } from "../../firebaseStore";
 import { DocumentReference } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 interface Props {
   id: string;
@@ -25,9 +26,9 @@ const SingleJobCard: React.FC<Props> = ({
   const capitalizeFirstLetter: string = company.charAt(0).toUpperCase();
 
   const handleDelete = async (index: string) => {
-    // console.log(index);
     const docRef: DocumentReference = singleDoc(db, "allJobs", index);
     await deleteSingleDoc(docRef);
+    toast.success("Job Card Deleted");
   };
 
   return (
