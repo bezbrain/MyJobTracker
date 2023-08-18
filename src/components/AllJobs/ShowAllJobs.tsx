@@ -6,10 +6,9 @@ import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";
 
 const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const getData = () => {
-    // setIsLoading(true);
     trackDataInDB(colRef, (snapshot) => {
       const jobs = snapshot.docs.map((each) => {
         return {
@@ -17,10 +16,9 @@ const ShowAllJobs = () => {
           id: each.id,
         };
       });
-      console.log(jobs);
-
+      // console.log(jobs);
       setDataInDB(jobs);
-      // setIsLoading(false);
+      setIsLoading(false);
     });
   };
 
@@ -28,17 +26,24 @@ const ShowAllJobs = () => {
     getData();
   }, []);
 
-  if (dataInDB.length === 0) {
-    return <p>NO JOB TO DISPLAY</p>;
+  if (isLoading) {
+    return (
+      <AllJobsWrapper>
+        <p className="no__job">LOADING...</p>
+      </AllJobsWrapper>
+    );
   }
 
-  if (dataInDB.length > 0) {
-    <p>LOADING...</p>;
+  if (dataInDB.length === 0) {
+    return (
+      <AllJobsWrapper>
+        <p className="no__job">NO JOBS TO DISPLAY</p>
+      </AllJobsWrapper>
+    );
   }
 
   return (
     <AllJobsWrapper>
-      {isLoading && <p>Loading...</p>}
       {dataInDB.map((each: any) => (
         <SingleJobCard key={each.id} {...each} />
       ))}

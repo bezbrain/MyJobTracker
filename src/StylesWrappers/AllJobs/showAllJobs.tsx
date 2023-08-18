@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 const AllJobsWrapper = styled.main`
+  .no__job {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;

@@ -55,11 +55,6 @@ const SingleJobCard: React.FC<Props> = ({
     try {
       const docRef: DocumentReference = singleDoc(colRef, index);
       const docSnap: DocumentSnapshot = await getSingleDoc(docRef);
-      // console.log(docSnap.data());
-      // const docRefToString: string = `${docRef}`;
-      // console.log(docRef);
-
-      // console.log(docRefToString);
 
       await dispatch(editJob({ docRef, ...docSnap.data() }));
       await dispatch(stageInput({ ...docSnap.data(), index }));

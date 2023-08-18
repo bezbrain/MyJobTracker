@@ -2,25 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addData, colRef, getSingleDoc, updateInfo } from "../../firebaseStore";
 import { toast } from "react-toastify";
 import { dateFunc } from "../../date";
-import { EditState } from "../../model";
+import { AddJobState } from "../../model";
 
 const date: string = dateFunc(); // Function to get the current date
 
-interface State {
-  addJobArr: Array<string | number>;
-  isRemove: boolean;
-  isLoading: boolean;
-  inputs: {
-    position: string;
-    company: string;
-    joblocation: string;
-    status: string;
-    jobType: string;
-    date: string;
-  };
-}
-
-const initialState: State = {
+const initialState: AddJobState = {
   addJobArr: [],
   isRemove: true, // to toggle side base
   isLoading: false, // to activate and deactivate button
@@ -37,7 +23,7 @@ const initialState: State = {
 // Send data to firestore
 export const submitData = createAsyncThunk(
   "addJob/submitData",
-  async (jobData: State["inputs"], thunkAPI) => {
+  async (jobData: AddJobState["inputs"], thunkAPI) => {
     try {
       await addData(colRef, jobData);
       return jobData;
@@ -72,7 +58,7 @@ const addJobSlice = createSlice({
     collectInput: (state, action) => {
       const { name, value } = action.payload;
 
-      const update: State = {
+      const update: AddJobState = {
         ...state,
         inputs: { ...state.inputs, date: date, [name]: value },
       };

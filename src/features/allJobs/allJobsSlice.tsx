@@ -1,15 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { AllJobsState } from "../../model";
 
-interface State {
-  allJobsInputs: {
-    search: string;
-    status: string;
-    type: string;
-    sort: string;
-  };
-}
-
-const initialState: State = {
+const initialState: AllJobsState = {
   allJobsInputs: {
     search: "",
     status: "",
