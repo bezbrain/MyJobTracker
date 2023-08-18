@@ -3,13 +3,24 @@ import { Outlet } from "react-router-dom";
 import SideBar from "../components/General/SideBar";
 import Wrapper from "../StylesWrappers/General/sharedLayout";
 import Content from "../StylesWrappers/General/Content";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 
 const SharedLayout = () => {
+  const { isOpenSmallNav } = useSelector((store: RootState) => store.navStore);
+
   return (
     <Wrapper>
       <Header />
       <section className="sidebar_and_outlet">
-        <SideBar />
+        <SideBar
+          navSection="nav-section"
+          smScreenClose="lg-screen-close-icon"
+        />
+        <SideBar
+          navSection="small-nav-section"
+          smScreenClose="sm-screen-close-icon"
+        />
         <Content>
           <Outlet />
         </Content>

@@ -57,7 +57,7 @@ const SingleJobCard: React.FC<Props> = ({
       const docSnap: DocumentSnapshot = await getSingleDoc(docRef);
       // console.log(docSnap.data());
       // const docRefToString: string = `${docRef}`;
-      console.log(docRef);
+      // console.log(docRef);
 
       // console.log(docRefToString);
 

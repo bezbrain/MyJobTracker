@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.main`
-  nav {
+  .nav-section {
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 2rem;
@@ -10,9 +10,61 @@ const Wrapper = styled.main`
   .remove-nav {
     width: 0px;
   }
+  .lg-screen-close-icon {
+    display: none;
+  }
+
+  .small-nav-section {
+    display: none;
+  }
+  .sm-screen-close-icon {
+    display: none;
+  }
+
   @media screen and (max-width: 1100px) {
-    nav {
+    .nav-section {
       display: none;
+    }
+    .small-nav-section {
+      display: block;
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.5);
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .add-sm-nav {
+      transform: scale(1);
+      transition: ease 0.5s all;
+    }
+    .remove-sm-nav {
+      transform: scale(0);
+    }
+    .small-nav-section ul {
+      position: relative;
+      background-color: #fff;
+      width: 400px;
+      padding-block: 4rem 2rem;
+      border-radius: 5px;
+    }
+    .sm-screen-close-icon {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2.2rem;
+      color: red;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .small-nav-section ul {
+      width: 300px;
     }
   }
 
