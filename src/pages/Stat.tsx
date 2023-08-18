@@ -1,13 +1,40 @@
+import { useState, useEffect } from "react";
 import Wrapper from "../StylesWrappers/Stat/stat";
 import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
+import { colRef, trackDataInDB } from "../firebaseStore";
+import { DocumentData } from "firebase/firestore";
 
 const Stat = () => {
+  const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
+
+  const getData = () => {
+    trackDataInDB(colRef, (snapshot) => {
+      const jobs = snapshot.docs.map((each) => {
+        return {
+          ...each.data(),
+          id: each.id,
+        };
+      });
+
+      setDataInDB(jobs);
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // Get each status
+  const getPending = dataInDB.filter((each) => each.status === "Pending");
+  const getInterview = dataInDB.filter((each) => each.status === "Interview");
+  const getDecline = dataInDB.filter((each) => each.status === "Declined");
+
   return (
     <Wrapper>
       <section className="card-con">
         <StatCard
-          count={0}
+          count={getPending.length}
           icon={<PendingIcon />}
           jobText="Pending Applications"
           border="add-pending-border"
@@ -15,7 +42,7 @@ const Stat = () => {
           iconColor="add-pending-icon"
         />
         <StatCard
-          count={0}
+          count={getInterview.length}
           icon={<InterviewIcon />}
           jobText="Interviews Scheduled"
           border="add-interview-border"
@@ -23,7 +50,7 @@ const Stat = () => {
           iconColor="add-interview-icon"
         />
         <StatCard
-          count={0}
+          count={getDecline.length}
           icon={<DeclineIcon />}
           jobText="Jobs Declined"
           border="add-decline-border"

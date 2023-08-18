@@ -17,7 +17,7 @@ const ShowAllJobs = () => {
           id: each.id,
         };
       });
-      // console.log(jobs);
+      console.log(jobs);
 
       setDataInDB(jobs);
       // setIsLoading(false);
