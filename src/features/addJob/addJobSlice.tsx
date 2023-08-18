@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addData, colRef } from "../../firebaseStore";
+import { addData, colRef, getSingleDoc, updateInfo } from "../../firebaseStore";
 import { toast } from "react-toastify";
 import { dateFunc } from "../../date";
+import { EditState } from "../../model";
 
 const date: string = dateFunc(); // Function to get the current date
 
@@ -33,14 +34,42 @@ const initialState: State = {
   },
 };
 
+// Send data to firestore
 export const submitData = createAsyncThunk(
   "addJob/submitData",
-  async (jobData: any, thunkAPI) => {
+  async (jobData: State["inputs"], thunkAPI) => {
     try {
       await addData(colRef, jobData);
       return jobData;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Update data in firestore
+export const updateData = createAsyncThunk(
+  "addJob/updateData",
+  async (_, thunkAPI) => {
+    try {
+      const state: any = thunkAPI.getState();
+      console.log(state);
+      console.log(state.addJobStore.inputs);
+      console.log(state.editJobStore.stagedJob);
+
+      const { docRef, ...newObj } = state.editJobStore.stagedJob;
+      console.log(docRef);
+      console.log(newObj);
+
+      await updateInfo(docRef, {
+        ...state.addJobStore.inputs,
+      });
+
+      // state.editJobStore.btnContent = "Submit";
+
+      return newObj;
+    } catch (error) {
+      console.log(error);
     }
   }
 );
@@ -66,6 +95,13 @@ const addJobSlice = createSlice({
       state.inputs.status = "";
       state.inputs.jobType = "";
     },
+
+    stageInput: (state, { payload }) => {
+      state.inputs = {
+        ...state.inputs,
+        ...payload,
+      };
+    },
   },
 
   extraReducers: (builder) => {
@@ -81,15 +117,30 @@ const addJobSlice = createSlice({
         state.inputs.status = "";
         state.inputs.jobType = "";
         state.isLoading = false;
-        toast.success("Job Add Successfully");
+        toast.success("Job Added Successfully");
       })
       .addCase(submitData.rejected, (state, { payload }) => {
         console.log(state);
         console.log(payload);
       });
+    builder
+      .addCase(updateData.pending, (state) => {
+        console.log(state);
+      })
+      .addCase(updateData.fulfilled, (state, { payload }) => {
+        state.inputs.position = "";
+        state.inputs.company = "";
+        state.inputs.joblocation = "";
+        state.inputs.status = "";
+        state.inputs.jobType = "";
+        toast.success("Job Updated Successfully");
+      })
+      .addCase(updateData.rejected, (state) => {
+        console.log(state);
+      });
   },
 });
 
-export const { collectInput, clearInput } = addJobSlice.actions;
+export const { collectInput, clearInput, stageInput } = addJobSlice.actions;
 
 export default addJobSlice.reducer;

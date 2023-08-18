@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useRef } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ButtonWrapper from "../StylesWrappers/General/button";
 import InputWrapper from "../StylesWrappers/General/inputBox";
@@ -7,13 +7,19 @@ import InputBox from "../components/General/InputBox";
 import SelectOption from "../components/General/SelectOption";
 import { AppDispatch, RootState } from "../store";
 import { useDispatch } from "react-redux";
-import { clearInput, submitData } from "../features/addJob/addJobSlice";
+import {
+  clearInput,
+  submitData,
+  updateData,
+} from "../features/addJob/addJobSlice";
 import { toast } from "react-toastify";
 import AddJobAllJobsProfile from "../StylesWrappers/General/AddJobAllJobsProfile";
 import { collectInput } from "../features/addJob/addJobSlice";
+import { changeTextContent } from "../features/allJobs/editSlice";
 
 const AddJobs = () => {
   const { inputs } = useSelector((store: RootState) => store.addJobStore);
+  const { btnContent } = useSelector((store: RootState) => store.editJobStore);
 
   const { position, company, joblocation, status, jobType } = inputs;
 
@@ -42,7 +48,12 @@ const AddJobs = () => {
     if (!position || !company || !joblocation || !status || !jobType) {
       toast.error("No field should be empty");
     } else {
-      await dispatch(submitData(inputs));
+      if (btnContent === "Submit") {
+        await dispatch(submitData(inputs));
+      } else {
+        dispatch(updateData());
+        dispatch(changeTextContent());
+      }
     }
   };
 

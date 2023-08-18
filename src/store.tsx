@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import navReducer from "./features/nav/navSlice";
 import addJobReducer from "./features/addJob/addJobSlice";
 import allJobsReducer from "./features/allJobs/allJobsSlice";
+import editJobReducer from "./features/allJobs/editSlice";
 import profileReducer from "./features/profile/profileSlice";
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     navStore: navReducer,
     addJobStore: addJobReducer,
     allJobsStore: allJobsReducer,
+    editJobStore: editJobReducer,
     profileStore: profileReducer,
   },
 });

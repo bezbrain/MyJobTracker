@@ -10,7 +10,7 @@ const AllJobsWrapper = styled.main`
     grid-template-columns: 1fr;
   }
 
-  section {
+  .single__job__card {
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -118,6 +118,55 @@ const AllJobsWrapper = styled.main`
   .buttons button:last-child {
     background-color: var(--blackred);
     margin-inline: 10px;
+  }
+
+  /* Delete Modal */
+  .delete__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .remove__scale {
+    transform: scale(0);
+  }
+  .add__scale {
+    transform: scale(1);
+    transition: ease 500ms all;
+  }
+
+  .confirm__delete {
+    background-color: #fff;
+    text-align: center;
+    width: 600px;
+    border-radius: 5px;
+    padding: 20px 10px;
+    box-shadow: 0px 0px 33px -7px rgba(0, 0, 0, 0.9);
+  }
+
+  .confirm__delete p {
+    font-size: var(--header);
+  }
+
+  .confirm__delete button {
+    border: none;
+    padding: 5px 15px;
+    margin: 20px 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .confirm__delete button:nth-child(2) {
+    background-color: var(--lightgreen);
+  }
+  .confirm__delete button:last-child {
+    background-color: var(--blackred);
   }
 `;
 

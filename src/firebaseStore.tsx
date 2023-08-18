@@ -6,6 +6,8 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  getDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -32,3 +34,7 @@ export const addData = addDoc;
 export const singleDoc = doc;
 
 export const deleteSingleDoc = deleteDoc;
+
+export const getSingleDoc = getDoc;
+
+export const updateInfo = updateDoc;
