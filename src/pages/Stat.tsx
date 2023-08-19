@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Wrapper from "../StylesWrappers/Stat/stat";
 import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
-import { colRef, trackDataInDB } from "../firebaseStore";
 import { DocumentData } from "firebase/firestore";
 import { getData } from "../DBSnapShot";
 

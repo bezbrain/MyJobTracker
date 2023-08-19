@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavigateFunction } from "react-router-dom";
 import Wrapper from "../../StylesWrappers/General/sideBar";
 import { sideBarData } from "../../data";
 import { AppDispatch, RootState } from "../../store";
@@ -19,7 +19,7 @@ const SideBar: React.FC<Props> = ({ navSection, smScreenClose }) => {
 
   const [isHoverIndex, setIsHoverIndex] = useState<number | null>(null);
 
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -27,8 +27,10 @@ const SideBar: React.FC<Props> = ({ navSection, smScreenClose }) => {
     setIsHoverIndex(index);
   };
 
+  // console.log(location.pathname);
+
   const handleNavItem = (link: string) => {
-    navigate(`/${link}`); // Dynamically navigate to different page
+    navigate(`/dashboard${link}`); // Dynamically navigate to different page
     dispatch(closeSmallNav()); // Close nav section when each nav item is clicked at small screen
   };
 
@@ -56,7 +58,7 @@ const SideBar: React.FC<Props> = ({ navSection, smScreenClose }) => {
               >
                 <p
                   className={`${
-                    location.pathname === `/${link}` ? "add-color" : ""
+                    location.pathname === `/dashboard${link}` ? "add-color" : ""
                   }`}
                 >
                   {icon}

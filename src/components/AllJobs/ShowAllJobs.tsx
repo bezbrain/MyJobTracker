@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { colRef, trackDataInDB } from "../../firebaseStore";
 import SingleJobCard from "./SingleJobCard";
 import { DocumentData } from "firebase/firestore";
 import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";

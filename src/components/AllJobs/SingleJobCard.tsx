@@ -58,7 +58,7 @@ const SingleJobCard: React.FC<Props> = ({
 
       await dispatch(editJob({ docRef, ...docSnap.data() }));
       await dispatch(stageInput({ ...docSnap.data(), index }));
-      navigate("/add-job");
+      navigate("/dashboard/add-job");
     } catch (error) {
       console.log(error);
     }
