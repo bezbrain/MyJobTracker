@@ -4,25 +4,13 @@ import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
 import { colRef, trackDataInDB } from "../firebaseStore";
 import { DocumentData } from "firebase/firestore";
+import { getData } from "../DBSnapShot";
 
 const Stat = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
 
-  const getData = () => {
-    trackDataInDB(colRef, (snapshot) => {
-      const jobs = snapshot.docs.map((each) => {
-        return {
-          ...each.data(),
-          id: each.id,
-        };
-      });
-
-      setDataInDB(jobs);
-    });
-  };
-
   useEffect(() => {
-    getData();
+    getData(setDataInDB);
   }, []);
 
   // Get each status
