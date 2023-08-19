@@ -8,8 +8,8 @@ const LandingWrapper = styled.main`
   min-height: 100vh;
 
   > summary {
-    /* border: 2px solid green; */
-    height: 85vh;
+    // border: 2px solid green;
+    height: 75vh;
     display: flex;
   }
 
@@ -69,6 +69,9 @@ const LandingWrapper = styled.main`
     }
   }
   @media screen and (max-width: 600px) {
+    // .add__log0__font {
+    //   font-size: 6.5vw;
+    // }
     .landing__content {
       width: 95%;
     }
