@@ -72,6 +72,9 @@ const LandingWrapper = styled.main`
     .landing__content {
       width: 95%;
     }
+    .landing__content > p:first-child {
+      font-size: 6.5vw;
+    }
     .landing__content button {
       font-size: 16px;
       padding: 7px 15px;
