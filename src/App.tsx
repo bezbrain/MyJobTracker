@@ -7,6 +7,7 @@ import {
   Stat,
   Error,
   LandingPage,
+  Registration,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,6 +17,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="register" element={<Registration />} />
 
         <Route path="dashboard" element={<SharedLayout />}>
           <Route index element={<Stat />} />
