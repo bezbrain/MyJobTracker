@@ -8,7 +8,8 @@ const Wrapper = styled.main`
     transition: ease 0.5s all;
   }
   .remove-nav {
-    width: 0px;
+    /* width: 0px; */
+    margin-left: -300px;
   }
   .lg-screen-close-icon {
     display: none;
