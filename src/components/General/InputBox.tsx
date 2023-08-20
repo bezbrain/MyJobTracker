@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 
 interface Props {
   jobName: string;
+  typeName: string;
   inputName: string;
   inputValue: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -9,6 +10,7 @@ interface Props {
 
 const InputBox: React.FC<Props> = ({
   jobName,
+  typeName,
   inputName,
   inputValue,
   handleChange,
@@ -17,7 +19,7 @@ const InputBox: React.FC<Props> = ({
     <div>
       <p>{jobName}</p>
       <input
-        type="text"
+        type={typeName}
         name={inputName}
         value={inputValue}
         onChange={handleChange}

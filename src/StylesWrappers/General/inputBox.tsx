@@ -25,6 +25,11 @@ const InputWrapper = styled.form`
     border-radius: 5px;
     border: 1px solid #000;
   }
+  @media screen and (max-width: 500px) {
+    > div p {
+      font-size: 16px;
+    }
+  }
 `;
 
 export default InputWrapper;

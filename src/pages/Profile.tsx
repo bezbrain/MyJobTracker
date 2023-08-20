@@ -25,24 +25,28 @@ const Profile = () => {
       <InputWrapper>
         <InputBox
           jobName="Name"
+          typeName="text"
           inputName="name"
           inputValue={name}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Last Name"
+          typeName="text"
           inputName="lastname"
           inputValue={lastName}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Email"
+          typeName="text"
           inputName="email"
           inputValue={email}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Location"
+          typeName="text"
           inputName="location"
           inputValue={location}
           handleChange={handleChange}

@@ -5,6 +5,12 @@ const SelectWrapper = styled.section`
     margin-bottom: 10px;
     font-size: 20px;
   }
+  @media screen and (max-width: 500px) {
+    > p {
+      font-size: 16px;
+    }
+  }
+
   select {
     width: 100%;
     height: var(--input-height);

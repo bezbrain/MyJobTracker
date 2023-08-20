@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const LandingWrapper = styled.main`
-  /* background-color: var(--verylight); */
+  /* border: 2px solid yellow; */
   max-width: 1300px;
   margin-inline: auto;
   padding: 2rem 4vw;
-  min-height: 100vh;
+  /* height: 90vh; */
 
   > summary {
-    // border: 2px solid green;
-    height: 75vh;
+    /* border: 2px solid green; */
+    min-height: 80vh;
     display: flex;
   }
 
@@ -53,7 +53,7 @@ const LandingWrapper = styled.main`
   .landing__img {
     /* border: 2px solid red; */
     width: 45%;
-    height: 100%;
+    height: 80%;
   }
   .landing__img img {
     /* border: 2px solid red; */

@@ -13,6 +13,11 @@ const Wrapper = styled.main`
       font-size: 4vw;
     }
   }
+  @media screen and (max-width: 600px) {
+    .reg__logo {
+      font-size: 1.8rem;
+    }
+  }
 `;
 
 export default Wrapper;

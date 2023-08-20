@@ -37,6 +37,7 @@ const InputSection = () => {
     <InputWrapper>
       <InputBox
         jobName="Search"
+        typeName="text"
         inputName="search"
         inputValue={search}
         handleChange={handleChange}

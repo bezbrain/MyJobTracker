@@ -23,7 +23,6 @@ const LandingPage = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Repellendus placeat aut, similique rerum id, magnam ducimus ex
               maiores voluptatum ullam labore nulla dolorum veniam ipsam
-              quaerat, minus culpa ad expedita.
             </p>
             <button onClick={() => navigate("/register")}>
               Login/Register

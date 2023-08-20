@@ -5,10 +5,9 @@ const Wrapper = styled.main`
     /* border: 2px solid red; */
     width: 300px;
     margin-top: 2rem;
-    transition: ease 0.5s all;
+    transition: ease 200ms all;
   }
   .remove-nav {
-    /* width: 0px; */
     margin-left: -300px;
   }
   .lg-screen-close-icon {
@@ -24,7 +23,8 @@ const Wrapper = styled.main`
 
   @media screen and (max-width: 1100px) {
     .nav-section {
-      display: none;
+      /* display: none; */
+      margin-left: -300px;
     }
     .small-nav-section {
       display: block;

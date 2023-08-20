@@ -70,18 +70,21 @@ const AddJobs = () => {
       <InputWrapper>
         <InputBox
           jobName="Position"
+          typeName="text"
           inputName="position"
           inputValue={position}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Company"
+          typeName="text"
           inputName="company"
           inputValue={company}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Job Location"
+          typeName="text"
           inputName="joblocation"
           inputValue={joblocation}
           handleChange={handleChange}

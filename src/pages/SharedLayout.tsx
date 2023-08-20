@@ -16,6 +16,7 @@ const SharedLayout = () => {
         <SideBar
           navSection="nav-section"
           smScreenClose="lg-screen-close-icon"
+          toggleNavSection="remove-nav"
         />
         <SideBar
           navSection="small-nav-section"

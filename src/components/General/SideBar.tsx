@@ -11,9 +11,14 @@ import { closeSmallNav } from "../../features/nav/navSlice";
 interface Props {
   navSection: string;
   smScreenClose: string;
+  toggleNavSection?: string;
 }
 
-const SideBar: React.FC<Props> = ({ navSection, smScreenClose }) => {
+const SideBar: React.FC<Props> = ({
+  navSection,
+  smScreenClose,
+  toggleNavSection,
+}) => {
   const { isOpenNav } = useSelector((store: RootState) => store.navStore);
   const { isOpenSmallNav } = useSelector((store: RootState) => store.navStore);
 
@@ -37,7 +42,7 @@ const SideBar: React.FC<Props> = ({ navSection, smScreenClose }) => {
   return (
     <Wrapper>
       <nav
-        className={`${navSection} ${isOpenNav ? "remove-nav" : ""} ${
+        className={`${navSection} ${isOpenNav ? toggleNavSection : ""} ${
           isOpenSmallNav ? "add-sm-nav" : "remove-sm-nav"
         }`}
       >

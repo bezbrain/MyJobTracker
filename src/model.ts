@@ -25,3 +25,9 @@ export interface AllJobsState {
     sort: string;
   };
 }
+
+export interface RegState {
+  name: string;
+  email: string;
+  password: string;
+}

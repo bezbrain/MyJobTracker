@@ -14,6 +14,16 @@ const ButtonWrapper = styled.div`
     color: #fff;
     cursor: pointer;
   }
+  @media screen and (max-width: 500px) {
+    button {
+      font-size: 16px;
+    }
+  }
+
+  .reg__btn {
+    width: 100%;
+    margin-top: 10px;
+  }
 
   button:first-child {
     background-color: var(--lightgreen);
