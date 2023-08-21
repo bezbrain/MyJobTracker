@@ -23,8 +23,14 @@ const RegInputWrapper = styled.form`
     text-align: left;
   }
   @media screen and (max-width: 500px) {
+    > p {
+      font-size: 25px;
+      margin-block: 10px;
+    }
+
     > div p {
       font-size: 16px;
+      margin-bottom: 5px;
     }
   }
 
