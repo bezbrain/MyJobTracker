@@ -5,6 +5,11 @@ const AllJobsWrapper = styled.main`
     font-size: 2rem;
     font-weight: 600;
   }
+  @media screen and (max-width: 500px) {
+    .no__job {
+      font-size: 20px;
+    }
+  }
 
   display: grid;
   grid-template-columns: 1fr 1fr;
