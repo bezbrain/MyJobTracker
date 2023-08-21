@@ -10,6 +10,14 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const firebaseConfig = {
@@ -38,3 +46,7 @@ export const deleteSingleDoc = deleteDoc;
 export const getSingleDoc = getDoc;
 
 export const updateInfo = updateDoc;
+
+// Authentication
+export const auth = getAuth;
+export const signIn = signInWithEmailAndPassword;

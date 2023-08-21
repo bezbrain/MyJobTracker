@@ -36,3 +36,11 @@ export interface LoginState {
   login_email: string;
   login_password: string;
 }
+
+export interface LoginProp {
+  setToggleReg: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface RegProp {
+  setToggleReg: React.Dispatch<React.SetStateAction<boolean>>;
+}
