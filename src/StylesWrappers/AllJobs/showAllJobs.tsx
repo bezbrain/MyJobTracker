@@ -41,6 +41,12 @@ const AllJobsWrapper = styled.main`
     color: #fff;
     font-size: var(--font);
   }
+  @media screen and (max-width: 500px) {
+    .company__first__letter {
+      width: 50px;
+      height: 50px;
+    }
+  }
 
   .job__and__company {
     margin-left: 25px;
@@ -52,6 +58,14 @@ const AllJobsWrapper = styled.main`
   .job__and__company p:last-child {
     font-size: 20px;
     opacity: var(--opacity);
+  }
+  @media screen and (max-width: 500px) {
+    .job__and__company p:first-child {
+      font-size: 20px;
+    }
+    .job__and__company p:last-child {
+      font-size: 18px;
+    }
   }
 
   .location__and__date {
@@ -94,6 +108,15 @@ const AllJobsWrapper = styled.main`
     border-radius: 5px;
     color: #4b3838;
   }
+  @media screen and (max-width: 500px) {
+    .location__and__date p {
+      font-size: 16px;
+    }
+    .type__and__status p {
+      font-size: 16px;
+    }
+  }
+
   /* Add status color */
   .addInterviewColor {
     background-color: var(--InterviewColor);
@@ -124,6 +147,11 @@ const AllJobsWrapper = styled.main`
     background-color: var(--blackred);
     margin-inline: 10px;
   }
+  @media screen and (max-width: 500px) {
+    .buttons button {
+      font-size: 14px;
+    }
+  }
 
   /* Delete Modal */
   .delete__modal {
@@ -149,14 +177,14 @@ const AllJobsWrapper = styled.main`
   .confirm__delete {
     background-color: #fff;
     text-align: center;
-    width: 600px;
+    width: 550px;
     border-radius: 5px;
     padding: 20px 10px;
     box-shadow: 0px 0px 33px -7px rgba(0, 0, 0, 0.9);
   }
 
   .confirm__delete p {
-    font-size: var(--header);
+    font-size: 2rem;
   }
 
   .confirm__delete button {
@@ -165,6 +193,7 @@ const AllJobsWrapper = styled.main`
     margin: 20px 5px;
     font-size: 18px;
     border-radius: 5px;
+    font-weight: 600;
     cursor: pointer;
   }
   .confirm__delete button:nth-child(2) {
@@ -172,6 +201,18 @@ const AllJobsWrapper = styled.main`
   }
   .confirm__delete button:last-child {
     background-color: var(--blackred);
+  }
+  @media screen and (max-width: 600px) {
+    .confirm__delete {
+      width: 80%;
+      padding: 10px;
+    }
+    .confirm__delete p {
+      font-size: 20px;
+    }
+    .confirm__delete button {
+      font-size: 14px;
+    }
   }
 `;
 

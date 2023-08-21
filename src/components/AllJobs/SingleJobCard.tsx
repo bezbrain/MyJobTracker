@@ -67,6 +67,7 @@ const SingleJobCard: React.FC<Props> = ({
   return (
     <>
       <section className="single__job__card">
+        {/* Head of Job Card */}
         <div className="job__card__head">
           <div className="company__first__letter">
             <p>{capitalizeFirstLetter}</p>
@@ -77,6 +78,8 @@ const SingleJobCard: React.FC<Props> = ({
           </div>
         </div>
         <hr />
+
+        {/* Body of Job Card */}
         <div className="location__and__date">
           <p>
             <span>
