@@ -9,23 +9,35 @@ import Logo from "../General/Logo";
 import { getRegValues, reg } from "../../features/registration/registerSlice";
 import { RegProp } from "../../model";
 import Button from "../General/Button";
+import { toast } from "react-toastify";
 
 const Reg = ({ setToggleReg }: RegProp) => {
-  const { username, email, password } = useSelector(
+  const { createdBy, username, email, password } = useSelector(
     (store: RootState) => store.regStore
   );
 
   const dispatch = useDispatch<AppDispatch>();
 
+  // Hanlde Registeration input change
   const handleRegChange = (e: ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;
     let value = e.target.value;
     dispatch(getRegValues({ name, value }));
   };
 
-  const handleRegSubmit = (e: React.FormEvent<Element>) => {
+  // Handle click of Register button
+  const handleRegSubmit = async (e: React.FormEvent<Element>) => {
     e.preventDefault();
-    dispatch(reg());
+
+    if (!username || !email || !password) {
+      toast.error("No field should be empty");
+    } else {
+      await dispatch(reg({ createdBy, username, email, password }));
+      setTimeout(() => {
+        toast.success("Please Login");
+        setToggleReg(true);
+      }, 3000);
+    }
   };
 
   return (

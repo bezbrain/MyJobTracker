@@ -8,6 +8,7 @@ export interface AddJobState {
   isRemove: boolean;
   isLoading: boolean;
   inputs: {
+    createdBy: string | null;
     position: string;
     company: string;
     joblocation: string;
@@ -27,12 +28,14 @@ export interface AllJobsState {
 }
 
 export interface RegState {
+  createdBy: string;
   username: string;
   email: string;
   password: string;
 }
 
 export interface LoginState {
+  login_createdBy: string;
   login_email: string;
   login_password: string;
 }

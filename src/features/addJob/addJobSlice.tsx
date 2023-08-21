@@ -6,11 +6,16 @@ import { AddJobState } from "../../model";
 
 const date: string = dateFunc(); // Function to get the current date
 
+const getUserId = localStorage.getItem("userId");
+
+// console.log(getUserId);
+
 const initialState: AddJobState = {
   addJobArr: [],
   isRemove: true, // to toggle side base
   isLoading: false, // to activate and deactivate button
   inputs: {
+    createdBy: getUserId,
     position: "",
     company: "",
     joblocation: "",
@@ -25,6 +30,8 @@ export const submitData = createAsyncThunk(
   "addJob/submitData",
   async (jobData: AddJobState["inputs"], thunkAPI) => {
     try {
+      // console.log(thunkAPI.getState());
+
       await addData(colRef, jobData);
       return jobData;
     } catch (error: any) {
@@ -87,7 +94,7 @@ const addJobSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(submitData.fulfilled, (state, { payload }) => {
-        state.inputs = payload;
+        // state.inputs = payload;
         state.inputs.position = "";
         state.inputs.company = "";
         state.inputs.joblocation = "";

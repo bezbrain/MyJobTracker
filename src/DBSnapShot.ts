@@ -1,6 +1,7 @@
 import { DocumentData } from "firebase/firestore";
-import { trackDataInDB, colRef } from "./firebaseStore";
+import { trackDataInDB, colRef, userIdColRef } from "./firebaseStore";
 
+// Get jobs
 export const getData = (
   setDBState: React.Dispatch<React.SetStateAction<DocumentData[]>>,
   setLoadingState?: React.Dispatch<React.SetStateAction<boolean>>

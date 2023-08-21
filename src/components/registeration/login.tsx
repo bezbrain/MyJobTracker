@@ -7,24 +7,42 @@ import Button from "../General/Button";
 import InputBox from "../General/InputBox";
 import Logo from "../General/Logo";
 import { AppDispatch, RootState } from "../../store";
-import { getLoginValues } from "../../features/registration/loginSlice";
+import { getLoginValues, login } from "../../features/registration/loginSlice";
 import { LoginProp } from "../../model";
+import { toast } from "react-toastify";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Login = ({ setToggleReg }: LoginProp) => {
-  const { login_email, login_password } = useSelector(
+  const { login_createdBy, login_email, login_password } = useSelector(
     (store: RootState) => store.loginStore
   );
 
   const dispatch = useDispatch<AppDispatch>();
 
+  const navigate: NavigateFunction = useNavigate();
+
+  // Handle Login input change
   const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;
     let value = e.target.value;
     dispatch(getLoginValues({ name, value }));
   };
 
-  const handleLoginSubmit = (e: React.FormEvent<Element>) => {
+  // Handle Login click button
+  const handleLoginSubmit = async (e: React.FormEvent<Element>) => {
     e.preventDefault();
+
+    if (!login_email || !login_password) {
+      toast.error("No field should be empty");
+    } else {
+      await dispatch(login({ login_createdBy, login_email, login_password }));
+      setTimeout(() => {
+        toast.success("Login Successful");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
+      }, 3000);
+    }
   };
 
   return (

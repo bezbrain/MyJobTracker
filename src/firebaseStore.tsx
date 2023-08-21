@@ -34,6 +34,7 @@ initializeApp(firebaseConfig);
 export const db = getFirestore();
 
 export const colRef = collection(db, "allJobs");
+export const userIdColRef = collection(db, "userId");
 
 export const trackDataInDB = onSnapshot;
 
@@ -48,5 +49,6 @@ export const getSingleDoc = getDoc;
 export const updateInfo = updateDoc;
 
 // Authentication
-export const auth = getAuth;
+export const auth = getAuth();
+export const signUp = createUserWithEmailAndPassword;
 export const signIn = signInWithEmailAndPassword;
