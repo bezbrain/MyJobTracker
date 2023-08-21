@@ -10,6 +10,14 @@ const AddJobAllJobsProfile = styled.main`
     font-size: var(--header);
     margin-bottom: 3vh;
   }
+
+  @media screen and (max-width: 500px) {
+    padding-block: 20px;
+
+    > p {
+      margin-bottom: 10px;
+    }
+  }
 `;
 
 export default AddJobAllJobsProfile;
