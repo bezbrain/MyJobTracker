@@ -9,6 +9,11 @@ const Wrapper = styled.main`
     background-color: #fff;
     padding: 40px 20px;
   }
+  @media screen and (max-width: 600px) {
+    section {
+      padding: 20px 8px;
+    }
+  }
 
   .add-pending-border {
     border-bottom: 6px solid var(--lightgreen);
@@ -61,6 +66,12 @@ const Wrapper = styled.main`
     font-size: var(--header-md);
     font-weight: 600;
     margin-top: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    section > p {
+      font-size: var(--header-sm);
+      margin-top: 20px;
+    }
   }
 `;
 
