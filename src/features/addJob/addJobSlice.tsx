@@ -8,7 +8,7 @@ const date: string = dateFunc(); // Function to get the current date
 
 const getUserId = localStorage.getItem("userId");
 
-// console.log(getUserId);
+console.log(getUserId);
 
 const initialState: AddJobState = {
   addJobArr: [],

@@ -35,13 +35,9 @@ const Login = ({ setToggleReg }: LoginProp) => {
     if (!login_email || !login_password) {
       toast.error("No field should be empty");
     } else {
-      await dispatch(login({ login_createdBy, login_email, login_password }));
-      setTimeout(() => {
-        toast.success("Login Successful");
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
-      }, 3000);
+      await dispatch(
+        login({ login_createdBy, login_email, login_password, navigate })
+      );
     }
   };
 
