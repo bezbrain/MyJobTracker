@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
 
 const initialState: RegState = {
-  name: "",
+  username: "",
   email: "",
   password: "",
 };

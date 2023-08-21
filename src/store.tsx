@@ -4,6 +4,7 @@ import addJobReducer from "./features/addJob/addJobSlice";
 import allJobsReducer from "./features/allJobs/allJobsSlice";
 import editJobReducer from "./features/allJobs/editSlice";
 import profileReducer from "./features/profile/profileSlice";
+import loginReducer from "./features/registration/loginSlice";
 import regReducer from "./features/registration/registerSlice";
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     allJobsStore: allJobsReducer,
     editJobStore: editJobReducer,
     profileStore: profileReducer,
+    loginStore: loginReducer,
     regStore: regReducer,
   },
 });

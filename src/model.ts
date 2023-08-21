@@ -27,7 +27,12 @@ export interface AllJobsState {
 }
 
 export interface RegState {
-  name: string;
+  username: string;
   email: string;
   password: string;
+}
+
+export interface LoginState {
+  login_email: string;
+  login_password: string;
 }
