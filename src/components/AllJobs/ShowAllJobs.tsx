@@ -20,7 +20,7 @@ const ShowAllJobs = () => {
     );
   }
 
-  if (dataInDB.length > 0) {
+  if (dataInDB.length === 0) {
     return (
       <AllJobsWrapper>
         <p className="no__job">NO JOBS TO DISPLAY</p>
