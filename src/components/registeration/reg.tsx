@@ -7,7 +7,7 @@ import InputBox from "../General/InputBox";
 import ButtonWrapper from "../../StylesWrappers/General/button";
 import Logo from "../General/Logo";
 import { getRegValues, reg } from "../../features/registration/registerSlice";
-import { RegProp } from "../../model";
+import { RegProp, RegState } from "../../model";
 import Button from "../General/Button";
 import { toast } from "react-toastify";
 
@@ -20,7 +20,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
 
   // Hanlde Registeration input change
   const handleRegChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let name = e.target.name;
+    let name = e.target.name as keyof RegState;
     let value = e.target.value;
     dispatch(getRegValues({ name, value }));
   };

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
 import { addData, auth, signUp, userIdColRef } from "../../firebaseStore";
 import { toast } from "react-toastify";
@@ -29,13 +29,12 @@ const regSlice = createSlice({
   name: "reg",
   initialState,
   reducers: {
-    getRegValues: (state, { payload }) => {
+    getRegValues: (
+      state,
+      { payload }: PayloadAction<{ name: keyof RegState; value: any }>
+    ) => {
       const { name, value } = payload;
-      const updatedState: RegState = {
-        ...state,
-        [name]: value,
-      };
-      return updatedState;
+      state[name] = value;
     },
   },
 
@@ -45,8 +44,6 @@ const regSlice = createSlice({
         console.log(state);
       })
       .addCase(reg.fulfilled, (state, { payload }) => {
-        // console.log(payload);
-        // state.createdBy = payload;
         state.username = "";
         state.email = "";
         state.password = "";

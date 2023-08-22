@@ -19,6 +19,12 @@ export const getData = (
   });
 };
 
+// Function to set the userId to local storage during login
+export const setUserId = (id: string) => {
+  localStorage.setItem("userId", id);
+  return id;
+};
+
 // Function to get the userId sent to local storage during login
 export const getUserId = () => {
   const getId: string | null = localStorage.getItem("userId");

@@ -1,7 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginState } from "../../model";
 import { auth, signIn } from "../../firebaseStore";
 import { toast } from "react-toastify";
+import { setUserId } from "../../DBSnapShot";
 
 const initialState: LoginState = {
   login_createdBy: "",
@@ -19,7 +20,7 @@ export const login = createAsyncThunk(
       const cred = await signIn(auth, login_email, login_password);
       console.log(cred.user.uid);
       const userId = cred.user.uid;
-      localStorage.setItem("userId", userId);
+      setUserId(userId); // Function to set data to the local storage
       setTimeout(() => {
         navigate("/dashboard");
       }, 5000);
@@ -33,13 +34,12 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    getLoginValues: (state, { payload }) => {
+    getLoginValues: (
+      state,
+      { payload }: PayloadAction<{ name: keyof LoginState; value: any }>
+    ) => {
       const { name, value } = payload;
-      const updatedState: LoginState = {
-        ...state,
-        [name]: value,
-      };
-      return updatedState;
+      state[name] = value;
     },
   },
 

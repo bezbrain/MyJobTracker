@@ -8,7 +8,7 @@ import InputBox from "../General/InputBox";
 import Logo from "../General/Logo";
 import { AppDispatch, RootState } from "../../store";
 import { getLoginValues, login } from "../../features/registration/loginSlice";
-import { LoginProp } from "../../model";
+import { LoginProp, LoginState } from "../../model";
 import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 
@@ -23,7 +23,7 @@ const Login = ({ setToggleReg }: LoginProp) => {
 
   // Handle Login input change
   const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let name = e.target.name;
+    let name = e.target.name as keyof LoginState;
     let value = e.target.value;
     dispatch(getLoginValues({ name, value }));
   };
