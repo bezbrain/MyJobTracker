@@ -32,11 +32,9 @@ const Reg = ({ setToggleReg }: RegProp) => {
     if (!username || !email || !password) {
       toast.error("No field should be empty");
     } else {
-      await dispatch(reg({ createdBy, username, email, password }));
-      setTimeout(() => {
-        toast.success("Please Login");
-        setToggleReg(true);
-      }, 3000);
+      await dispatch(
+        reg({ createdBy, username, email, password, setToggleReg })
+      );
     }
   };
 
@@ -46,7 +44,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
         <Logo />
         <p>Register</p>
         <InputBox
-          jobName="Name"
+          jobName="Username"
           typeName="text"
           inputName="username"
           inputValue={username}

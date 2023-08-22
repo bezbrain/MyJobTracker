@@ -40,3 +40,14 @@ export const useUniqueUserData = (dataInDB: DocumentData[]) => {
 
   return uniqueUserData;
 };
+
+/* Function to extract error message from the firebase returned message */
+export const extratingErrorMsg = (error: string) => {
+  const startIndex = error.indexOf("/") + 1;
+  const endIndex = error.indexOf(")");
+  const errorCode = error.substring(startIndex, endIndex);
+  // Capitalize the error message
+  const capitalizedError =
+    errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
+  return capitalizedError;
+};

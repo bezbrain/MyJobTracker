@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginState } from "../../model";
 import { auth, signIn } from "../../firebaseStore";
 import { toast } from "react-toastify";
-import { setUserId } from "../../DBSnapShot";
+import { extratingErrorMsg, setUserId } from "../../DBSnapShot";
 
 const initialState: LoginState = {
   login_createdBy: "",
@@ -22,10 +22,11 @@ export const login = createAsyncThunk(
       const userId = cred.user.uid;
       setUserId(userId); // Function to set data to the local storage
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/dashboard"); // Navigated to dashboard after 5secs
       }, 5000);
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -53,7 +54,12 @@ const loginSlice = createSlice({
         toast.success("Login Successful");
       })
       .addCase(login.rejected, (state, { payload }) => {
-        console.log(payload);
+        if (typeof payload === "string") {
+          toast.error(payload); // Assuming payload is now a string error message
+        } else {
+          // If payload is not a string, convert the error message and then show it
+          toast.error(JSON.stringify(payload));
+        }
       });
   },
 });

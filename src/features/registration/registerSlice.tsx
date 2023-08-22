@@ -2,6 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
 import { addData, auth, signUp, userIdColRef } from "../../firebaseStore";
 import { toast } from "react-toastify";
+import { extratingErrorMsg, setUserId } from "../../DBSnapShot";
 
 const initialState: RegState = {
   createdBy: "",
@@ -12,15 +13,20 @@ const initialState: RegState = {
 
 export const reg = createAsyncThunk(
   "register/reg",
-  async (details: RegState) => {
+  async (details: any, thunkAPI) => {
     try {
       // console.log(details);
-      const { email, password } = details;
+      const { username, email, password, setToggleReg } = details;
+      setUserId(username); // Set the username into the local storage so that it'll be used in dashboard
       const cred = await signUp(auth, email, password);
-      // const userId = cred.user.uid;
-      // return cred.user.uid;
+      setTimeout(() => {
+        // Timeout to navigate to login when user is authenticated
+        toast.success("Please Login");
+        setToggleReg(true);
+      }, 3000);
     } catch (error: any) {
-      console.log(error);
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -49,8 +55,13 @@ const regSlice = createSlice({
         state.password = "";
         toast.success("Registration Successful");
       })
-      .addCase(reg.rejected, (state) => {
-        console.log(state);
+      .addCase(reg.rejected, (state, { payload }) => {
+        if (typeof payload === "string") {
+          toast.error(payload); // Assuming payload is now a string error message
+        } else {
+          // If payload is not a string, convert the error message and then show it
+          toast.error(JSON.stringify(payload));
+        }
       });
   },
 });
