@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { LoginState } from "../../model";
 import { auth, signIn } from "../../firebaseStore";
 import { toast } from "react-toastify";
-import { extratingErrorMsg, setUserId } from "../../DBSnapShot";
+import { extratingErrorMsg, setEmail, setUserId } from "../../DBSnapShot";
 
 const initialState: LoginState = {
   login_createdBy: "",
@@ -21,10 +21,13 @@ export const login = createAsyncThunk(
       console.log(cred.user.uid);
       const userId = cred.user.uid;
       setUserId(userId); // Function to set data to the local storage
+      setEmail(login_email); // Set user email into the local storage so that it'll be used in dashboard
       setTimeout(() => {
         navigate("/dashboard"); // Navigated to dashboard after 5secs
       }, 5000);
     } catch (error: any) {
+      console.log(error.message);
+
       const errorMsg = error.message;
       return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }

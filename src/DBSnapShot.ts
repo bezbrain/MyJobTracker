@@ -32,6 +32,18 @@ export const getUserId = () => {
   return getId;
 };
 
+// Function to set email to local storage during login
+export const setEmail = (username: string) => {
+  localStorage.setItem("username", username);
+  return username;
+};
+
+// Function to get email sent to local storage during login
+export const getEmail = () => {
+  const getId: string | null = localStorage.getItem("username");
+  return getId;
+};
+
 // Using useMemo Hook to handle filter of database for uniqueness of individual data
 export const useUniqueUserData = (dataInDB: DocumentData[]) => {
   const uniqueUserData = useMemo(() => {

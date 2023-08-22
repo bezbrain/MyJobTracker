@@ -2,7 +2,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
 import { addData, auth, signUp, userIdColRef } from "../../firebaseStore";
 import { toast } from "react-toastify";
-import { extratingErrorMsg, setUserId } from "../../DBSnapShot";
+import { extratingErrorMsg } from "../../DBSnapShot";
 
 const initialState: RegState = {
   createdBy: "",
@@ -17,8 +17,8 @@ export const reg = createAsyncThunk(
     try {
       // console.log(details);
       const { username, email, password, setToggleReg } = details;
-      setUserId(username); // Set the username into the local storage so that it'll be used in dashboard
       const cred = await signUp(auth, email, password);
+
       setTimeout(() => {
         // Timeout to navigate to login when user is authenticated
         toast.success("Please Login");
