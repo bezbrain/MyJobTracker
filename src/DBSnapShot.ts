@@ -18,3 +18,9 @@ export const getData = (
     setLoadingState?.(false); // Using optional chaining "?." to avoid error when the second parameter is not passed in the Stat component
   });
 };
+
+// Function to get the userId sent to local storage during login
+export const getUserId = () => {
+  const getId: string | null = localStorage.getItem("userId");
+  return getId;
+};

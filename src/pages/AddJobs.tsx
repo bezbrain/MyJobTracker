@@ -16,12 +16,13 @@ import { toast } from "react-toastify";
 import AddJobAllJobsProfile from "../StylesWrappers/General/AddJobAllJobsProfile";
 import { collectInput } from "../features/addJob/addJobSlice";
 import { changeTextContent } from "../features/allJobs/editSlice";
+import { getUserId } from "../DBSnapShot";
 
 const AddJobs = () => {
   const { inputs } = useSelector((store: RootState) => store.addJobStore);
   const { btnContent } = useSelector((store: RootState) => store.editJobStore);
 
-  const { position, company, joblocation, status, jobType } = inputs;
+  const { createdBy, position, company, joblocation, status, jobType } = inputs;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -49,7 +50,9 @@ const AddJobs = () => {
       toast.error("No field should be empty");
     } else {
       if (btnContent === "Submit") {
-        await dispatch(submitData(inputs));
+        const userId = await getUserId(); // Make sure userId is retrieved from local storage
+        const newInputs = { ...inputs, createdBy: userId }; // Change the createdBy value to the userId retrieved
+        await dispatch(submitData(newInputs));
       } else {
         dispatch(updateData());
         dispatch(changeTextContent());

@@ -6,16 +6,12 @@ import { AddJobState } from "../../model";
 
 const date: string = dateFunc(); // Function to get the current date
 
-const getUserId = localStorage.getItem("userId");
-
-console.log(getUserId);
-
 const initialState: AddJobState = {
   addJobArr: [],
   isRemove: true, // to toggle side base
   isLoading: false, // to activate and deactivate button
   inputs: {
-    createdBy: getUserId,
+    createdBy: "",
     position: "",
     company: "",
     joblocation: "",
@@ -64,12 +60,11 @@ const addJobSlice = createSlice({
   reducers: {
     collectInput: (state, action) => {
       const { name, value } = action.payload;
-
-      const update: AddJobState = {
-        ...state,
-        inputs: { ...state.inputs, date: date, [name]: value },
+      state.inputs = {
+        ...state.inputs,
+        date: date,
+        [name]: value,
       };
-      return update;
     },
 
     clearInput: (state) => {
