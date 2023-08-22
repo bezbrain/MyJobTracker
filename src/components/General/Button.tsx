@@ -1,14 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { BtnProps } from "../../model";
 
-interface Props {
-  button: string;
-  handleSubmit: (e: React.FormEvent) => void;
-  type: "button" | "reset" | "submit" | undefined;
-  allJobsBtn?: string;
-}
-
-const Button: React.FC<Props> = ({
+const Button: React.FC<BtnProps> = ({
   button,
   handleSubmit,
   type,

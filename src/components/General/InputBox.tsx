@@ -1,14 +1,6 @@
-import { ChangeEvent } from "react";
+import { InputProps } from "../../model";
 
-interface Props {
-  jobName: string;
-  typeName: string;
-  inputName: string;
-  inputValue: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputBox: React.FC<Props> = ({
+const InputBox: React.FC<InputProps> = ({
   jobName,
   typeName,
   inputName,

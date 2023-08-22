@@ -1,7 +1,8 @@
+import { useMemo } from "react";
 import { DocumentData } from "firebase/firestore";
 import { trackDataInDB, colRef, userIdColRef } from "./firebaseStore";
 
-// Get jobs
+// Get jobs from database
 export const getData = (
   setDBState: React.Dispatch<React.SetStateAction<DocumentData[]>>,
   setLoadingState?: React.Dispatch<React.SetStateAction<boolean>>
@@ -29,4 +30,13 @@ export const setUserId = (id: string) => {
 export const getUserId = () => {
   const getId: string | null = localStorage.getItem("userId");
   return getId;
+};
+
+// Using useMemo Hook to handle filter of database for uniqueness of individual data
+export const useUniqueUserData = (dataInDB: DocumentData[]) => {
+  const uniqueUserData = useMemo(() => {
+    return dataInDB.filter((each) => each.createdBy === getUserId());
+  }, [dataInDB]);
+
+  return uniqueUserData;
 };

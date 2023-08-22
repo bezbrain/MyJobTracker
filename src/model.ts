@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface EditState {
   btnContent: string;
   stagedJob: string;
@@ -46,4 +48,19 @@ export interface LoginProp {
 
 export interface RegProp {
   setToggleReg: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface InputProps {
+  jobName: string;
+  typeName: string;
+  inputName: string;
+  inputValue: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface BtnProps {
+  button: string;
+  handleSubmit: (e: React.FormEvent) => void;
+  type: "button" | "reset" | "submit" | undefined;
+  allJobsBtn?: string;
 }

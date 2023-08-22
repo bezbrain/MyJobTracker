@@ -1,21 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Wrapper from "../StylesWrappers/Stat/stat";
 import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
 import { DocumentData } from "firebase/firestore";
-import { getData } from "../DBSnapShot";
+import { getData, getUserId, useUniqueUserData } from "../DBSnapShot";
 
 const Stat = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
 
   useEffect(() => {
-    getData(setDataInDB);
+    getData(setDataInDB); // Set data from DB into an array
   }, []);
 
-  // Get each status
-  const getPending = dataInDB.filter((each) => each.status === "Pending");
-  const getInterview = dataInDB.filter((each) => each.status === "Interview");
-  const getDecline = dataInDB.filter((each) => each.status === "Declined");
+  // Call the function to handle dispaly of stat count related to certain user
+  const uniqueUserData = useUniqueUserData(dataInDB);
+
+  // Get each stat count
+  const getPending = uniqueUserData.filter((each) => each.status === "Pending");
+  const getInterview = uniqueUserData.filter(
+    (each) => each.status === "Interview"
+  );
+  const getDecline = uniqueUserData.filter(
+    (each) => each.status === "Declined"
+  );
 
   return (
     <Wrapper>

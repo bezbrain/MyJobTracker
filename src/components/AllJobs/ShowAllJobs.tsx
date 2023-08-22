@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SingleJobCard from "./SingleJobCard";
 import { DocumentData } from "firebase/firestore";
 import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";
-import { getData } from "../../DBSnapShot";
+import { getData, getUserId, useUniqueUserData } from "../../DBSnapShot";
 
 const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  // const [uniqueUserData, setUniqueUserData] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     getData(setDataInDB, setIsLoading);
   }, []);
+
+  // Call the function to handle data uuniqu to each user and display them
+  const uniqueUserData = useUniqueUserData(dataInDB);
 
   if (isLoading) {
     return (
@@ -20,7 +24,7 @@ const ShowAllJobs = () => {
     );
   }
 
-  if (dataInDB.length === 0) {
+  if (uniqueUserData.length === 0) {
     return (
       <AllJobsWrapper>
         <p className="no__job">NO JOBS TO DISPLAY</p>
@@ -30,7 +34,7 @@ const ShowAllJobs = () => {
 
   return (
     <AllJobsWrapper>
-      {dataInDB.map((each: any) => (
+      {uniqueUserData.map((each: any) => (
         <SingleJobCard key={each.id} {...each} />
       ))}
     </AllJobsWrapper>
