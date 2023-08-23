@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ButtonWrapper from "../StylesWrappers/General/button";
 import InputWrapper from "../StylesWrappers/General/inputBox";
@@ -17,6 +17,7 @@ import AddJobAllJobsProfile from "../StylesWrappers/General/AddJobAllJobsProfile
 import { collectInput } from "../features/addJob/addJobSlice";
 import { changeTextContent } from "../features/allJobs/editSlice";
 import { getUserId } from "../DBSnapShot";
+import { useLocation } from "react-router-dom";
 
 const AddJobs = () => {
   const { inputs } = useSelector((store: RootState) => store.addJobStore);
@@ -25,6 +26,8 @@ const AddJobs = () => {
   const { createdBy, position, company, joblocation, status, jobType } = inputs;
 
   const dispatch = useDispatch<AppDispatch>();
+
+  const location = useLocation();
 
   // Handle input change
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +62,10 @@ const AddJobs = () => {
       }
     }
   };
+
+  //   useEffect(()=> {
+  // if(location)
+  //   }, [])
 
   // Reset initial inputs
   const handleReset = (e: React.FormEvent) => {

@@ -3,6 +3,7 @@ import { addData, colRef, getSingleDoc, updateInfo } from "../../firebaseStore";
 import { toast } from "react-toastify";
 import { dateFunc } from "../../date";
 import { AddJobState } from "../../model";
+import { clearFields } from "../featureUtils";
 
 const date: string = dateFunc(); // Function to get the current date
 
@@ -69,11 +70,7 @@ const addJobSlice = createSlice({
     },
 
     clearInput: (state) => {
-      state.inputs.position = "";
-      state.inputs.company = "";
-      state.inputs.joblocation = "";
-      state.inputs.status = "";
-      state.inputs.jobType = "";
+      clearFields(state);
     },
 
     stageInput: (state, { payload }) => {
@@ -90,12 +87,7 @@ const addJobSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(submitData.fulfilled, (state, { payload }) => {
-        // state.inputs = payload;
-        state.inputs.position = "";
-        state.inputs.company = "";
-        state.inputs.joblocation = "";
-        state.inputs.status = "";
-        state.inputs.jobType = "";
+        clearFields(state);
         state.isLoading = false;
         toast.success("Job Added Successfully");
       })
@@ -108,11 +100,7 @@ const addJobSlice = createSlice({
         console.log(state);
       })
       .addCase(updateData.fulfilled, (state, { payload }) => {
-        state.inputs.position = "";
-        state.inputs.company = "";
-        state.inputs.joblocation = "";
-        state.inputs.status = "";
-        state.inputs.jobType = "";
+        clearFields(state);
         toast.success("Job Updated Successfully");
       })
       .addCase(updateData.rejected, (state, { payload }) => {

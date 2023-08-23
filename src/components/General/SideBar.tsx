@@ -7,6 +7,8 @@ import { sideBarData } from "../../data";
 import { AppDispatch, RootState } from "../../store";
 import { useDispatch } from "react-redux";
 import { closeSmallNav } from "../../features/nav/navSlice";
+import { changeTextContent } from "../../features/allJobs/editSlice";
+import { clearInput } from "../../features/addJob/addJobSlice";
 
 interface Props {
   navSection: string;
@@ -37,6 +39,8 @@ const SideBar: React.FC<Props> = ({
   const handleNavItem = (link: string) => {
     navigate(`/dashboard${link}`); // Dynamically navigate to different page
     dispatch(closeSmallNav()); // Close nav section when each nav item is clicked at small screen
+    dispatch(changeTextContent()); // To set button content back to "submit" if job is not updated but user nav to another page
+    dispatch(clearInput()); // to set input fields to empty if job is not updated but user nav to another page
   };
 
   return (
