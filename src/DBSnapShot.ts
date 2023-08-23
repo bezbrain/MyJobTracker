@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { DocumentData } from "firebase/firestore";
-import { trackDataInDB, colRef, userIdColRef } from "./firebaseStore";
+import { trackDataInDB, colRef } from "./firebaseStore";
 
 // Get jobs from database
 export const getData = (
@@ -29,18 +29,6 @@ export const setUserId = (id: string) => {
 // Function to get the userId sent to local storage during login
 export const getUserId = () => {
   const getId: string | null = localStorage.getItem("userId");
-  return getId;
-};
-
-// Function to set email to local storage during login
-export const setEmail = (username: string) => {
-  localStorage.setItem("username", username);
-  return username;
-};
-
-// Function to get email sent to local storage during login
-export const getEmail = () => {
-  const getId: string | null = localStorage.getItem("username");
   return getId;
 };
 

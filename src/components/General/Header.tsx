@@ -1,22 +1,30 @@
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Wrapper from "../../StylesWrappers/General/header";
 import NavIcon from "./NavIcon";
-import { getEmail } from "../../DBSnapShot";
+import { getUserId } from "../../DBSnapShot";
+import { trackDataInDB, userInfoColRef } from "../../firebaseStore";
 
 const Header = () => {
-  const email: string | null = getEmail(); // Get user email
+  const [userValue, setUserValue] = useState<string>("");
+  const localStorageId = getUserId();
 
-  /* Function to extract email */
-  const extratingUserEmail = () => {
-    if (email === null) {
-      return null;
-    }
-    const endIndex = email.indexOf("@");
-    const extractedEmail = email.substring(0, endIndex);
-    return extractedEmail;
+  // Function to get the username and present it on the dashboard
+  const getUserSnapshot = () => {
+    trackDataInDB(userInfoColRef, (snapshot) => {
+      snapshot.docs.forEach((each) => {
+        const userId = each.data().userId2;
+
+        if (localStorageId === userId) {
+          setUserValue(each.data().username);
+        }
+      });
+    });
   };
 
-  const emailExtract = extratingUserEmail();
+  useEffect(() => {
+    getUserSnapshot();
+  }, []);
 
   return (
     <Wrapper>
@@ -28,7 +36,7 @@ const Header = () => {
         <p>Dashboard</p>
       </div>
       <div className="profile">
-        <h3>{emailExtract}</h3>
+        <h3>{userValue}</h3>
       </div>
     </Wrapper>
   );

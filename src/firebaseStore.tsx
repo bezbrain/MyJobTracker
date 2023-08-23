@@ -34,7 +34,7 @@ initializeApp(firebaseConfig);
 export const db = getFirestore();
 
 export const colRef = collection(db, "allJobs");
-export const userIdColRef = collection(db, "userId");
+export const userInfoColRef = collection(db, "userInfo");
 
 export const trackDataInDB = onSnapshot;
 

@@ -1,8 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
-import { addData, auth, signUp, userIdColRef } from "../../firebaseStore";
+import {
+  addData,
+  auth,
+  colRef,
+  signUp,
+  userInfoColRef,
+} from "../../firebaseStore";
 import { toast } from "react-toastify";
-import { extratingErrorMsg } from "../../DBSnapShot";
+import { extratingErrorMsg, setUserId, getUserId } from "../../DBSnapShot";
 
 const initialState: RegState = {
   createdBy: "",
@@ -18,12 +24,19 @@ export const reg = createAsyncThunk(
       // console.log(details);
       const { username, email, password, setToggleReg } = details;
       const cred = await signUp(auth, email, password);
+      console.log(cred.user.uid);
+      const userId = cred.user.uid;
+      setUserId(userId);
 
       setTimeout(() => {
         // Timeout to navigate to login when user is authenticated
         toast.success("Please Login");
         setToggleReg(true);
       }, 3000);
+
+      // Send user details to firestore when user registers so that this info will be used in dashboard and profile
+      const userId2 = getUserId();
+      await addData(userInfoColRef, { userId2, username, email });
     } catch (error: any) {
       const errorMsg = error.message;
       return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));

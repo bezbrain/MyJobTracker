@@ -48,8 +48,9 @@ export const updateData = createAsyncThunk(
       });
 
       return newObj;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      // console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -114,8 +115,9 @@ const addJobSlice = createSlice({
         state.inputs.jobType = "";
         toast.success("Job Updated Successfully");
       })
-      .addCase(updateData.rejected, (state) => {
+      .addCase(updateData.rejected, (state, { payload }) => {
         console.log(state);
+        console.log(payload);
       });
   },
 });
