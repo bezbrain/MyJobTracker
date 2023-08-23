@@ -24,7 +24,7 @@ export const login = createAsyncThunk(
       // setEmail(login_email); // Set user email into the local storage so that it'll be used in dashboard
       setTimeout(() => {
         navigate("/dashboard"); // Navigated to dashboard after 5secs
-      }, 5000);
+      }, 3000);
     } catch (error: any) {
       console.log(error.message);
 

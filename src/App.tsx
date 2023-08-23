@@ -8,6 +8,7 @@ import {
   Error,
   LandingPage,
   Registration,
+  ProtectedRoute,
 } from "./pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
