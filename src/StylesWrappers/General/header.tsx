@@ -50,11 +50,9 @@ const Wrapper = styled.main`
   }
 
   .profile h3 {
-    /* text-align: center; */
     background-color: var(--dark);
     border-radius: 5px;
     color: #fff;
-    /* padding-block: 5px; */
     height: 35px;
     display: flex;
     justify-content: center;
@@ -65,7 +63,6 @@ const Wrapper = styled.main`
   .profile button {
     position: absolute;
     width: 100%;
-    /* padding-block: 8px; */
     height: 35px;
     border: none;
     background-color: var(--light);

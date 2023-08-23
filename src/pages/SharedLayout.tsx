@@ -9,11 +9,11 @@ import { getUserId } from "../DBSnapShot";
 
 const SharedLayout = () => {
   const { isOpenSmallNav } = useSelector((store: RootState) => store.navStore);
-  const userId = getUserId();
+  // const userId = getUserId();
 
-  if (!userId) {
-    return <Navigate to="/" />;
-  }
+  // if (!userId) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <Wrapper>
