@@ -50,18 +50,23 @@ const Wrapper = styled.main`
   }
 
   .profile h3 {
-    text-align: center;
+    /* text-align: center; */
     background-color: var(--dark);
     border-radius: 5px;
     color: #fff;
-    padding-block: 5px;
+    /* padding-block: 5px; */
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
 
   .profile button {
     position: absolute;
     width: 100%;
-    padding-block: 8px;
+    /* padding-block: 8px; */
+    height: 35px;
     border: none;
     background-color: var(--light);
     margin-top: 10px;
