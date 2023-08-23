@@ -14,7 +14,7 @@ const Wrapper = styled.main`
   }
   @media screen and (max-width: 1100px) {
     .logo-and-icon {
-      width: 35%;
+      width: 40%;
     }
   }
   @media screen and (max-width: 500px) {
@@ -33,14 +33,52 @@ const Wrapper = styled.main`
   }
   @media screen and (max-width: 1000px) {
     .header-text {
+      width: 40%;
       font-size: 4vw;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .removeAtMobile {
+      display: none;
     }
   }
 
   .profile {
     /* border: 2px solid red; */
+    position: relative;
     width: 15%;
+  }
+
+  .profile h3 {
     text-align: center;
+    background-color: var(--dark);
+    border-radius: 5px;
+    color: #fff;
+    padding-block: 5px;
+    cursor: pointer;
+  }
+
+  .profile button {
+    position: absolute;
+    width: 100%;
+    padding-block: 8px;
+    border: none;
+    background-color: var(--light);
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: ease 0.5s all;
+  }
+  .profile button:hover,
+  .profile h3:hover {
+    opacity: 0.8;
+  }
+  @media screen and (max-width: 700px) {
+    .profile {
+      width: 100px;
+    }
   }
 `;
 

@@ -14,6 +14,9 @@ const Wrapper = styled.main`
     }
   }
   @media screen and (max-width: 600px) {
+    div p {
+      font-size: 1.2rem;
+    }
     .reg__logo {
       font-size: 1.8rem;
     }

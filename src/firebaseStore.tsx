@@ -52,3 +52,4 @@ export const updateInfo = updateDoc;
 export const auth = getAuth();
 export const signUp = createUserWithEmailAndPassword;
 export const signIn = signInWithEmailAndPassword;
+export const signOutUser = signOut;

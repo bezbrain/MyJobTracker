@@ -3,11 +3,21 @@ import Logo from "./Logo";
 import Wrapper from "../../StylesWrappers/General/header";
 import NavIcon from "./NavIcon";
 import { getUserId } from "../../DBSnapShot";
-import { trackDataInDB, userInfoColRef } from "../../firebaseStore";
+import {
+  auth,
+  signOutUser,
+  trackDataInDB,
+  userInfoColRef,
+} from "../../firebaseStore";
+import { toast } from "react-toastify";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [userValue, setUserValue] = useState<string>("");
+  const [isLogout, setIsLogout] = useState<boolean>(false);
   const localStorageId = getUserId();
+
+  const navigate: NavigateFunction = useNavigate();
 
   // Function to get the username and present it on the dashboard
   const getUserSnapshot = () => {
@@ -26,17 +36,28 @@ const Header = () => {
     getUserSnapshot();
   }, []);
 
+  // Handle Logout
+  const handleLogout = async () => {
+    await signOutUser(auth);
+    toast.success("You are logged out");
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+    localStorage.removeItem("userId");
+  };
+
   return (
     <Wrapper>
       <div className="logo-and-icon">
         <Logo />
         <NavIcon />
       </div>
-      <div className="header-text">
+      <div className="header-text removeAtMobile">
         <p>Dashboard</p>
       </div>
       <div className="profile">
-        <h3>{userValue}</h3>
+        <h3 onClick={() => setIsLogout(!isLogout)}>{userValue}</h3>
+        {isLogout && <button onClick={handleLogout}>Logout</button>}
       </div>
     </Wrapper>
   );
