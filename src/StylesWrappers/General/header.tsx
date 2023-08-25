@@ -46,10 +46,11 @@ const Wrapper = styled.main`
   .profile {
     /* border: 2px solid red; */
     position: relative;
-    width: 15%;
+    width: fit-content;
   }
 
   .profile h3 {
+    padding-inline: 10px;
     background-color: var(--dark);
     border-radius: 5px;
     color: #fff;
@@ -76,11 +77,6 @@ const Wrapper = styled.main`
   .profile button:hover,
   .profile h3:hover {
     opacity: 0.8;
-  }
-  @media screen and (max-width: 700px) {
-    .profile {
-      width: 100px;
-    }
   }
 `;
 
