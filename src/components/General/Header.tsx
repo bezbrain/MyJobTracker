@@ -40,9 +40,10 @@ const Header = () => {
   const handleLogout = async () => {
     await signOutUser(auth);
     toast.success("You are logged out");
+    setIsLogout(false);
     setTimeout(() => {
       navigate("/");
-    }, 3000);
+    }, 2000);
     localStorage.removeItem("userId");
   };
 

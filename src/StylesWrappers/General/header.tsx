@@ -63,7 +63,9 @@ const Wrapper = styled.main`
 
   .profile button {
     position: absolute;
-    width: 100%;
+    right: 5px;
+    width: fit-content;
+    padding-inline: 10px;
     height: 35px;
     border: none;
     background-color: var(--light);
