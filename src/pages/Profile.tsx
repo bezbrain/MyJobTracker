@@ -3,37 +3,59 @@ import InputWrapper from "../StylesWrappers/General/inputBox";
 import InputBox from "../components/General/InputBox";
 import ButtonWrapper from "../StylesWrappers/General/button";
 import Button from "../components/General/Button";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { ChangeEvent, useEffect } from "react";
+import { ProfileState } from "../model";
+import { collectInputs } from "../features/profile/profileSlice";
+import { getUserSnapshot } from "../DBSnapShot";
 
 const Profile = () => {
-  const { name, lastName, email, location } = useSelector(
-    (store: RootState) => store.profileStore
-  );
+  const { userProfile } = useSelector((store: RootState) => store.profileStore);
 
-  const handleChange = () => {
+  const { username, firstName, lastName, email, location } = userProfile;
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    let name = e.target.name as keyof ProfileState;
+    let value = e.target.value;
+
+    dispatch(collectInputs({ name, value }));
+  };
+
+  const handleSaveChanges = (e: React.FormEvent<Element>) => {
     //
   };
 
-  const handleSaveChanges = () => {
-    //
-  };
+  useEffect(() => {
+    // getUserSnapshot()
+    // console.log(getUserSnapshot());
+  }, []);
 
   return (
     <AddJobAllJobsProfile>
       <p>Profile</p>
       <InputWrapper>
         <InputBox
-          jobName="Name"
+          jobName="Username"
           typeName="text"
-          inputName="name"
-          inputValue={name}
+          inputName="username"
+          inputValue={username}
+          handleChange={handleChange}
+          noEdit={true}
+        />
+        <InputBox
+          jobName="First Name"
+          typeName="text"
+          inputName="firstName"
+          inputValue={firstName}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Last Name"
           typeName="text"
-          inputName="lastname"
+          inputName="lastName"
           inputValue={lastName}
           handleChange={handleChange}
         />

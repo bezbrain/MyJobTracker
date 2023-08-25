@@ -40,7 +40,14 @@ export const reg = createAsyncThunk(
 
       // Send user details to firestore when user registers so that this info will be used in dashboard and profile
       const userId2 = getUserId();
-      await addData(userInfoColRef, { userId2, username, email });
+      await addData(userInfoColRef, {
+        userId2,
+        username,
+        email,
+        location: "",
+        firstName: "",
+        lastName: "",
+      });
     } catch (error: any) {
       const errorMsg = error.message;
       return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));

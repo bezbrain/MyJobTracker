@@ -30,6 +30,17 @@ export interface AllJobsState {
   };
 }
 
+export interface ProfileState {
+  profileLoading: boolean;
+  userProfile: {
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    location: string;
+  };
+}
+
 export interface RegState {
   isLoading: boolean;
   isDisable: boolean;
@@ -65,6 +76,7 @@ export interface InputProps {
   inputName: string;
   inputValue: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  noEdit?: boolean;
 }
 
 export interface BtnProps {

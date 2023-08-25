@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Wrapper from "../../StylesWrappers/General/header";
 import NavIcon from "./NavIcon";
-import { getUserId } from "../../DBSnapShot";
+import { getUserId, getUserSnapshot } from "../../DBSnapShot";
 import {
   auth,
   signOutUser,
@@ -15,25 +15,13 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 const Header = () => {
   const [userValue, setUserValue] = useState<string>("");
   const [isLogout, setIsLogout] = useState<boolean>(false);
-  const localStorageId = getUserId();
+  const localStorageId: string | null = getUserId();
 
   const navigate: NavigateFunction = useNavigate();
 
-  // Function to get the username and present it on the dashboard
-  const getUserSnapshot = () => {
-    trackDataInDB(userInfoColRef, (snapshot) => {
-      snapshot.docs.forEach((each) => {
-        const userId = each.data().userId2;
-
-        if (localStorageId === userId) {
-          setUserValue(each.data().username);
-        }
-      });
-    });
-  };
-
   useEffect(() => {
-    getUserSnapshot();
+    // Function to get the username and present it on the dashboard
+    getUserSnapshot(localStorageId, setUserValue);
   }, []);
 
   // Handle Logout
