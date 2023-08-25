@@ -75,6 +75,7 @@ const Wrapper = styled.main`
     border-radius: 5px;
     cursor: pointer;
     transition: ease 0.5s all;
+    color: #000;
   }
   .profile button:hover,
   .profile h3:hover {
