@@ -20,7 +20,9 @@ import { getUserId } from "../DBSnapShot";
 import { useLocation } from "react-router-dom";
 
 const AddJobs = () => {
-  const { inputs } = useSelector((store: RootState) => store.addJobStore);
+  const { inputs, jobLoading, jobDisable } = useSelector(
+    (store: RootState) => store.addJobStore
+  );
   const { btnContent } = useSelector((store: RootState) => store.editJobStore);
 
   const { createdBy, position, company, joblocation, status, jobType } = inputs;
@@ -122,7 +124,13 @@ const AddJobs = () => {
 
         <ButtonWrapper>
           <Button button="Clear" type="reset" handleSubmit={handleReset} />
-          <Button button="Submit" handleSubmit={handleSubmit} type="submit" />
+          <Button
+            button="Submit"
+            handleSubmit={handleSubmit}
+            type="submit"
+            allLoading={jobLoading}
+            allDisable={jobDisable}
+          />
         </ButtonWrapper>
       </InputWrapper>
     </AddJobAllJobsProfile>

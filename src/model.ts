@@ -8,7 +8,8 @@ export interface EditState {
 export interface AddJobState {
   addJobArr: Array<string | number>;
   isRemove: boolean;
-  isLoading: boolean;
+  jobLoading: boolean;
+  jobDisable: boolean;
   inputs: {
     createdBy: string | null;
     position: string;
@@ -30,16 +31,24 @@ export interface AllJobsState {
 }
 
 export interface RegState {
-  createdBy: string;
-  username: string;
-  email: string;
-  password: string;
+  isLoading: boolean;
+  isDisable: boolean;
+  user: {
+    createdBy: string;
+    username: string;
+    email: string;
+    password: string;
+  };
 }
 
 export interface LoginState {
-  login_createdBy: string;
-  login_email: string;
-  login_password: string;
+  loginLoading: boolean;
+  loginDisable: boolean;
+  loginUser: {
+    login_createdBy: string;
+    login_email: string;
+    login_password: string;
+  };
 }
 
 export interface LoginProp {
@@ -63,4 +72,6 @@ export interface BtnProps {
   handleSubmit: (e: React.FormEvent) => void;
   type: "button" | "reset" | "submit" | undefined;
   allJobsBtn?: string;
+  allLoading?: boolean;
+  allDisable?: boolean;
 }

@@ -13,9 +13,11 @@ import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 
 const Login = ({ setToggleReg }: LoginProp) => {
-  const { login_createdBy, login_email, login_password } = useSelector(
+  const { loginUser, loginLoading, loginDisable } = useSelector(
     (store: RootState) => store.loginStore
   );
+
+  const { login_createdBy, login_email, login_password } = loginUser;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -66,6 +68,8 @@ const Login = ({ setToggleReg }: LoginProp) => {
             handleSubmit={handleLoginSubmit}
             type="submit"
             allJobsBtn="reg__btn"
+            allLoading={loginLoading}
+            allDisable={loginDisable}
           />
         </ButtonWrapper>
         <footer>

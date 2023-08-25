@@ -11,10 +11,14 @@ import { toast } from "react-toastify";
 import { extratingErrorMsg, setUserId, getUserId } from "../../DBSnapShot";
 
 const initialState: RegState = {
-  createdBy: "",
-  username: "",
-  email: "",
-  password: "",
+  isLoading: false, // to control loading content in reg btn
+  isDisable: false, // to disable btn until request is complete
+  user: {
+    createdBy: "",
+    username: "",
+    email: "",
+    password: "",
+  },
 };
 
 export const reg = createAsyncThunk(
@@ -26,7 +30,7 @@ export const reg = createAsyncThunk(
       const cred = await signUp(auth, email, password);
       console.log(cred.user.uid);
       const userId = cred.user.uid;
-      setUserId(userId);
+      setUserId(userId); // Set user id to local storage
 
       setTimeout(() => {
         // Timeout to navigate to login when user is authenticated
@@ -53,20 +57,25 @@ const regSlice = createSlice({
       { payload }: PayloadAction<{ name: keyof RegState; value: any }>
     ) => {
       const { name, value } = payload;
-      state[name] = value;
+      state.user = { ...state.user, [name]: value };
     },
   },
 
   extraReducers: (builder) => {
     builder
       .addCase(reg.pending, (state) => {
-        console.log(state);
+        state.isLoading = true;
+        state.isDisable = true;
       })
       .addCase(reg.fulfilled, (state, { payload }) => {
-        state.username = "";
-        state.email = "";
-        state.password = "";
+        const { username, email, password } = state.user;
+
+        state.user.username = "";
+        state.user.email = "";
+        state.user.password = "";
         toast.success("Registration Successful");
+        state.isLoading = false;
+        state.isDisable = false;
       })
       .addCase(reg.rejected, (state, { payload }) => {
         if (typeof payload === "string") {
@@ -75,6 +84,8 @@ const regSlice = createSlice({
           // If payload is not a string, convert the error message and then show it
           toast.error(JSON.stringify(payload));
         }
+        state.isLoading = false;
+        state.isDisable = false;
       });
   },
 });

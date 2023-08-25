@@ -10,7 +10,8 @@ const date: string = dateFunc(); // Function to get the current date
 const initialState: AddJobState = {
   addJobArr: [],
   isRemove: true, // to toggle side base
-  isLoading: false, // to activate and deactivate button
+  jobLoading: false, // to show loading state
+  jobDisable: false, // to activate and deactivate button
   inputs: {
     createdBy: "",
     position: "",
@@ -82,30 +83,40 @@ const addJobSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    // Add Job functionality
     builder
       .addCase(submitData.pending, (state) => {
-        state.isLoading = true;
+        state.jobLoading = true;
+        state.jobDisable = true;
       })
       .addCase(submitData.fulfilled, (state, { payload }) => {
         clearFields(state);
-        state.isLoading = false;
         toast.success("Job Added Successfully");
+        state.jobLoading = false;
+        state.jobDisable = false;
       })
-      .addCase(submitData.rejected, (state, { payload }) => {
-        console.log(state);
-        console.log(payload);
+      .addCase(submitData.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+        state.jobLoading = false;
+        state.jobDisable = false;
       });
+
+    // Update functionality
     builder
       .addCase(updateData.pending, (state) => {
-        console.log(state);
+        state.jobLoading = true;
+        state.jobDisable = true;
       })
       .addCase(updateData.fulfilled, (state, { payload }) => {
         clearFields(state);
         toast.success("Job Updated Successfully");
+        state.jobLoading = false;
+        state.jobDisable = false;
       })
-      .addCase(updateData.rejected, (state, { payload }) => {
-        console.log(state);
-        console.log(payload);
+      .addCase(updateData.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+        state.jobLoading = false;
+        state.jobDisable = false;
       });
   },
 });

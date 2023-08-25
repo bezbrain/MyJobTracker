@@ -12,9 +12,11 @@ import Button from "../General/Button";
 import { toast } from "react-toastify";
 
 const Reg = ({ setToggleReg }: RegProp) => {
-  const { createdBy, username, email, password } = useSelector(
+  const { user, isLoading, isDisable } = useSelector(
     (store: RootState) => store.regStore
   );
+
+  const { createdBy, username, email, password } = user;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -28,6 +30,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
   // Handle click of Register button
   const handleRegSubmit = async (e: React.FormEvent<Element>) => {
     e.preventDefault();
+    console.log("Clicked");
 
     if (!username || !email || !password) {
       toast.error("No field should be empty");
@@ -70,6 +73,8 @@ const Reg = ({ setToggleReg }: RegProp) => {
             handleSubmit={handleRegSubmit}
             type="submit"
             allJobsBtn="reg__btn"
+            allLoading={isLoading}
+            allDisable={isDisable}
           />
         </ButtonWrapper>
         <footer>

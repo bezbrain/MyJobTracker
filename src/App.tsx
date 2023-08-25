@@ -11,7 +11,7 @@ const App = () => {
         <Route path="register" element={<Registration />} />
 
         {/* Protect the dashboard */}
-        <Route path="dashboard" element={<ProtectedRoute />} />
+        <Route path="dashboard/*" element={<ProtectedRoute />} />
 
         <Route path="*" element={<Error />} />
       </Routes>
