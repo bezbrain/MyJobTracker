@@ -19,13 +19,13 @@ const LoaderWrapper = styled.div`
     top: 30%;
   }
   .varyingCSSAllJobs {
-    top: 75vh;
+    top: 60vh;
   }
 
   .loader {
     position: absolute;
     right: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     border: 4px solid #9b9898; /* Light gray */
     border-top: 4px solid #2785c4; /* Blue */
     border-radius: 50%;
