@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ProfileState } from "../../model";
+import { getUserSnapshotDB } from "../../DBSnapShot";
 
 const initialState: ProfileState = {
   profileLoading: false,

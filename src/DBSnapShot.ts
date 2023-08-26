@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { DocumentData } from "firebase/firestore";
+import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { trackDataInDB, colRef, userInfoColRef } from "./firebaseStore";
 
 // Get jobs from database
@@ -20,7 +20,8 @@ export const getData = (
   });
 };
 
-// Get user details from database
+/* ========================== */
+// Get user id from database
 export const getUserSnapshot = (
   localStorageId?: string | null,
   setValue?: React.Dispatch<React.SetStateAction<string>>
@@ -30,24 +31,46 @@ export const getUserSnapshot = (
       const userId = each.data().userId2;
 
       if (localStorageId === userId) {
+        // console.log(each.data());
         setValue?.(each.data().username);
       }
     });
   });
 };
 
+/* ============================== */
+// Get user details from database. I had to separate the function from the one above because of clash in type
+export const getUserSnapshotDB = (
+  localStorageId: string | null,
+  setValue: React.Dispatch<React.SetStateAction<{}>>
+): void => {
+  trackDataInDB(userInfoColRef, (snapshot) => {
+    snapshot.docs.forEach((each) => {
+      const userId = each.data().userId2;
+
+      if (localStorageId === userId) {
+        // console.log(each.data());
+        setValue(each.data());
+      }
+    });
+  });
+};
+
+/* ============================ */
 // Function to set the userId to local storage during login
 export const setUserId = (id: string) => {
   localStorage.setItem("userId", id);
   return id;
 };
 
+/* ============================= */
 // Function to get the userId sent to local storage during login
 export const getUserId = () => {
   const getId: string | null = localStorage.getItem("userId");
   return getId;
 };
 
+/* ============================= */
 // Using useMemo Hook to handle filter of database for uniqueness of individual data
 export const useUniqueUserData = (dataInDB: DocumentData[]) => {
   const uniqueUserData = useMemo(() => {
@@ -57,6 +80,7 @@ export const useUniqueUserData = (dataInDB: DocumentData[]) => {
   return uniqueUserData;
 };
 
+/* ============================= */
 /* Function to extract error message from the firebase returned message */
 export const extratingErrorMsg = (error: string) => {
   const startIndex = error.indexOf("/") + 1;
