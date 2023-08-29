@@ -51,6 +51,7 @@ const SingleJobCard: React.FC<Props> = ({
     setIsModal(false);
   };
 
+  // Function to stage the input boxes to edit in addjob page
   const handleEdit = async (index: string) => {
     try {
       const docRef: DocumentReference = singleDoc(colRef, index);

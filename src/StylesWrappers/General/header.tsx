@@ -76,6 +76,7 @@ const Wrapper = styled.main`
     cursor: pointer;
     transition: ease 0.5s all;
     color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
   }
   .profile button:hover,
   .profile h3:hover {

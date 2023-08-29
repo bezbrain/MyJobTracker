@@ -50,7 +50,7 @@ const Login = ({ setToggleReg }: LoginProp) => {
         <p>Login</p>
         <InputBox
           jobName="Email"
-          typeName="text"
+          typeName="email"
           inputName="login_email"
           inputValue={login_email}
           handleChange={handleLoginChange}

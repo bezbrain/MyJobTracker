@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { ChangeEvent, useEffect, useState } from "react";
 import { ProfileState } from "../model";
-import { collectInputs } from "../features/profile/profileSlice";
+import {
+  collectInputs,
+  getFSData,
+  updateProfile,
+} from "../features/profile/profileSlice";
 import { getUserId, getUserSnapshotDB } from "../DBSnapShot";
 import { DocumentData } from "firebase/firestore";
 import Loader from "../components/General/Loader";
@@ -17,7 +21,15 @@ const Profile = () => {
 
   const { userProfile } = useSelector((store: RootState) => store.profileStore);
 
-  // const { username, firstName, lastName, email, location } = userProfile;
+  const { username, firstName, lastName, email, location } = userProfile;
+
+  // const [user, setUser] = useState({
+  //   username,
+  //   firstName,
+  //   lastName,
+  //   email,
+  //   location,
+  // });
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -30,13 +42,23 @@ const Profile = () => {
     dispatch(collectInputs({ name, value }));
   };
 
+  // Function to handle click of update profile button
   const handleSaveChanges = (e: React.FormEvent<Element>) => {
-    //
+    e.preventDefault();
+    const fireStoreId = getProfile.id;
+
+    dispatch(updateProfile({ firstName, lastName, location, fireStoreId }));
   };
 
+  // Track data from database
   useEffect(() => {
     getUserSnapshotDB(localStorageId, setGetProfile);
-  }, []);
+    const fireStoreId = getProfile.id;
+    // using this to make sure that id is successfully available before dispatching
+    if (fireStoreId) {
+      dispatch(getFSData({ id: fireStoreId, getProfile }));
+    }
+  }, [localStorageId, getProfile.id]);
 
   if (Object.keys(getProfile).length === 0) {
     return <Loader loaderStyle="varyingCSSProfile" />;
@@ -50,7 +72,7 @@ const Profile = () => {
           jobName="Username"
           typeName="text"
           inputName="username"
-          inputValue={getProfile ? getProfile.username : null}
+          inputValue={username}
           handleChange={handleChange}
           noEdit={true}
         />
@@ -58,32 +80,29 @@ const Profile = () => {
           jobName="First Name"
           typeName="text"
           inputName="firstName"
-          // inputValue={firstName}
-          inputValue={getProfile ? getProfile.firstName : null}
+          inputValue={firstName}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Last Name"
           typeName="text"
           inputName="lastName"
-          // inputValue={lastName}
-          inputValue={getProfile ? getProfile.lastName : null}
+          inputValue={lastName}
           handleChange={handleChange}
         />
         <InputBox
           jobName="Email"
-          typeName="text"
+          typeName="email"
           inputName="email"
-          // inputValue={email}
-          inputValue={getProfile ? getProfile.email : null}
+          inputValue={email}
           handleChange={handleChange}
+          noEdit={true}
         />
         <InputBox
           jobName="Location"
           typeName="text"
           inputName="location"
-          // inputValue={location}
-          inputValue={getProfile ? getProfile.location : null}
+          inputValue={location}
           handleChange={handleChange}
         />
         <ButtonWrapper>

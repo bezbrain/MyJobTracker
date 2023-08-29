@@ -55,7 +55,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
         />
         <InputBox
           jobName="Email"
-          typeName="text"
+          typeName="email"
           inputName="email"
           inputValue={email}
           handleChange={handleRegChange}

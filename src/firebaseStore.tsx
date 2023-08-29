@@ -7,7 +7,11 @@ import {
   doc,
   deleteDoc,
   getDoc,
+  getDocs,
   updateDoc,
+  query,
+  where,
+  // orderBy
 } from "firebase/firestore";
 
 import {
@@ -47,6 +51,14 @@ export const deleteSingleDoc = deleteDoc;
 export const getSingleDoc = getDoc;
 
 export const updateInfo = updateDoc;
+
+export const getAllData = getDocs;
+
+export const certainData = query;
+
+export const whereTo = where;
+
+// export const orderByTo = orderBy
 
 // Authentication
 export const auth = getAuth();
