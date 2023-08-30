@@ -10,6 +10,7 @@ const Wrapper = styled.main`
     /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 25%;
   }
   @media screen and (max-width: 1100px) {

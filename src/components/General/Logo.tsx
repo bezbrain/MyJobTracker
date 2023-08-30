@@ -17,15 +17,15 @@ const Logo = () => {
   return (
     <Wrapper>
       <div onClick={handleLogoClick}>
-        <p
+        <img
+          src="https://i.imgur.com/dyl4BHP.png"
+          alt="Logo"
           className={`${
             location.pathname === "/register" || location.pathname === "/"
               ? "reg__logo"
               : ""
           }`}
-        >
-          Jobtrackier
-        </p>
+        />
       </div>
     </Wrapper>
   );

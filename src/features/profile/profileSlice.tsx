@@ -26,6 +26,7 @@ const initialState: ProfileState = {
   },
 };
 
+// Function to update data in the firestore
 export const updateProfile = createAsyncThunk(
   "profile/updateProfile",
   async (userProfile: any, thunkAPI) => {
@@ -45,6 +46,7 @@ export const updateProfile = createAsyncThunk(
   }
 );
 
+// Function to get each user data from the firestore
 export const getFSData = createAsyncThunk(
   "data/getdata",
   async (payload: any) => {

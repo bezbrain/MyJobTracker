@@ -2,23 +2,26 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   cursor: pointer;
-  div p {
-    font-size: var(--font);
-    color: var(--dark);
-    font-weight: 700;
+  div img {
+    width: 15vw;
+  }
+  .reg__logo {
+    width: 150px;
   }
 
+  @media screen and (min-width: 1200px) {
+    div img {
+      width: 200px;
+    }
+  }
   @media screen and (max-width: 1000px) {
-    div p {
-      font-size: 4vw;
+    div img {
+      width: 120px;
     }
   }
   @media screen and (max-width: 600px) {
-    div p {
-      font-size: 1.2rem;
-    }
-    .reg__logo {
-      font-size: 1.8rem;
+    div img {
+      width: 120px;
     }
   }
 `;
