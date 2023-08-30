@@ -3,7 +3,7 @@ import { EditState } from "../../model";
 
 const initialState: EditState = {
   btnContent: "Submit",
-  stagedJob: "",
+  stagedJob: null,
 };
 
 export const editJob = createAsyncThunk(

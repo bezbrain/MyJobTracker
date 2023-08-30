@@ -4,6 +4,7 @@ import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
 import { DocumentData } from "firebase/firestore";
 import { getData, getUserId, useUniqueUserData } from "../DBSnapShot";
+import TitleText from "../components/General/Helmet";
 
 const Stat = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
@@ -26,6 +27,7 @@ const Stat = () => {
 
   return (
     <Wrapper>
+      <TitleText title="Stat" />
       <section className="card-con">
         <StatCard
           count={getPending.length}

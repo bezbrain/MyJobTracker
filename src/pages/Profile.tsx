@@ -15,6 +15,7 @@ import {
 import { getUserId, getUserSnapshotDB } from "../DBSnapShot";
 import { DocumentData } from "firebase/firestore";
 import Loader from "../components/General/Loader";
+import TitleText from "../components/General/Helmet";
 
 const Profile = () => {
   const [getProfile, setGetProfile] = useState<any>({});
@@ -66,6 +67,7 @@ const Profile = () => {
 
   return (
     <AddJobAllJobsProfile>
+      <TitleText title="Profile" />
       <p>Profile</p>
       <InputWrapper>
         <InputBox

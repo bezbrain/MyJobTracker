@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 
 export interface EditState {
   btnContent: string;
-  stagedJob: string;
+  stagedJob: null;
 }
 
 export interface AddJobState {

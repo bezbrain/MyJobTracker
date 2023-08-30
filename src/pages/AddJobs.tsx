@@ -18,6 +18,7 @@ import { collectInput } from "../features/addJob/addJobSlice";
 import { changeTextContent } from "../features/allJobs/editSlice";
 import { getUserId } from "../DBSnapShot";
 import { useLocation } from "react-router-dom";
+import TitleText from "../components/General/Helmet";
 
 const AddJobs = () => {
   const { inputs, jobLoading, jobDisable } = useSelector(
@@ -78,6 +79,7 @@ const AddJobs = () => {
 
   return (
     <AddJobAllJobsProfile>
+      <TitleText title="Add Jobs" />
       <p>Add Job</p>
       <InputWrapper>
         <InputBox
