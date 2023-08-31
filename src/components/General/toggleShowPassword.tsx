@@ -39,4 +39,8 @@ const PasswordIcon = styled.main`
   align-items: center;
   right: 10px;
   cursor: pointer;
+
+  @media screen and (max-width: 500px) {
+    transform: translateY(-35%);
+  }
 `;
