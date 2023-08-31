@@ -1,6 +1,7 @@
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import LandingWrapper from "../StylesWrappers/LandingPage/landingWrapper";
 import Logo from "../components/General/Logo";
+import TitleText from "../components/General/Helmet";
 
 const LandingPage = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -10,6 +11,7 @@ const LandingPage = () => {
 
   return (
     <LandingWrapper>
+      <TitleText title="Job Tracker" />
       <div className="logo__con">
         <Logo />
       </div>

@@ -11,6 +11,7 @@ import { RegProp, RegState } from "../../model";
 import Button from "../General/Button";
 import { toast } from "react-toastify";
 import ToggleShowPassword from "../General/toggleShowPassword";
+import TitleText from "../General/Helmet";
 
 const Reg = ({ setToggleReg }: RegProp) => {
   const { user, isLoading, isDisable } = useSelector(
@@ -47,6 +48,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
 
   return (
     <RegWrapper>
+      <TitleText title="Register" />
       <RegInputWrapper>
         <Logo />
         <p>Register</p>

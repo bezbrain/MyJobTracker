@@ -2,13 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import SingleJobCard from "./SingleJobCard";
 import { DocumentData } from "firebase/firestore";
 import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";
-import { getData, getUserId, useUniqueUserData } from "../../DBSnapShot";
+import { getData, useUniqueUserData } from "../../DBSnapShot";
 import Loader from "../General/Loader";
 
 const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  // const [uniqueUserData, setUniqueUserData] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     getData(setDataInDB, setIsLoading);

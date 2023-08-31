@@ -12,6 +12,7 @@ import { LoginProp, LoginState } from "../../model";
 import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import ToggleShowPassword from "../General/toggleShowPassword";
+import TitleText from "../General/Helmet";
 
 const Login = ({ setToggleReg }: LoginProp) => {
   const { loginUser, loginLoading, loginDisable } = useSelector(
@@ -49,6 +50,7 @@ const Login = ({ setToggleReg }: LoginProp) => {
 
   return (
     <RegWrapper>
+      <TitleText title="Login" />
       <RegInputWrapper>
         <Logo />
         <p>Login</p>
