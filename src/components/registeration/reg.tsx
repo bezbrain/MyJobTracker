@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import RegInputWrapper from "../../StylesWrappers/General/regInputBox";
 import RegWrapper from "../../StylesWrappers/registeration/register";
@@ -10,11 +10,15 @@ import { getRegValues, reg } from "../../features/registration/registerSlice";
 import { RegProp, RegState } from "../../model";
 import Button from "../General/Button";
 import { toast } from "react-toastify";
+import ToggleShowPassword from "../General/toggleShowPassword";
 
 const Reg = ({ setToggleReg }: RegProp) => {
   const { user, isLoading, isDisable } = useSelector(
     (store: RootState) => store.regStore
   );
+
+  // State to control the show password
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const { createdBy, username, email, password } = user;
 
@@ -60,13 +64,22 @@ const Reg = ({ setToggleReg }: RegProp) => {
           inputValue={email}
           handleChange={handleRegChange}
         />
-        <InputBox
-          jobName="Password"
-          typeName="password"
-          inputName="password"
-          inputValue={password}
-          handleChange={handleRegChange}
-        />
+
+        <div style={{ position: "relative" }}>
+          <InputBox
+            jobName="Password"
+            typeName={`${showPassword ? "text" : "password"}`}
+            inputName="password"
+            inputValue={password}
+            handleChange={handleRegChange}
+          />
+          <ToggleShowPassword
+            password={password}
+            setShowPassword={setShowPassword}
+            showPassword={showPassword}
+          />
+        </div>
+
         <ButtonWrapper>
           <Button
             button="Submit"

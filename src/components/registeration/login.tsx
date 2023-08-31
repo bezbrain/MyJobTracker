@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ButtonWrapper from "../../StylesWrappers/General/button";
 import RegInputWrapper from "../../StylesWrappers/General/regInputBox";
@@ -11,11 +11,15 @@ import { getLoginValues, login } from "../../features/registration/loginSlice";
 import { LoginProp, LoginState } from "../../model";
 import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import ToggleShowPassword from "../General/toggleShowPassword";
 
 const Login = ({ setToggleReg }: LoginProp) => {
   const { loginUser, loginLoading, loginDisable } = useSelector(
     (store: RootState) => store.loginStore
   );
+
+  // State to control the show password
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const { login_createdBy, login_email, login_password } = loginUser;
 
@@ -55,13 +59,24 @@ const Login = ({ setToggleReg }: LoginProp) => {
           inputValue={login_email}
           handleChange={handleLoginChange}
         />
-        <InputBox
-          jobName="Password"
-          typeName="password"
-          inputName="login_password"
-          inputValue={login_password}
-          handleChange={handleLoginChange}
-        />
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          <InputBox
+            jobName="Password"
+            typeName={`${showPassword ? "text" : "password"}`}
+            inputName="login_password"
+            inputValue={login_password}
+            handleChange={handleLoginChange}
+          />
+          <ToggleShowPassword
+            password={login_password}
+            setShowPassword={setShowPassword}
+            showPassword={showPassword}
+          />
+        </div>
         <ButtonWrapper>
           <Button
             button="Submit"

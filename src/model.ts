@@ -87,3 +87,9 @@ export interface BtnProps {
   allLoading?: boolean;
   allDisable?: boolean;
 }
+
+export interface PasswordIconProps {
+  password: string;
+  setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
+  showPassword: boolean;
+}
