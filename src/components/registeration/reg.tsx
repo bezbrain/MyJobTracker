@@ -65,7 +65,11 @@ const Reg = ({ setToggleReg }: RegProp) => {
           handleChange={handleRegChange}
         />
 
-        <div style={{ position: "relative" }}>
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
           <InputBox
             jobName="Password"
             typeName={`${showPassword ? "text" : "password"}`}

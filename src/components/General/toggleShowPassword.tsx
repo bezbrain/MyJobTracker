@@ -34,9 +34,9 @@ export default ToggleShowPassword;
 
 const PasswordIcon = styled.main`
   position: absolute;
-  top: 48%;
+  top: 50%;
   display: flex;
+  align-items: center;
   right: 10px;
   cursor: pointer;
-  /* transform: translateY(-50%); */
 `;
