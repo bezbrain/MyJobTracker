@@ -8,6 +8,7 @@ import Button from "../General/Button";
 import ButtonWrapper from "../../StylesWrappers/General/button";
 import { useDispatch } from "react-redux";
 import { collectInputs } from "../../features/allJobs/allJobsSlice";
+import { searchFilter } from "../../DBSnapShot";
 
 const InputSection = () => {
   const { search, status, type, sort } = useSelector(
@@ -27,6 +28,12 @@ const InputSection = () => {
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let name = e.target.name;
     let value = e.target.value;
+    dispatch(collectInputs({ name, value }));
+  };
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    dispatch(collectInputs({ name: "search", value: e.currentTarget.value }));
+    // searchFilter()
   };
 
   const handleClear = (e: React.FormEvent) => {
@@ -41,6 +48,7 @@ const InputSection = () => {
         inputName="search"
         inputValue={search}
         handleChange={handleChange}
+        handleKeyUp={handleKeyUp}
       />
       <SelectOption
         statusName="status"
@@ -75,10 +83,10 @@ const InputSection = () => {
       />
       <ButtonWrapper>
         <Button
-          button="Clear Filter"
+          button="Clear"
           handleSubmit={handleClear}
           type="submit"
-          allJobsBtn="add-allJobs-btn"
+          allJobsBtn="add-search-btn"
         />
       </ButtonWrapper>
     </InputWrapper>

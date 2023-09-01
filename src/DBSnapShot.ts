@@ -110,3 +110,13 @@ export const extratingErrorMsg = (error: string) => {
     errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
   return capitalizedError;
 };
+
+export const searchFilter = (uniqueUserData: any, searchInput: string) => {
+  const newUnique = uniqueUserData.filter((each: any) => {
+    return (
+      each.position.toLowerCase().includes(searchInput.toLowerCase()) ||
+      each.company.toLowerCase().includes(searchInput.toLowerCase())
+    );
+  });
+  return newUnique;
+};

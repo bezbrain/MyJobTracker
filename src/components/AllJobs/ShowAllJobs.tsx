@@ -16,6 +16,16 @@ const ShowAllJobs = () => {
   // Call the function to handle data unique to each user and display them
   const uniqueUserData = useUniqueUserData(dataInDB);
 
+  //  const searchFilter = (searchInput: string) => {
+  //   const newUnique = uniqueUserData.filter((each) => {
+  //     return (
+  //       each.position.toLowerCase().includes(searchInput.toLowerCase()) ||
+  //       each.company.toLowerCase().includes(searchInput.toLowerCase())
+  //     );
+  //   });
+  //   return newUnique;
+  // };
+
   if (isLoading) {
     return <Loader loaderStyle="varyingCSSAllJobs" />;
   }

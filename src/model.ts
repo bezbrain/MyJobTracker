@@ -22,6 +22,7 @@ export interface AddJobState {
 }
 
 export interface AllJobsState {
+  isLoading: boolean;
   allJobsInputs: {
     search: string;
     status: string;
@@ -77,6 +78,7 @@ export interface InputProps {
   inputValue: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   noEdit?: boolean;
+  handleKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export interface BtnProps {

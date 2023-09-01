@@ -7,6 +7,7 @@ const InputBox: React.FC<InputProps> = ({
   inputValue,
   handleChange,
   noEdit,
+  handleKeyUp,
 }) => {
   return (
     <div>
@@ -18,6 +19,7 @@ const InputBox: React.FC<InputProps> = ({
         onChange={handleChange}
         readOnly={noEdit} // to handle username being non-editable
         disabled={noEdit} // to remove focus from the username input
+        onKeyUp={handleKeyUp}
       />
     </div>
   );

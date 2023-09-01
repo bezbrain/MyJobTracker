@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { AllJobsState } from "../../model";
 
 const initialState: AllJobsState = {
+  isLoading: false,
   allJobsInputs: {
     search: "",
     status: "",
@@ -16,16 +17,7 @@ const allJobsSlice = createSlice({
   reducers: {
     collectInputs: (state, { payload }) => {
       const { name, value } = payload;
-
-      const update = {
-        ...state,
-        allJobsInputs: {
-          ...state.allJobsInputs,
-          [name]: value,
-        },
-      };
-
-      return update;
+      state.allJobsInputs = { ...state.allJobsInputs, [name]: value };
     },
   },
 });

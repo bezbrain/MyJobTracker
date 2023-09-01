@@ -50,6 +50,11 @@ const ButtonWrapper = styled.div`
     background-color: var(--blackred) !important;
   }
 
+  .add-search-btn {
+    background-color: #a62f03 !important;
+    width: 100%;
+  }
+
   .add-profile-btn {
     background-color: #e0b3a6 !important;
     width: 100%;
