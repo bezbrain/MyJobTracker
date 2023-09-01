@@ -22,9 +22,9 @@ const LandingPage = () => {
               Keep <span>Tracking</span> Jobs
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Repellendus placeat aut, similique rerum id, magnam ducimus ex
-              maiores voluptatum ullam labore nulla dolorum veniam ipsam
+              Your personal job tracker that allows you know which job is which.
+              Track applications, interviews, and never miss a deadline again.
+              Get ready to land your dream job effortlessly. Stay organized!
             </p>
             <button onClick={() => navigate("/register")}>
               Login/Register
