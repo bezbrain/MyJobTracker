@@ -8,7 +8,7 @@ import Button from "../General/Button";
 import ButtonWrapper from "../../StylesWrappers/General/button";
 import { useDispatch } from "react-redux";
 import { collectInputs } from "../../features/allJobs/allJobsSlice";
-import { searchFilter } from "../../DBSnapShot";
+// import { searchFilter } from "../../DBSnapShot";
 
 const InputSection = () => {
   const { search, status, type, sort } = useSelector(
@@ -17,14 +17,14 @@ const InputSection = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  //   Handle input change
+  // Handle input change
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name;
     let value = e.target.value;
     dispatch(collectInputs({ name, value }));
   };
 
-  //   Handle select change
+  // Handle select change
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -32,8 +32,9 @@ const InputSection = () => {
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    dispatch(collectInputs({ name: "search", value: e.currentTarget.value }));
-    // searchFilter()
+    // let value = e.target.value;
+    // dispatch(collectInputs({ name: "search", value }));
+    // searchFilter(value);
   };
 
   const handleClear = (e: React.FormEvent) => {

@@ -1,4 +1,9 @@
-import { AddJobsIcon, AllJobIcon, ProfileIcon, StatIcon } from "./icons/icons";
+import {
+  AddJobsIcon,
+  AllJobIcon,
+  ProfileIcon,
+  StatIcon,
+} from "./assets/icons/icons";
 
 export const sideBarData = [
   {

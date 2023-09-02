@@ -1,5 +1,10 @@
 import { ChangeEvent } from "react";
 
+export interface Nav {
+  isOpenNav: boolean;
+  isOpenSmallNav: boolean;
+}
+
 export interface EditState {
   btnContent: string;
   stagedJob: null;

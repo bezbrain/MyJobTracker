@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface Nav {
-  isOpenNav: boolean;
-  isOpenSmallNav: boolean;
-}
+import { Nav } from "../../model";
 
 const initialState: Nav = {
   isOpenNav: false,

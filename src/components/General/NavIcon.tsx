@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux/es/exports";
 import Wrapper from "../../StylesWrappers/General/navIcon";
-import { NavBarIcon } from "../../icons/icons";
+import { NavBarIcon } from "../../assets/icons/icons";
 import { toggleNav, toggleSmallNav } from "../../features/nav/navSlice";
 import { AppDispatch } from "../../store";
 

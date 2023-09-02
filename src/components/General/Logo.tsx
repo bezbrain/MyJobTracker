@@ -1,5 +1,6 @@
 import { NavigateFunction, useLocation, useNavigate } from "react-router-dom";
 import Wrapper from "../../StylesWrappers/General/logo";
+import { logo } from "../../assets/images/images";
 
 const Logo = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -18,7 +19,7 @@ const Logo = () => {
     <Wrapper>
       <div onClick={handleLogoClick}>
         <img
-          src="https://i.imgur.com/dyl4BHP.png"
+          src={logo}
           alt="Logo"
           className={`${
             location.pathname === "/register" || location.pathname === "/"

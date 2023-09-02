@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Wrapper from "../StylesWrappers/Stat/stat";
 import StatCard from "../components/Stats/StatCard";
-import { PendingIcon, InterviewIcon, DeclineIcon } from "../icons/icons";
+import { PendingIcon, InterviewIcon, DeclineIcon } from "../assets/icons/icons";
 import { DocumentData } from "firebase/firestore";
 import { getData, getUserId, useUniqueUserData } from "../DBSnapShot";
 import TitleText from "../components/General/Helmet";

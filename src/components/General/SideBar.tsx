@@ -21,8 +21,9 @@ const SideBar: React.FC<Props> = ({
   smScreenClose,
   toggleNavSection,
 }) => {
-  const { isOpenNav } = useSelector((store: RootState) => store.navStore);
-  const { isOpenSmallNav } = useSelector((store: RootState) => store.navStore);
+  const { isOpenNav, isOpenSmallNav } = useSelector(
+    (store: RootState) => store.navStore
+  );
 
   const [isHoverIndex, setIsHoverIndex] = useState<number | null>(null);
 
@@ -33,8 +34,6 @@ const SideBar: React.FC<Props> = ({
   const handleMouseOver = (index: number) => {
     setIsHoverIndex(index);
   };
-
-  // console.log(location.pathname);
 
   const handleNavItem = (link: string) => {
     navigate(`/dashboard${link}`); // Dynamically navigate to different page

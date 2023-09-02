@@ -40,22 +40,6 @@ export const getUserSnapshot = (
 
 /* ============================== */
 // Get user details from database. I had to separate the function from the one above because of clash in type
-// export const getUserSnapshotDB = (
-//   localStorageId: string | null,
-//   setValue: React.Dispatch<React.SetStateAction<{}>>
-// ): void => {
-//   trackDataInDB(userInfoColRef, (snapshot) => {
-//     snapshot.docs.forEach((each) => {
-//       const userId = each.data().userId2;
-
-//       if (localStorageId === userId) {
-//         console.log(each.id);
-//         const id = each.id;
-//         setValue({ ...each.data(), id });
-//       }
-//     });
-//   });
-// };
 export const getUserSnapshotDB = (
   localStorageId: string | null,
   setValue: React.Dispatch<React.SetStateAction<{}>>
@@ -109,14 +93,4 @@ export const extratingErrorMsg = (error: string) => {
   const capitalizedError =
     errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
   return capitalizedError;
-};
-
-export const searchFilter = (uniqueUserData: any, searchInput: string) => {
-  const newUnique = uniqueUserData.filter((each: any) => {
-    return (
-      each.position.toLowerCase().includes(searchInput.toLowerCase()) ||
-      each.company.toLowerCase().includes(searchInput.toLowerCase())
-    );
-  });
-  return newUnique;
 };
