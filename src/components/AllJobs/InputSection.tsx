@@ -11,7 +11,7 @@ import { collectInputs } from "../../features/allJobs/allJobsSlice";
 // import { searchFilter } from "../../DBSnapShot";
 
 const InputSection = () => {
-  const { search, status, type, sort } = useSelector(
+  const { search, status, type } = useSelector(
     (store: RootState) => store.allJobsStore.allJobsInputs
   );
 
@@ -72,7 +72,7 @@ const InputSection = () => {
         optionFive="Internship"
         handleSelect={handleSelect}
       />
-      <SelectOption
+      {/* <SelectOption
         statusName="sort"
         statusValue={sort}
         selectName="Sort"
@@ -81,7 +81,7 @@ const InputSection = () => {
         optionThree="a-z"
         optionFour="z-a"
         handleSelect={handleSelect}
-      />
+      /> */}
       <ButtonWrapper>
         <Button
           button="Clear"

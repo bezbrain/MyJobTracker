@@ -7,7 +7,7 @@ const initialState: AllJobsState = {
     search: "",
     status: "",
     type: "",
-    sort: "",
+    // sort: "",
   },
 };
 

@@ -1,65 +1,37 @@
 import { DocumentData } from "firebase/firestore";
 
 // Function to handle typing search
-// export const searchFilter = (
-//   uniqueUserData: any,
-//   searchInput: string,
-//   status: string
-//   //   type: string
-//   //   setFilter: React.Dispatch<React.SetStateAction<DocumentData[]>>
-// ) => {
-//   if (
-//     !searchInput &&
-//     (status === "All" || !status) //&&
-//     // (type === "All" || !type)
-//   ) {
-//     // If the search input is empty, return the original data
-//     return uniqueUserData;
-//   }
-
-//   // Apply filtering based on searchInput, status, type
-//   return uniqueUserData.filter((each: any) => {
-//     const isSearchMatch =
-//       //   !searchInput ||
-//       each.position.toLowerCase().includes(searchInput.toLowerCase()) ||
-//       each.company.toLowerCase().includes(searchInput.toLowerCase());
-
-//     const isStatusMatch = status === "All" || each.status === status;
-
-//     // const isTypeMatch = type === "All" || each.jobType === type;
-//     // console.log(each.jobType);
-
-//     return isSearchMatch && isStatusMatch; //&& isTypeMatch;
-//   });
-// };
-
 export const searchFilter = (
-  uniqueUserData: any,
+  uniqueUserData: DocumentData[],
   searchInput: string
-  //   setFilter: React.Dispatch<React.SetStateAction<DocumentData[]>>
 ) => {
   if (!searchInput) {
     // If the search input is empty, return the original data
     return uniqueUserData;
   }
-  return uniqueUserData.filter((each: any) => {
-    return (
+  // if (searchInput) {
+  return (uniqueUserData = uniqueUserData.filter(
+    (each) =>
       each.position.toLowerCase().includes(searchInput.toLowerCase()) ||
       each.company.toLowerCase().includes(searchInput.toLowerCase())
-    );
-  });
+  ));
+
+  // }
 };
 
 // // Function to handle search by status
 export const statusFilter = (
-  uniqueUserData: any,
+  uniqueUserData: DocumentData[],
   searchInput: string
   //   setFilter: React.Dispatch<React.SetStateAction<DocumentData[]>>
 ) => {
-  if (!searchInput && searchInput === "All") {
+  if (!searchInput || searchInput === "All") {
+    // If the search input is empty, return the original data
     return uniqueUserData;
   }
-  return uniqueUserData.filter((each: any) => each.status === searchInput);
+  return (uniqueUserData = uniqueUserData.filter(
+    (each) => each.searchInput === searchInput
+  ));
 };
 
 // // Function to handle search by type
@@ -68,7 +40,7 @@ export const typeFilter = (
   searchInput: string
   //   setFilter: React.Dispatch<React.SetStateAction<DocumentData[]>>
 ) => {
-  if (!searchInput && searchInput === "All") {
+  if (!searchInput || searchInput === "All") {
     return uniqueUserData;
   }
   return uniqueUserData.filter((each: any) => each.jobType === searchInput);

@@ -9,51 +9,75 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 const ShowAllJobs = () => {
-  const { search, status, type, sort } = useSelector(
+  const { search, status, type } = useSelector(
     (store: RootState) => store.allJobsStore.allJobsInputs
   );
 
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]); // To hold all jobs data
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const [filteredData, setFilteredData] = useState<DocumentData[]>([]);
+  // const [filteredData, setFilteredData] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     getData(setDataInDB, setIsLoading);
   }, []);
 
   // Call the function to handle data unique to each user and display them
-  const uniqueUserData = useUniqueUserData(dataInDB);
+  let uniqueUserData = useUniqueUserData(dataInDB);
 
-  // console.log(type);
+  // Apply filters
+  // let filteredData = [...uniqueUserData];
 
-  // Apply each filter independently
-  const searchFilteredData = searchFilter(uniqueUserData, search);
-  const statusFilteredData = statusFilter(uniqueUserData, status);
-  const typeFilteredData = typeFilter(uniqueUserData, type);
+  function searchFunc() {
+    if (!search) {
+      // If the search input is empty, return the original data
+      return uniqueUserData;
+    }
+    // if (search) {
+    uniqueUserData = uniqueUserData.filter(
+      (each) =>
+        each.position.toLowerCase().includes(search.toLowerCase()) ||
+        each.company.toLowerCase().includes(search.toLowerCase())
+    );
+    // console.log(uniqueUserData);
 
-  // console.log(searchFilteredData);
-  useEffect(() => {
-    setFilteredData(searchFilteredData);
-    // console.log(filteredData);
-  }, [search]);
+    // }
+  }
+  searchFunc();
+
+  // uniqueUserData = searchFilter(uniqueUserData, search);
+
+  function statusFunc() {
+    if (!status || status === "All") {
+      // If the search input is empty, return the original data
+      return uniqueUserData;
+    }
+    return (uniqueUserData = uniqueUserData.filter(
+      (each) => each.status === status
+    ));
+  }
+  statusFunc();
+
+  // uniqueUserData = statusFilter(uniqueUserData, status);
+
+  function typeFunc() {
+    if (!type || type === "All") {
+      // If the search input is empty, return the original data
+      return uniqueUserData;
+    }
+    return (uniqueUserData = uniqueUserData.filter(
+      (each) => each.jobType === type
+    ));
+  }
+  typeFunc();
+
+  console.log(uniqueUserData);
 
   if (isLoading) {
     return <Loader loaderStyle="varyingCSSAllJobs" />;
   }
 
-  // Call the function to handle display of jobs searched for
-  // let filteredData = searchFilter(uniqueUserData, search);
-  // console.log(filteredData);
-
-  // Combine the results of individual filters to get the final filtered data
-  // const combinedFilteredData = combineFilters(uniqueUserData, [
-  //   searchFilteredData,
-  //   statusFilteredData,
-  //   typeFilteredData,
-  // ]);
-
-  if (filteredData.length === 0) {
+  if (uniqueUserData.length === 0) {
     return (
       <AllJobsWrapper>
         <p className="no__job">NO JOBS TO DISPLAY</p>
@@ -63,7 +87,7 @@ const ShowAllJobs = () => {
 
   return (
     <AllJobsWrapper>
-      {filteredData.map((each: any) => (
+      {uniqueUserData.map((each: any) => (
         <SingleJobCard key={each.id} {...each} />
       ))}
     </AllJobsWrapper>

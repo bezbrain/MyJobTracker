@@ -32,7 +32,7 @@ export interface AllJobsState {
     search: string;
     status: string;
     type: string;
-    sort: string;
+    // sort: string;
   };
 }
 
