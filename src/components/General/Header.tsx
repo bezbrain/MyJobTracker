@@ -3,12 +3,8 @@ import Logo from "./Logo";
 import Wrapper from "../../StylesWrappers/General/header";
 import NavIcon from "./NavIcon";
 import { getUserId, getUserSnapshot } from "../../DBSnapShot";
-import {
-  auth,
-  signOutUser,
-  trackDataInDB,
-  userInfoColRef,
-} from "../../firebaseStore";
+import { auth, signOutUser } from "../../firebaseStore";
+
 import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 

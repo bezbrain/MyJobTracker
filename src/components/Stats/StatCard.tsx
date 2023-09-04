@@ -1,15 +1,7 @@
 import Wrapper from "../../StylesWrappers/Stat/statCard";
+import { StatCardProps } from "../../model";
 
-interface Props {
-  count: number;
-  icon: any;
-  jobText: string;
-  border: string;
-  countColor: string;
-  iconColor: string;
-}
-
-const StatCard: React.FC<Props> = ({
+const StatCard: React.FC<StatCardProps> = ({
   count,
   icon,
   jobText,

@@ -8,7 +8,6 @@ const Registration = () => {
   if (toggleReg) {
     return <Login setToggleReg={setToggleReg} />;
   }
-
   return <Reg setToggleReg={setToggleReg} />;
 };
 

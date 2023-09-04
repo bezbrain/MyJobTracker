@@ -18,8 +18,7 @@ export const login = createAsyncThunk(
   "login/login",
   async (details: any, thunkAPI) => {
     try {
-      const { login_createdBy, login_email, login_password, navigate } =
-        details;
+      const { login_email, login_password, navigate } = details;
 
       const cred = await signIn(auth, login_email, login_password);
       console.log(cred.user.uid);
@@ -39,6 +38,7 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
+    // Collect input values in the login input fields
     getLoginValues: (
       state,
       { payload }: PayloadAction<{ name: keyof LoginState; value: any }>

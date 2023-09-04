@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Wrapper from "../StylesWrappers/Stat/stat";
 import StatCard from "../components/Stats/StatCard";
 import { PendingIcon, InterviewIcon, DeclineIcon } from "../assets/icons/icons";
 import { DocumentData } from "firebase/firestore";
-import { getData, getUserId, useUniqueUserData } from "../DBSnapShot";
+import { getData, useUniqueUserData } from "../DBSnapShot";
 import TitleText from "../components/General/Helmet";
 
 const Stat = () => {
@@ -18,9 +18,11 @@ const Stat = () => {
 
   // Get each stat count
   const getPending = uniqueUserData.filter((each) => each.status === "Pending");
+
   const getInterview = uniqueUserData.filter(
     (each) => each.status === "Interview"
   );
+
   const getDecline = uniqueUserData.filter(
     (each) => each.status === "Declined"
   );

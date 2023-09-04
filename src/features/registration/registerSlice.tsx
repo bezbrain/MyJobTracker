@@ -1,12 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegState } from "../../model";
-import {
-  addData,
-  auth,
-  colRef,
-  signUp,
-  userInfoColRef,
-} from "../../firebaseStore";
+import { addData, auth, signUp, userInfoColRef } from "../../firebaseStore";
 import { toast } from "react-toastify";
 import { extratingErrorMsg, setUserId, getUserId } from "../../DBSnapShot";
 
@@ -25,10 +19,8 @@ export const reg = createAsyncThunk(
   "register/reg",
   async (details: any, thunkAPI) => {
     try {
-      // console.log(details);
       const { username, email, password, setToggleReg } = details;
       const cred = await signUp(auth, email, password);
-      console.log(cred.user.uid);
       const userId = cred.user.uid;
       setUserId(userId); // Set user id to local storage
 
@@ -38,7 +30,7 @@ export const reg = createAsyncThunk(
         setToggleReg(true);
       }, 3000);
 
-      // Send user details to firestore when user registers so that this info will be used in dashboard and profile
+      // Send user details to firestore when user registers so that this info will be used in dashboard and profile page
       const userId2 = getUserId();
       await addData(userInfoColRef, {
         userId2,
@@ -59,6 +51,7 @@ const regSlice = createSlice({
   name: "reg",
   initialState,
   reducers: {
+    // Collect input values on the reg page
     getRegValues: (
       state,
       { payload }: PayloadAction<{ name: keyof RegState; value: any }>
@@ -74,9 +67,7 @@ const regSlice = createSlice({
         state.isLoading = true;
         state.isDisable = true;
       })
-      .addCase(reg.fulfilled, (state, { payload }) => {
-        const { username, email, password } = state.user;
-
+      .addCase(reg.fulfilled, (state) => {
         state.user.username = "";
         state.user.email = "";
         state.user.password = "";

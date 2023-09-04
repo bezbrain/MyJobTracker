@@ -9,14 +9,9 @@ import { useDispatch } from "react-redux";
 import { closeSmallNav } from "../../features/nav/navSlice";
 import { changeTextContent } from "../../features/allJobs/editSlice";
 import { clearInput } from "../../features/addJob/addJobSlice";
+import { SideBarProps } from "../../model";
 
-interface Props {
-  navSection: string;
-  smScreenClose: string;
-  toggleNavSection?: string;
-}
-
-const SideBar: React.FC<Props> = ({
+const SideBar: React.FC<SideBarProps> = ({
   navSection,
   smScreenClose,
   toggleNavSection,

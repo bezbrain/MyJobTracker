@@ -1,4 +1,3 @@
-import React from "react";
 import { getUserId } from "../DBSnapShot";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AddJobs, AllJobs, Profile, SharedLayout, Stat, Error } from "../pages";

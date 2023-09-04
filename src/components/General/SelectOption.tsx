@@ -1,20 +1,9 @@
 import { useSelector } from "react-redux";
 import SelectWrapper from "../../StylesWrappers/General/selectOption";
 import { RootState } from "../../store";
+import { SelectOptionProps } from "../../model";
 
-interface Props {
-  statusName: string;
-  statusValue: string;
-  selectName: string;
-  optionOne: string;
-  optionTwo: string;
-  optionThree: string;
-  optionFour?: string | null;
-  optionFive?: string | null;
-  handleSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}
-
-const SelectOption: React.FC<Props> = ({
+const SelectOption: React.FC<SelectOptionProps> = ({
   statusName,
   statusValue,
   selectName,
@@ -37,8 +26,7 @@ const SelectOption: React.FC<Props> = ({
         <option value={optionThree}>{optionThree}</option>
         {optionFour === "Internship" ||
         optionFour === "Pending" ||
-        optionFour === "Remote" ||
-        optionFour === "z-a"
+        optionFour === "Remote"
           ? isRemove && <option value={optionFour}>{optionFour}</option>
           : ""}
         {optionFive === "Internship"

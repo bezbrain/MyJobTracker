@@ -1,19 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ProfileState } from "../../model";
-import { getUserSnapshotDB } from "../../DBSnapShot";
-import {
-  DocumentData,
-  DocumentReference,
-  DocumentSnapshot,
-} from "firebase/firestore";
+import { DocumentReference } from "firebase/firestore";
 import {
   singleDoc,
   userInfoColRef,
   getSingleDoc,
   updateInfo,
-  db,
 } from "../../firebaseStore";
 import { toast } from "react-toastify";
+import { extratingErrorMsg } from "../../DBSnapShot";
 
 const initialState: ProfileState = {
   profileLoading: false,
@@ -26,12 +21,29 @@ const initialState: ProfileState = {
   },
 };
 
+// Function to get each user data from the firestore
+export const getFSData = createAsyncThunk(
+  "data/getdata",
+  async (payload: any, thunkAPI) => {
+    try {
+      const { id } = payload;
+      const singleRef = singleDoc(userInfoColRef, id);
+      const resp = await getSingleDoc(singleRef);
+      const data = resp.data();
+
+      return data;
+    } catch (error: any) {
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
+    }
+  }
+);
+
 // Function to update data in the firestore
 export const updateProfile = createAsyncThunk(
   "profile/updateProfile",
   async (userProfile: any, thunkAPI) => {
     try {
-      console.log(userProfile);
       const docRef: DocumentReference = singleDoc(
         userInfoColRef,
         userProfile.fireStoreId
@@ -40,25 +52,9 @@ export const updateProfile = createAsyncThunk(
       await updateInfo(docRef, {
         ...userProfile,
       });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-);
-
-// Function to get each user data from the firestore
-export const getFSData = createAsyncThunk(
-  "data/getdata",
-  async (payload: any) => {
-    try {
-      const { id } = payload;
-      const singleRef = singleDoc(userInfoColRef, id);
-      const resp = await getSingleDoc(singleRef);
-      const data = resp.data();
-
-      return data;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -67,6 +63,7 @@ const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
+    // Collect inputs from the profile field
     collectInputs: (
       state,
       { payload }: PayloadAction<{ name: keyof ProfileState; value: any }>
@@ -77,32 +74,33 @@ const profileSlice = createSlice({
   },
 
   extraReducers: (builder) => {
+    // Get current user profile when the page loads
     builder
-      .addCase(updateProfile.pending, (state) => {
-        console.log(state);
-      })
-      .addCase(updateProfile.fulfilled, (state) => {
-        console.log(state);
-        toast.success("Profile updated");
-      })
-      .addCase(updateProfile.rejected, (state) => {
-        console.log(state);
-      })
-
       .addCase(getFSData.pending, (state) => {
-        // console.log(state);
+        return state;
       })
       .addCase(getFSData.fulfilled, (state, { payload }: any) => {
-        // console.log(payload);
-        state.userProfile = payload;
+        state.userProfile = payload; // Set the current state to the data in firestore
       })
-      .addCase(getFSData.rejected, (state) => {
-        // console.log(state);
+      .addCase(getFSData.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+        return state;
+      });
+
+    // Update data
+    builder
+      .addCase(updateProfile.pending, (state) => {
+        return state;
+      })
+      .addCase(updateProfile.fulfilled, () => {
+        toast.success("Profile updated");
+      })
+      .addCase(updateProfile.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+        return state;
       });
   },
 });
-
-// console.log(profileSlice);
 
 export const { collectInputs } = profileSlice.actions;
 

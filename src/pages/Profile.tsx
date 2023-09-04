@@ -13,7 +13,6 @@ import {
   updateProfile,
 } from "../features/profile/profileSlice";
 import { getUserId, getUserSnapshotDB } from "../DBSnapShot";
-import { DocumentData } from "firebase/firestore";
 import Loader from "../components/General/Loader";
 import TitleText from "../components/General/Helmet";
 
@@ -23,14 +22,6 @@ const Profile = () => {
   const { userProfile } = useSelector((store: RootState) => store.profileStore);
 
   const { username, firstName, lastName, email, location } = userProfile;
-
-  // const [user, setUser] = useState({
-  //   username,
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   location,
-  // });
 
   const dispatch = useDispatch<AppDispatch>();
 

@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { BtnProps } from "../../model";
-import { useEffect } from "react";
 
 const Button: React.FC<BtnProps> = ({
   button,

@@ -25,7 +25,7 @@ const Reg = ({ setToggleReg }: RegProp) => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  // Hanlde Registeration input change
+  // Handle Registeration input change
   const handleRegChange = (e: ChangeEvent<HTMLInputElement>) => {
     let name = e.target.name as keyof RegState;
     let value = e.target.value;

@@ -25,15 +25,13 @@ const LoaderWrapper = styled.div`
   .loader {
     position: absolute;
     right: 50%;
-    /* transform: translateX(-50%); */
-    border: 4px solid #9b9898; /* Light gray */
-    border-top: 4px solid #2785c4; /* Blue */
+    border: 4px solid #9b9898;
+    border-top: 4px solid #2785c4;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    animation: loader 1s linear infinite; /* Adjust the animation duration as needed */
-    margin: 0 auto; /* Center the loader horizontally */
-    /* z-index: 20; */
+    animation: loader 1s linear infinite;
+    margin: 0 auto;
   }
   @keyframes loader {
     0% {

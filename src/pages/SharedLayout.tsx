@@ -1,20 +1,10 @@
 import Header from "../components/General/Header";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import SideBar from "../components/General/SideBar";
 import Wrapper from "../StylesWrappers/General/sharedLayout";
 import Content from "../StylesWrappers/General/Content";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
-import { getUserId } from "../DBSnapShot";
 
 const SharedLayout = () => {
-  const { isOpenSmallNav } = useSelector((store: RootState) => store.navStore);
-  // const userId = getUserId();
-
-  // if (!userId) {
-  //   return <Navigate to="/" />;
-  // }
-
   return (
     <Wrapper>
       <Header />

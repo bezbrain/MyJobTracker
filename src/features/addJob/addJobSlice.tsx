@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addData, colRef, getSingleDoc, updateInfo } from "../../firebaseStore";
+import { addData, colRef, updateInfo } from "../../firebaseStore";
 import { toast } from "react-toastify";
 import { dateFunc } from "../../date";
 import { AddJobState } from "../../model";
 import { clearFields } from "../featureUtils";
+import { extratingErrorMsg } from "../../DBSnapShot";
 
 const date: string = dateFunc(); // Function to get the current date
 
@@ -28,12 +29,11 @@ export const submitData = createAsyncThunk(
   "addJob/submitData",
   async (jobData: AddJobState["inputs"], thunkAPI) => {
     try {
-      // console.log(thunkAPI.getState());
-
       await addData(colRef, jobData);
       return jobData;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -51,8 +51,8 @@ export const updateData = createAsyncThunk(
 
       return newObj;
     } catch (error: any) {
-      // console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -61,6 +61,7 @@ const addJobSlice = createSlice({
   name: "addJob",
   initialState,
   reducers: {
+    // Collect all inputs on the add job page
     collectInput: (state, action) => {
       const { name, value } = action.payload;
       state.inputs = {
@@ -69,11 +70,11 @@ const addJobSlice = createSlice({
         [name]: value,
       };
     },
-
+    // Clear input fields when submit button is clicked
     clearInput: (state) => {
-      clearFields(state);
+      clearFields(state); // This function is in a separate file that handles clearing of input fields
     },
-
+    // Stage add job input fields when edit btn is clicked
     stageInput: (state, { payload }) => {
       state.inputs = {
         ...state.inputs,
@@ -89,7 +90,7 @@ const addJobSlice = createSlice({
         state.jobLoading = true;
         state.jobDisable = true;
       })
-      .addCase(submitData.fulfilled, (state, { payload }) => {
+      .addCase(submitData.fulfilled, (state) => {
         clearFields(state);
         toast.success("Job Added Successfully");
         state.jobLoading = false;

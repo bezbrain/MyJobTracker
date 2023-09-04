@@ -30,20 +30,21 @@ const editSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(editJob.pending, (state, { payload }) => {
-        console.log(state);
+      .addCase(editJob.pending, (state) => {
+        return state;
       })
       .addCase(editJob.fulfilled, (state, { payload }) => {
         state.btnContent = "Update";
         state.stagedJob = payload;
       })
-      .addCase(editJob.rejected, (state, {payload}) => {
+      .addCase(editJob.rejected, (state, { payload }) => {
         if (typeof payload === "string") {
           toast.error(payload); // Assuming payload is now a string error message
         } else {
           // If payload is not a string, convert the error message and then show it
           toast.error(JSON.stringify(payload));
         }
+        return state;
       });
   },
 });

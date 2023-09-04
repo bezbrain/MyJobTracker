@@ -84,6 +84,18 @@ export interface InputProps {
   noEdit?: boolean;
 }
 
+export interface SelectOptionProps {
+  statusName: string;
+  statusValue: string;
+  selectName: string;
+  optionOne: string;
+  optionTwo: string;
+  optionThree: string;
+  optionFour?: string | null;
+  optionFive?: string | null;
+  handleSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
 export interface BtnProps {
   button: string;
   handleSubmit: (e: React.FormEvent) => void;
@@ -107,4 +119,19 @@ export interface SingleJobCardProp {
   date: string;
   jobType: string;
   status: string;
+}
+
+export interface SideBarProps {
+  navSection: string;
+  smScreenClose: string;
+  toggleNavSection?: string;
+}
+
+export interface StatCardProps {
+  count: number;
+  icon: any;
+  jobText: string;
+  border: string;
+  countColor: string;
+  iconColor: string;
 }

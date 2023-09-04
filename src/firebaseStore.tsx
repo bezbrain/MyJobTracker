@@ -11,7 +11,6 @@ import {
   updateDoc,
   query,
   where,
-  // orderBy
 } from "firebase/firestore";
 
 import {
@@ -19,7 +18,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  onAuthStateChanged,
 } from "firebase/auth";
 
 const apiKey = process.env.REACT_APP_API_KEY;
@@ -58,9 +56,6 @@ export const certainData = query;
 
 export const whereTo = where;
 
-// export const orderByTo = orderBy
-
-// Authentication
 export const auth = getAuth();
 export const signUp = createUserWithEmailAndPassword;
 export const signIn = signInWithEmailAndPassword;

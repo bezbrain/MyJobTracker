@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
+import { DocumentData } from "firebase/firestore";
 import { trackDataInDB, colRef, userInfoColRef } from "./firebaseStore";
 
 // Get jobs from database
@@ -14,7 +14,6 @@ export const getData = (
         id: each.id,
       };
     });
-    // console.log(jobs);
     setDBState(jobs);
     setLoadingState?.(false); // Using optional chaining "?." to avoid error when the second parameter is not passed in the Stat component
   });
@@ -31,7 +30,6 @@ export const getUserSnapshot = (
       const userId = each.data().userId2;
 
       if (localStorageId === userId) {
-        // console.log(each.data());
         setValue?.(each.data().username);
       }
     });
@@ -47,10 +45,8 @@ export const getUserSnapshotDB = (
   trackDataInDB(userInfoColRef, (snapshot) => {
     const FSData = snapshot.docs.map((each) => {
       const userId = each.data().userId2;
-      // console.log(userId);
 
       if (localStorageId === userId) {
-        // console.log(each.id);
         const id = each.id;
         setValue({ ...each.data(), id });
       }
