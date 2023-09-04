@@ -21,7 +21,6 @@ export const login = createAsyncThunk(
       const { login_email, login_password, navigate } = details;
 
       const cred = await signIn(auth, login_email, login_password);
-      console.log(cred.user.uid);
       const userId = cred.user.uid;
       setUserId(userId); // Function to set data to the local storage
       setTimeout(() => {
