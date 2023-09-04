@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { EditState } from "../../model";
+import { extratingErrorMsg } from "../../DBSnapShot";
+import { toast } from "react-toastify";
 
 const initialState: EditState = {
   btnContent: "Submit",
@@ -10,10 +12,10 @@ export const editJob = createAsyncThunk(
   "allJobs/editJob",
   async (getJob: any, thunkAPI) => {
     try {
-      console.log(getJob);
       return await getJob;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      const errorMsg = error.message;
+      return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
   }
 );
@@ -32,17 +34,19 @@ const editSlice = createSlice({
         console.log(state);
       })
       .addCase(editJob.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.btnContent = "Update";
         state.stagedJob = payload;
       })
-      .addCase(editJob.rejected, (state) => {
-        console.log(state);
+      .addCase(editJob.rejected, (state, {payload}) => {
+        if (typeof payload === "string") {
+          toast.error(payload); // Assuming payload is now a string error message
+        } else {
+          // If payload is not a string, convert the error message and then show it
+          toast.error(JSON.stringify(payload));
+        }
       });
   },
 });
-
-// console.log(editSlice);
 
 export const { changeTextContent } = editSlice.actions;
 

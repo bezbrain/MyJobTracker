@@ -16,7 +16,6 @@ const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]); // To hold all jobs data
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // const [filteredData, setFilteredData] = useState<DocumentData[]>([]);
 
   useEffect(() => {
     getData(setDataInDB, setIsLoading);
@@ -25,29 +24,23 @@ const ShowAllJobs = () => {
   // Call the function to handle data unique to each user and display them
   let uniqueUserData = useUniqueUserData(dataInDB);
 
-  // Apply filters
-  // let filteredData = [...uniqueUserData];
-
-  function searchFunc() {
+  // Handle filter jobs by searching
+  const searchFunc = () => {
     if (!search) {
       // If the search input is empty, return the original data
       return uniqueUserData;
     }
-    // if (search) {
     uniqueUserData = uniqueUserData.filter(
       (each) =>
         each.position.toLowerCase().includes(search.toLowerCase()) ||
         each.company.toLowerCase().includes(search.toLowerCase())
     );
-    // console.log(uniqueUserData);
-
-    // }
-  }
+  };
   searchFunc();
 
-  // uniqueUserData = searchFilter(uniqueUserData, search);
 
-  function statusFunc() {
+  // Handle filter jobs by sorting
+  const statusFunc = () => {
     if (!status || status === "All") {
       // If the search input is empty, return the original data
       return uniqueUserData;
@@ -55,12 +48,11 @@ const ShowAllJobs = () => {
     return (uniqueUserData = uniqueUserData.filter(
       (each) => each.status === status
     ));
-  }
+  };
   statusFunc();
 
-  // uniqueUserData = statusFilter(uniqueUserData, status);
-
-  function typeFunc() {
+// Handle filter jobs by type
+  const typeFunc = () => {
     if (!type || type === "All") {
       // If the search input is empty, return the original data
       return uniqueUserData;
@@ -68,10 +60,8 @@ const ShowAllJobs = () => {
     return (uniqueUserData = uniqueUserData.filter(
       (each) => each.jobType === type
     ));
-  }
+  };
   typeFunc();
-
-  console.log(uniqueUserData);
 
   if (isLoading) {
     return <Loader loaderStyle="varyingCSSAllJobs" />;

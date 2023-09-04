@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AllJobsState } from "../../model";
+import { toast } from "react-toastify";
 
 const initialState: AllJobsState = {
   isLoading: false,
@@ -7,7 +8,6 @@ const initialState: AllJobsState = {
     search: "",
     status: "",
     type: "",
-    // sort: "",
   },
 };
 
@@ -19,9 +19,16 @@ const allJobsSlice = createSlice({
       const { name, value } = payload;
       state.allJobsInputs = { ...state.allJobsInputs, [name]: value };
     },
+
+    clearInputs: (state)=> {
+      state.allJobsInputs.search = ""
+      state.allJobsInputs.status = ""
+      state.allJobsInputs.type = ""
+      toast.success("All fields cleared")
+    }
   },
 });
 
 export default allJobsSlice.reducer;
 
-export const { collectInputs } = allJobsSlice.actions;
+export const { collectInputs, clearInputs } = allJobsSlice.actions;

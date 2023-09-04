@@ -14,18 +14,9 @@ import { AppDispatch } from "../../store";
 import { editJob } from "../../features/allJobs/editSlice";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { stageInput } from "../../features/addJob/addJobSlice";
+import {SingleJobCardProp} from "../../model"
 
-interface Props {
-  id: string;
-  position: string;
-  company: string;
-  joblocation: string;
-  date: string;
-  jobType: string;
-  status: string;
-}
-
-const SingleJobCard: React.FC<Props> = ({
+const SingleJobCard: React.FC<SingleJobCardProp> = ({
   id,
   position,
   company,
@@ -60,8 +51,8 @@ const SingleJobCard: React.FC<Props> = ({
       await dispatch(editJob({ docRef, ...docSnap.data() }));
       await dispatch(stageInput({ ...docSnap.data(), index }));
       navigate("/dashboard/add-job");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      return error.message
     }
   };
 

@@ -32,7 +32,6 @@ export interface AllJobsState {
     search: string;
     status: string;
     type: string;
-    // sort: string;
   };
 }
 
@@ -83,7 +82,6 @@ export interface InputProps {
   inputValue: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   noEdit?: boolean;
-  handleKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export interface BtnProps {
@@ -99,4 +97,14 @@ export interface PasswordIconProps {
   password: string;
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
   showPassword: boolean;
+}
+
+export interface SingleJobCardProp {
+  id: string;
+  position: string;
+  company: string;
+  joblocation: string;
+  date: string;
+  jobType: string;
+  status: string;
 }

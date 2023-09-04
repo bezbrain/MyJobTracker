@@ -29,8 +29,6 @@ export const login = createAsyncThunk(
         navigate("/dashboard"); // Navigated to dashboard after 3secs
       }, 3000);
     } catch (error: any) {
-      console.log(error.message);
-
       const errorMsg = error.message;
       return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
     }
