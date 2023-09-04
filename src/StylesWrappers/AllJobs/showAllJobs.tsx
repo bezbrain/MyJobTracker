@@ -94,7 +94,6 @@ const AllJobsWrapper = styled.main`
     margin-top: 15px;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
   }
   .type__and__status p {
     font-size: 20px;

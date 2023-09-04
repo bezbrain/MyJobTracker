@@ -7,7 +7,6 @@ const Wrapper = styled.main`
   margin: var(--page-side-space);
 
   .logo-and-icon {
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +25,6 @@ const Wrapper = styled.main`
   }
 
   .header-text {
-    /* border: 2px solid green; */
     width: 60%;
     text-align: center;
     font-size: var(--header);
@@ -45,7 +43,6 @@ const Wrapper = styled.main`
   }
 
   .profile {
-    /* border: 2px solid red; */
     position: relative;
     width: fit-content;
   }

@@ -4,7 +4,6 @@ const Wrapper = styled.main`
   width: 100%;
 
   section {
-    /* border: 2px solid red; */
     border-radius: 5px;
     background-color: #fff;
     padding: 40px 20px;

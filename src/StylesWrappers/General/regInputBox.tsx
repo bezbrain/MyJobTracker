@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const RegInputWrapper = styled.form`
-  /* border: 2px solid red; */
   width: 400px;
   text-align: center;
   padding: 5vh 2rem;

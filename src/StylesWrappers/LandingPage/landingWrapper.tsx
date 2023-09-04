@@ -1,20 +1,16 @@
 import styled from "styled-components";
 
 const LandingWrapper = styled.main`
-  /* border: 2px solid yellow; */
   max-width: 1300px;
   margin-inline: auto;
   padding: 2rem 4vw;
-  /* height: 90vh; */
 
   > summary {
-    /* border: 2px solid green; */
     min-height: 80vh;
     display: flex;
   }
 
   .logo__con {
-    /* border: 2px solid red; */
     display: flex;
     align-items: center;
   }
@@ -51,12 +47,10 @@ const LandingWrapper = styled.main`
   }
 
   .landing__img {
-    /* border: 2px solid red; */
     width: 45%;
     height: 80%;
   }
   .landing__img img {
-    /* border: 2px solid red; */
     width: 100%;
     height: 100%;
   }
@@ -69,9 +63,6 @@ const LandingWrapper = styled.main`
     }
   }
   @media screen and (max-width: 600px) {
-    // .add__log0__font {
-    //   font-size: 6.5vw;
-    // }
     .landing__content {
       width: 95%;
     }

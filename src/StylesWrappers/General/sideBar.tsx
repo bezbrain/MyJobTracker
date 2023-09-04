@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.main`
   .nav-section {
-    /* border: 2px solid red; */
     width: 300px;
     margin-top: 2rem;
     transition: ease 200ms all;
@@ -23,7 +22,6 @@ const Wrapper = styled.main`
 
   @media screen and (max-width: 1100px) {
     .nav-section {
-      /* display: none; */
       margin-left: -300px;
     }
     .small-nav-section {
@@ -70,12 +68,10 @@ const Wrapper = styled.main`
   }
 
   nav ul li {
-    /* border: 2px solid red; */
     list-style-type: none;
     margin-top: 10px;
     display: flex;
     cursor: pointer;
-    /* align-items: center; */
     padding: 15px 15px 15px 4vw;
     transition: ease 0.5s all;
   }
@@ -93,7 +89,6 @@ const Wrapper = styled.main`
     margin-left: 20px;
   }
 
-  /* Add active page */
   .add-color {
     color: var(--dark);
   }
