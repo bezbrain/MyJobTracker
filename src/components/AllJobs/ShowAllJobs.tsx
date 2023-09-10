@@ -16,7 +16,6 @@ const ShowAllJobs = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]); // To hold all jobs data
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-
   useEffect(() => {
     getData(setDataInDB, setIsLoading);
   }, []);
@@ -38,6 +37,7 @@ const ShowAllJobs = () => {
   };
   searchFunc();
 
+  // searchFilter(uniqueUserData, search);
 
   // Handle filter jobs by sorting
   const statusFunc = () => {
@@ -51,7 +51,7 @@ const ShowAllJobs = () => {
   };
   statusFunc();
 
-// Handle filter jobs by type
+  // Handle filter jobs by type
   const typeFunc = () => {
     if (!type || type === "All") {
       // If the search input is empty, return the original data

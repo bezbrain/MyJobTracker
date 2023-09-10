@@ -33,13 +33,9 @@ export const statusFilter = (
 
 /* =========================== */
 // Function to handle search by type
-export const typeFilter = (
-  uniqueUserData: any,
-  searchInput: string
-) => {
+export const typeFilter = (uniqueUserData: any, searchInput: string) => {
   if (!searchInput || searchInput === "All") {
     return uniqueUserData;
   }
   return uniqueUserData.filter((each: any) => each.jobType === searchInput);
 };
-
