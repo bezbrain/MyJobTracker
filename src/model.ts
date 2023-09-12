@@ -137,8 +137,11 @@ export interface StatCardProps {
 }
 
 export interface ContactUsProps {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+  loading: boolean;
+  users: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
 }
