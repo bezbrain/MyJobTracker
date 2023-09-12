@@ -1,6 +1,7 @@
 import {
   AddJobsIcon,
   AllJobIcon,
+  ContactUsIcon,
   ProfileIcon,
   StatIcon,
 } from "./assets/icons/icons";
@@ -29,5 +30,11 @@ export const sideBarData = [
     icon: <ProfileIcon />,
     navName: "Profile",
     link: "/profile",
+  },
+  {
+    id: 5,
+    icon: <ContactUsIcon />,
+    navName: "Contact Us",
+    link: "/contact",
   },
 ];

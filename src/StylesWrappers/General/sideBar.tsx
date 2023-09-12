@@ -79,6 +79,11 @@ const Wrapper = styled.main`
     background-color: var(--verylight);
     padding-left: 30px;
   }
+  @media screen and (max-width: 500px) {
+    nav ul li {
+      padding: 10px 15px 10px 4vw;
+    }
+  }
 
   nav ul li p:first-child {
     width: 30px;

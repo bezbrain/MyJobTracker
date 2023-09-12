@@ -1,6 +1,14 @@
 import { getUserId } from "../DBSnapShot";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { AddJobs, AllJobs, Profile, SharedLayout, Stat, Error } from "../pages";
+import {
+  AddJobs,
+  AllJobs,
+  Profile,
+  SharedLayout,
+  Stat,
+  Error,
+  ContactUs,
+} from "../pages";
 
 const ProtectedRoute = () => {
   const userId = getUserId();
@@ -15,6 +23,7 @@ const ProtectedRoute = () => {
         <Route path="all-jobs" element={<AllJobs />} />
         <Route path="add-job" element={<AddJobs />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="contact" element={<ContactUs />} />
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

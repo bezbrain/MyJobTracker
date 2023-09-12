@@ -7,6 +7,7 @@ import Error from "./Error";
 import LandingPage from "./LandingPage";
 import Registration from "./Registration";
 import ProtectedRoute from "./ProtectedRoute";
+import ContactUs from "./ContactUs";
 
 export {
   AddJobs,
@@ -18,4 +19,5 @@ export {
   LandingPage,
   Registration,
   ProtectedRoute,
+  ContactUs,
 };

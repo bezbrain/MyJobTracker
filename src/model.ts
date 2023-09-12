@@ -135,3 +135,10 @@ export interface StatCardProps {
   countColor: string;
   iconColor: string;
 }
+
+export interface ContactUsProps {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
