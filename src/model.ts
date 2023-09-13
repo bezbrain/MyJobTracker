@@ -137,7 +137,8 @@ export interface StatCardProps {
 }
 
 export interface ContactUsProps {
-  loading: boolean;
+  isLoading: boolean;
+  isDisable: boolean;
   users: {
     name: string;
     email: string;

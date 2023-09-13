@@ -1,8 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ContactUsProps } from "../../model";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState: ContactUsProps = {
-  loading: false,
+  isLoading: false,
+  isDisable: false,
   users: {
     name: "",
     email: "",
@@ -10,6 +13,19 @@ const initialState: ContactUsProps = {
     message: "",
   },
 };
+
+export const contactForm = createAsyncThunk(
+  "feature/contactForm",
+  async (users: ContactUsProps["users"], thunkAPI) => {
+    try {
+      // setBtnContent("Sending...");
+      await axios.post("http://localhost:5000/contactMe", users);
+      // dispatch(clearFields());
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 const contactSlice = createSlice({
   name: "contact",
@@ -19,16 +35,31 @@ const contactSlice = createSlice({
       const { name, value } = payload;
       state.users = { ...state.users, [name]: value };
     },
+  },
 
-    clearFields: (state) => {
-      state.users.name = "";
-      state.users.email = "";
-      state.users.subject = "";
-      state.users.message = "";
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(contactForm.pending, (state) => {
+        state.isLoading = true;
+        state.isDisable = true;
+      })
+      .addCase(contactForm.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isDisable = false;
+        toast.success("Message Sent");
+        state.users.name = "";
+        state.users.email = "";
+        state.users.subject = "";
+        state.users.message = "";
+      })
+      .addCase(contactForm.rejected, (state, { payload }: any) => {
+        toast.error(payload);
+        state.isLoading = false;
+        state.isDisable = false;
+      });
   },
 });
 
-export const { collectInputs, clearFields } = contactSlice.actions;
+export const { collectInputs } = contactSlice.actions;
 
 export default contactSlice.reducer;

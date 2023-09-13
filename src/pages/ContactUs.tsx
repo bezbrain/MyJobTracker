@@ -1,15 +1,18 @@
-import { ChangeEvent } from "react";
-import axios from "axios";
+import { ChangeEvent, useState } from "react";
 import TitleText from "../components/General/Helmet";
 import InputBox from "../components/General/InputBox";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { clearFields, collectInputs } from "../features/contact/contactSlice";
+import { collectInputs, contactForm } from "../features/contact/contactSlice";
 import { toast } from "react-toastify";
 import ContactWrapper from "../StylesWrappers/contactUs/contactUs";
 
 const ContactUs = () => {
-  const { users } = useSelector((store: RootState) => store.contactStore);
+  const { isLoading, isDisable, users } = useSelector(
+    (store: RootState) => store.contactStore
+  );
+
+  const [btnContent, setBtnContent] = useState<string>("Send Message");
 
   const { name, email, subject, message } = users;
 
@@ -29,13 +32,7 @@ const ContactUs = () => {
     if (!name || !email || !subject || !message) {
       toast.error("No field should be empty");
     } else {
-      try {
-        await axios.post("http://localhost:5000/contactMe", users);
-        toast.success("Message Sent");
-        dispatch(clearFields());
-      } catch (error: any) {
-        toast.error(error.message);
-      }
+      dispatch(contactForm(users));
     }
   };
 
@@ -81,7 +78,9 @@ const ContactUs = () => {
           onChange={handleChange}
         ></textarea>
       </div>
-      <button onClick={handleSubmit}>Send Message</button>
+      <button onClick={handleSubmit} disabled={isDisable}>
+        {isLoading ? "Sending..." : "Send Message"}
+      </button>
     </ContactWrapper>
   );
 };
