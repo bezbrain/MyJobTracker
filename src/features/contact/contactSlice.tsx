@@ -18,10 +18,11 @@ export const contactForm = createAsyncThunk(
   "feature/contactForm",
   async (users: ContactUsProps["users"], thunkAPI) => {
     try {
-      await axios.post(
+      const data = await axios.post(
         "https://jobtrackier-contact-me.onrender.com/contactMe",
         users
       );
+      return data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -44,10 +45,13 @@ const contactSlice = createSlice({
         state.isLoading = true;
         state.isDisable = true;
       })
-      .addCase(contactForm.fulfilled, (state) => {
+      .addCase(contactForm.fulfilled, (state, { payload }) => {
+        const serverMsg = payload.data.message;
+        const toCapitalize =
+          serverMsg.charAt(0).toUpperCase() + serverMsg.slice(1);
+        toast.success(toCapitalize);
         state.isLoading = false;
         state.isDisable = false;
-        toast.success("Message Sent");
         state.users.name = "";
         state.users.email = "";
         state.users.subject = "";
