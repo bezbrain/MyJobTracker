@@ -7,30 +7,50 @@ const ContactWrapper = styled.main`
   border-radius: 5px;
   text-align: center;
 
+  > p:first-child {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  > p:nth-child(2) {
+    font-size: 18px;
+  }
+
   div {
     text-align: left;
     margin-top: 20px;
   }
 
-  div p,
+  div > p,
   .message-con label {
     font-size: 20px;
+    font-weight: 600;
   }
 
   @media screen and (max-width: 500px) {
+    > p:first-child {
+      font-size: 25px;
+    }
+
+    > p:nth-child(2) {
+      font-size: 16px;
+    }
+
     div {
       margin-top: 10px;
     }
 
-    div p,
+    div > p,
     .message-con label {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 
   .name__email__con {
     display: flex;
     justify-content: space-between;
+    margin-top: 5px;
   }
 
   .name__email__con div {
@@ -74,6 +94,9 @@ const ContactWrapper = styled.main`
     margin-top: 20px;
     border-radius: 20px;
     cursor: pointer;
+  }
+  button:hover {
+    opacity: 0.8;
   }
   button:active {
     transform: scale(0.8);
