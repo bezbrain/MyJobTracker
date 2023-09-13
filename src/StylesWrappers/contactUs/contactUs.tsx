@@ -39,16 +39,16 @@ const ContactWrapper = styled.main`
   div > p,
   .message-con label {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   @media screen and (max-width: 500px) {
     > p:first-child {
-      font-size: 25px;
+      font-size: 20px;
     }
 
     > p:nth-child(2) {
-      font-size: 16px;
+      font-size: 15px;
     }
 
     div {
