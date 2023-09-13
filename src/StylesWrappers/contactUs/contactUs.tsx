@@ -57,7 +57,7 @@ const ContactWrapper = styled.main`
 
     div > p,
     .message-con label {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
@@ -86,6 +86,12 @@ const ContactWrapper = styled.main`
     font-size: 18px;
     margin-top: 5px;
     border-radius: 5px;
+  }
+  @media screen and (max-width: 500px) {
+    input,
+    textarea {
+      font-size: 15px;
+    }
   }
 
   input {
