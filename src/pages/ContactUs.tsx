@@ -45,7 +45,7 @@ const ContactUs = () => {
       <p>What would you like to tell us?</p>
       <p>
         You would like to make a complaint, suggest additional features or tell
-        us how much we have done? Then drop all comments below.👇
+        us how much we have done? Then drop all comments below. <span>👇</span>
       </p>
       <div className="name__email__con">
         <InputBox

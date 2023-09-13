@@ -16,6 +16,20 @@ const ContactWrapper = styled.main`
   > p:nth-child(2) {
     font-size: 18px;
   }
+  > p:nth-child(2) span {
+    position: absolute;
+    font-size: 20px;
+    animation: emoji ease-in-out 0.5s infinite;
+  }
+
+  @keyframes emoji {
+    from {
+      font-size: 20px;
+    }
+    to {
+      font-size: 25px;
+    }
+  }
 
   div {
     text-align: left;
