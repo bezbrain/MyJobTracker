@@ -19,7 +19,10 @@ export const contactForm = createAsyncThunk(
   async (users: ContactUsProps["users"], thunkAPI) => {
     try {
       // setBtnContent("Sending...");
-      await axios.post("http://localhost:5000/contactMe", users);
+      await axios.post(
+        "https://jobtrackier-contact-me.onrender.com/contactMe",
+        users
+      );
       // dispatch(clearFields());
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);
