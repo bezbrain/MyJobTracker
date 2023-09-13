@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 import TitleText from "../components/General/Helmet";
 import InputBox from "../components/General/InputBox";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,6 @@ const ContactUs = () => {
   const { isLoading, isDisable, users } = useSelector(
     (store: RootState) => store.contactStore
   );
-
-  const [btnContent, setBtnContent] = useState<string>("Send Message");
 
   const { name, email, subject, message } = users;
 
@@ -46,14 +44,14 @@ const ContactUs = () => {
       </p>
       <div className="name__email__con">
         <InputBox
-          jobName="Your Name"
+          jobName="Name"
           typeName="text"
           inputName="name"
           inputValue={name}
           handleChange={handleChange}
         />
         <InputBox
-          jobName="Your Email"
+          jobName="Email"
           typeName="email"
           inputName="email"
           inputValue={email}
