@@ -7,4 +7,4 @@ export const errorImg: string =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXlPV1nT9N3vrseo-nSxwwV-GjqHkCkSHe8A&usqp=CAU";
 
 // Logo image
-export const logo: string = "https://i.imgur.com/dyl4BHP.png";
+export const logo: string = "https://i.imgur.com/cNXt3eq.png";
