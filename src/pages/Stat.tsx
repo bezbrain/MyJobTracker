@@ -5,6 +5,7 @@ import { PendingIcon, InterviewIcon, DeclineIcon } from "../assets/icons/icons";
 import { DocumentData } from "firebase/firestore";
 import { getData, useUniqueUserData } from "../DBSnapShot";
 import TitleText from "../components/General/Helmet";
+import StatCardSkeleton from "../components/Skeletons/StatCardSkeleton";
 
 const Stat = () => {
   const [dataInDB, setDataInDB] = useState<DocumentData[]>([]);
@@ -14,7 +15,7 @@ const Stat = () => {
   }, []);
 
   // Call the function to handle dispaly of stat count related to certain user
-  const uniqueUserData = useUniqueUserData(dataInDB);
+  const uniqueUserData: DocumentData[] = useUniqueUserData(dataInDB);
 
   // Get each stat count
   const getPending = uniqueUserData.filter((each) => each.status === "Pending");
@@ -26,6 +27,10 @@ const Stat = () => {
   const getDecline = uniqueUserData.filter(
     (each) => each.status === "Declined"
   );
+
+  if (dataInDB.length === 0) {
+    return <StatCardSkeleton />;
+  }
 
   return (
     <Wrapper>

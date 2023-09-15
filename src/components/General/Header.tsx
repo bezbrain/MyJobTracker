@@ -4,6 +4,8 @@ import Wrapper from "../../StylesWrappers/General/header";
 import NavIcon from "./NavIcon";
 import { getUserId, getUserSnapshot } from "../../DBSnapShot";
 import { auth, signOutUser } from "../../firebaseStore";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { toast } from "react-toastify";
 import { NavigateFunction, useNavigate } from "react-router-dom";
@@ -40,10 +42,14 @@ const Header = () => {
       <div className="header-text removeAtMobile">
         <p>Dashboard</p>
       </div>
-      <div className="profile">
-        <h3 onClick={() => setIsLogout(!isLogout)}>{userValue}</h3>
-        {isLogout && <button onClick={handleLogout}>Logout</button>}
-      </div>
+      {userValue ? (
+        <div className="profile">
+          <h3 onClick={() => setIsLogout(!isLogout)}>{userValue}</h3>
+          {isLogout && <button onClick={handleLogout}>Logout</button>}
+        </div>
+      ) : (
+        <Skeleton width={90} height={35} />
+      )}
     </Wrapper>
   );
 };

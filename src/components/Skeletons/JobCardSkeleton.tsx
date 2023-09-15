@@ -2,10 +2,7 @@ import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AllJobsWrapper from "../../StylesWrappers/AllJobs/showAllJobs";
-
-interface JobCardSkeletonProp {
-  cards: number;
-}
+import { JobCardSkeletonProp } from "../../model";
 
 const JobCardSkeleton = ({ cards }: JobCardSkeletonProp) => {
   return (
@@ -20,7 +17,7 @@ const JobCardSkeleton = ({ cards }: JobCardSkeletonProp) => {
                 <Skeleton width={50} height={50} />
                 <div className="job__and__company">
                   <p>
-                    <Skeleton width={150} height={20} />
+                    <Skeleton width={100} height={20} />
                   </p>
                   <p>
                     <Skeleton width={100} height={20} />
@@ -45,7 +42,7 @@ const JobCardSkeleton = ({ cards }: JobCardSkeletonProp) => {
                     height={30}
                     style={{ marginRight: "10px" }}
                   />
-                  <Skeleton width={150} height={30} />
+                  <Skeleton width={100} height={30} />
                 </CardWrapper>
               </div>
               <div className="type__and__status">
@@ -58,7 +55,7 @@ const JobCardSkeleton = ({ cards }: JobCardSkeletonProp) => {
                   <Skeleton width={100} height={30} />
                 </CardWrapper>
                 <p>
-                  <Skeleton width={150} height={30} />
+                  <Skeleton width={100} height={30} />
                 </p>
               </div>
               <CardWrapper>

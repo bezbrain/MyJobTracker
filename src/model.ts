@@ -151,3 +151,11 @@ export interface ContactUsProps {
 export interface InputSkeletonProps {
   inputSkel: number;
 }
+
+export interface JobCardSkeletonProp {
+  cards: number;
+}
+
+// export interface StatCardSkeletonProp {
+//   cards: number;
+// }
