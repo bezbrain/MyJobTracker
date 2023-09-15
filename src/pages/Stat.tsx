@@ -28,7 +28,7 @@ const Stat = () => {
     (each) => each.status === "Declined"
   );
 
-  if (dataInDB.length === 0) {
+  if (dataInDB.length !== 0) {
     return <StatCardSkeleton />;
   }
 

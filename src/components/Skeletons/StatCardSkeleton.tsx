@@ -10,28 +10,28 @@ const StatCardSkeleton = () => {
       <Wrapper>
         <section>
           <StatWrapper>
-            <Skeleton width={50} height={50} />
-            <Skeleton width={50} height={50} />
+            <Skeleton width={50} height={40} />
+            <Skeleton width={50} height={40} />
           </StatWrapper>
-          <Skeleton width={200} height={30} style={{ marginTop: "50px" }} />
+          <Skeleton width={200} height={25} style={{ marginTop: "50px" }} />
         </section>
       </Wrapper>
       <Wrapper>
         <section>
           <StatWrapper>
-            <Skeleton width={50} height={50} />
-            <Skeleton width={50} height={50} />
+            <Skeleton width={50} height={40} />
+            <Skeleton width={50} height={40} />
           </StatWrapper>
-          <Skeleton width={200} height={30} style={{ marginTop: "50px" }} />
+          <Skeleton width={200} height={25} style={{ marginTop: "50px" }} />
         </section>
       </Wrapper>
       <Wrapper>
         <section>
           <StatWrapper>
-            <Skeleton width={50} height={50} />
-            <Skeleton width={50} height={50} />
+            <Skeleton width={50} height={40} />
+            <Skeleton width={50} height={40} />
           </StatWrapper>
-          <Skeleton width={200} height={30} style={{ marginTop: "50px" }} />
+          <Skeleton width={200} height={25} style={{ marginTop: "50px" }} />
         </section>
       </Wrapper>
     </StatPageWrapper>
