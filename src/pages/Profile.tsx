@@ -15,6 +15,9 @@ import {
 import { getUserId, getUserSnapshotDB } from "../DBSnapShot";
 import Loader from "../components/General/Loader";
 import TitleText from "../components/General/Helmet";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import InputSkeleton from "../components/Skeletons/InputSkeleton";
 
 const Profile = () => {
   const [getProfile, setGetProfile] = useState<any>({});
@@ -53,7 +56,8 @@ const Profile = () => {
   }, [localStorageId, getProfile.id]);
 
   if (Object.keys(getProfile).length === 0) {
-    return <Loader loaderStyle="varyingCSSProfile" />;
+    // return <Loader loaderStyle="varyingCSSProfile" />;
+    return <InputSkeleton />;
   }
 
   return (
@@ -61,14 +65,16 @@ const Profile = () => {
       <TitleText title="Profile" />
       <p>Profile</p>
       <InputWrapper>
-        <InputBox
-          jobName="Username"
-          typeName="text"
-          inputName="username"
-          inputValue={username}
-          handleChange={handleChange}
-          noEdit={true}
-        />
+        {(
+          <InputBox
+            jobName="Username"
+            typeName="text"
+            inputName="username"
+            inputValue={username}
+            handleChange={handleChange}
+            noEdit={true}
+          />
+        ) || <Skeleton />}
         <InputBox
           jobName="First Name"
           typeName="text"
