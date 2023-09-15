@@ -7,6 +7,7 @@ import { searchFilter, statusFilter, typeFilter } from "../../utils/searchJob";
 import Loader from "../General/Loader";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import JobCardSkeleton from "../Skeletons/JobCardSkeleton";
 
 const ShowAllJobs = () => {
   const { search, status, type } = useSelector(
@@ -64,7 +65,8 @@ const ShowAllJobs = () => {
   typeFunc();
 
   if (isLoading) {
-    return <Loader loaderStyle="varyingCSSAllJobs" />;
+    // return <Loader loaderStyle="varyingCSSAllJobs" />;
+    return <JobCardSkeleton cards={4} />;
   }
 
   if (uniqueUserData.length === 0) {

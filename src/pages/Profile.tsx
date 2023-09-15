@@ -57,7 +57,7 @@ const Profile = () => {
 
   if (Object.keys(getProfile).length === 0) {
     // return <Loader loaderStyle="varyingCSSProfile" />;
-    return <InputSkeleton />;
+    return <InputSkeleton inputSkel={5} />;
   }
 
   return (

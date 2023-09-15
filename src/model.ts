@@ -146,3 +146,8 @@ export interface ContactUsProps {
     message: string;
   };
 }
+
+// Skeleton types
+export interface InputSkeletonProps {
+  inputSkel: number;
+}

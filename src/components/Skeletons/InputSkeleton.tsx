@@ -1,15 +1,15 @@
-import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import AddJobAllJobsProfile from "../../StylesWrappers/General/AddJobAllJobsProfile";
 import InputWrapper from "../../StylesWrappers/General/inputBox";
+import { InputSkeletonProps } from "../../model";
 
-const InputSkeleton = () => {
+const InputSkeleton = ({ inputSkel }: InputSkeletonProps) => {
   return (
     <AddJobAllJobsProfile>
       <Skeleton width={150} height={45} style={{ marginBottom: "20px" }} />
       <InputWrapper>
-        {Array(5)
+        {Array(inputSkel)
           .fill(0)
           .map((each, i) => (
             <div className="name__and__input" key={i}>
