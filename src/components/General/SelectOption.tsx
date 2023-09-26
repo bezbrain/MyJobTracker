@@ -20,7 +20,7 @@ const SelectOption: React.FC<SelectOptionProps> = ({
     <SelectWrapper>
       <p>{selectName}</p>
       <select name={statusName} value={statusValue} onChange={handleSelect}>
-        <option value=""></option>
+        <option value="">_Make a selection_</option>
         <option value={optionOne}>{optionOne}</option>
         <option value={optionTwo}>{optionTwo}</option>
         <option value={optionThree}>{optionThree}</option>

@@ -17,6 +17,7 @@ const SelectWrapper = styled.section`
     border-radius: 5px;
     padding-inline: 10px;
     font-size: 18px;
+    cursor: pointer;
   }
 `;
 
