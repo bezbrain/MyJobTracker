@@ -27,9 +27,7 @@ const Header = () => {
     await signOutUser(auth);
     toast.success("You are logged out");
     setIsLogout(false);
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+    navigate("/");
     localStorage.removeItem("userId");
   };
 

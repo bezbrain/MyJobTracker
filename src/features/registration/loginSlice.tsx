@@ -23,9 +23,7 @@ export const login = createAsyncThunk(
       const cred = await signIn(auth, login_email, login_password);
       const userId = cred.user.uid;
       setUserId(userId); // Function to set data to the local storage
-      setTimeout(() => {
-        navigate("/dashboard"); // Navigated to dashboard after 3secs
-      }, 3000);
+      navigate("/dashboard"); // Navigated to dashboard
     } catch (error: any) {
       const errorMsg = error.message;
       return thunkAPI.rejectWithValue(extratingErrorMsg(errorMsg));
