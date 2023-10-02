@@ -19,6 +19,10 @@ const SelectWrapper = styled.section`
     font-size: 18px;
     cursor: pointer;
   }
+
+  select option:first-child {
+    color: #000;
+  }
 `;
 
 export default SelectWrapper;

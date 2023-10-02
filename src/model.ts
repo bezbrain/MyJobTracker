@@ -119,6 +119,8 @@ export interface SingleJobCardProp {
   date: string;
   jobType: string;
   status: string;
+  createdBy?: string;
+  dateObject?: Date;
 }
 
 export interface SideBarProps {

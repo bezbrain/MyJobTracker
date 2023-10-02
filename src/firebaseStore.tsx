@@ -52,11 +52,11 @@ export const updateInfo = updateDoc;
 
 export const getAllData = getDocs;
 
-export const certainData = query;
-
-export const whereTo = where;
-
 export const auth = getAuth();
 export const signUp = createUserWithEmailAndPassword;
 export const signIn = signInWithEmailAndPassword;
 export const signOutUser = signOut;
+
+// Queries
+export const certainData = query;
+export const whereTo = where;
