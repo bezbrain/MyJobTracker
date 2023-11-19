@@ -3,14 +3,16 @@ import LandingWrapper from "../StylesWrappers/LandingPage/landingWrapper";
 import Logo from "../components/General/Logo";
 import TitleText from "../components/General/Helmet";
 import { staticImage } from "../assets/images/images";
-import { metadata } from "../App";
 
 const LandingPage = () => {
   const navigate: NavigateFunction = useNavigate();
 
   return (
     <LandingWrapper>
-      <TitleText title={metadata.title} />
+      <TitleText
+        title="Jobtrackier - Your Job, Your Dream | #1 Software Product for Tracking Jobs
+      Applied for"
+      />
       <div className="logo__con">
         <Logo />
       </div>
