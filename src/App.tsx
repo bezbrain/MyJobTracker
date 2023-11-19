@@ -110,7 +110,7 @@ const App = () => {
         {/* Add other SEO meta tags as needed */}
 
         {/* Add base URL */}
-        {/* <base href={metadata.metadataBase.toString()} /> */}
+        <base href={metadata.metadataBase.toString()} />
 
         {/* Add icons */}
         {metadata.icons.map((icon, index) => (
