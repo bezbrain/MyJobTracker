@@ -10,7 +10,7 @@ export const metadata = {
     "Jobtrackier - Your Job, Your Dream | #1 Software Product for Tracking Jobs Applied for",
   description:
     "We help you keep track of jobs applied for with their corresponding job status without stress",
-  applicationName: "Cuesoft",
+  applicationName: "Jobtrackier",
   keywords: [
     "Job",
     "Trackier",
