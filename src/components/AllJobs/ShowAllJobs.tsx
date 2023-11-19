@@ -24,6 +24,7 @@ const ShowAllJobs = () => {
 
   // Call the function to handle data unique to each user and display them
   let uniqueUserData = useUniqueUserData(dataInDB);
+  console.log(uniqueUserData);
 
   /* ============================================== */
   // Convert all possible date to the standard Javascript date object
@@ -45,6 +46,7 @@ const ShowAllJobs = () => {
   };
 
   newUniqueUserData.sort(compareDates); // Sort the new array based on the date object
+  console.log(newUniqueUserData);
   /* ============================================== */
 
   // Handle filter jobs by searching

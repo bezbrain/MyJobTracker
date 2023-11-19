@@ -45,6 +45,8 @@ export const updateData = createAsyncThunk(
     try {
       const state: any = thunkAPI.getState();
       const { docRef, ...newObj } = state.editJobStore.stagedJob;
+      console.log(state.editJobStore.stagedJob);
+
       await updateInfo(docRef, {
         ...state.addJobStore.inputs,
       });

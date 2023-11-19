@@ -1,7 +1,4 @@
-// import { parse } from "path";
-
 const date = new Date(); //This only shows little of the date
-console.log(date);
 
 //Get something more meaningful
 const months = [
