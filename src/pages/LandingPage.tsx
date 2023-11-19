@@ -3,13 +3,14 @@ import LandingWrapper from "../StylesWrappers/LandingPage/landingWrapper";
 import Logo from "../components/General/Logo";
 import TitleText from "../components/General/Helmet";
 import { staticImage } from "../assets/images/images";
+import { metadata } from "../App";
 
 const LandingPage = () => {
   const navigate: NavigateFunction = useNavigate();
 
   return (
     <LandingWrapper>
-      <TitleText title="Job Tracker" />
+      <TitleText title={metadata.title} />
       <div className="logo__con">
         <Logo />
       </div>
@@ -20,9 +21,10 @@ const LandingPage = () => {
               Keep <span>Tracking</span> Jobs
             </p>
             <p>
-              Your personal job tracker that allows you know which job is which.
-              Track applications, interviews, and never miss a deadline again.
-              Get ready to land your dream job effortlessly. Stay organized!
+              Your personalized job tracker that allows you know which job is
+              which. Track applications, interviews, and never miss a deadline
+              again. Get ready to land your dream job effortlessly. Stay
+              organized!
             </p>
             <button onClick={() => navigate("/register")}>
               Login/Register

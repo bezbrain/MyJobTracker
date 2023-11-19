@@ -58,6 +58,7 @@ const Wrapper = styled.main`
       right: 20px;
       font-size: 2.2rem;
       color: red;
+      cursor: pointer;
     }
   }
 

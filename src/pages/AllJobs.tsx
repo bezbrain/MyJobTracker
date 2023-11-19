@@ -7,7 +7,7 @@ const AllJobs = () => {
   return (
     <>
       <AddJobAllJobsProfile>
-        <TitleText title="All Jobs" />
+        <TitleText title="Jobtrackier - All Jobs" />
         <p>Search Form</p>
         <InputSection />
       </AddJobAllJobsProfile>

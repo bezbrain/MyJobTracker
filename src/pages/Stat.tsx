@@ -34,7 +34,7 @@ const Stat = () => {
 
   return (
     <Wrapper>
-      <TitleText title="Stat" />
+      <TitleText title="Jobtrackier - Stat" />
       <section className="card-con">
         <StatCard
           count={getPending.length}

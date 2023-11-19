@@ -62,7 +62,7 @@ const Profile = () => {
 
   return (
     <AddJobAllJobsProfile>
-      <TitleText title="Profile" />
+      <TitleText title="Jobtrackier - Profile" />
       <p>Profile</p>
       <InputWrapper>
         {(

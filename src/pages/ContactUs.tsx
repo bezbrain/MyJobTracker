@@ -36,7 +36,7 @@ const ContactUs = () => {
 
   return (
     <ContactWrapper>
-      <TitleText title="Contact Us" />
+      <TitleText title="Jobtrackier - Contact Us" />
       <p>What would you like to tell us?</p>
       <p>
         You would like to make a complaint, suggest additional features or tell

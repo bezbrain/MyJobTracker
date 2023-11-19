@@ -72,7 +72,7 @@ const AddJobs = () => {
 
   return (
     <AddJobAllJobsProfile>
-      <TitleText title="Add Jobs" />
+      <TitleText title="Jobtrackier - Add Jobs" />
       <p>Add Job</p>
       <InputWrapper>
         <InputBox
