@@ -11,10 +11,11 @@ To start working on the project, follow these steps:
 3. Install the required dependencies by running `npm install` in the project directory.
 4. Open the project in your preferred code editor.
 5. Review the existing code in the sec directory to understand the initial structure and components hierarchy.
-6. Implement the job tracker functionalities by modifying the necessary components.
-7. Run the application using `npm start`
-8. Commit you changes when significant changes are made, then push them to a branch in your forked repository.
-9. Once you have completed the project goals, create a pull request to merge your changes into the main repositiory.
+6. Connect to firebase for authentication and database management.
+7. Implement the job tracker functionalities by modifying the necessary components.
+8. Run the application using `npm start`
+9. Commit you changes when significant changes are made, then push them to a branch in your forked repository.
+10. Once you have completed the project goals, create a pull request to merge your changes into the main repositiory.
 
 ## Technical Instruction
 
@@ -85,3 +86,5 @@ Here are some resources that may be helpful during your work on this project:
 - [React Documentation](https://react.dev/) - Official documentation for React, providing detailed information on React concepts and usage.
 
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/) - Official documentation for Typescript, providing detailed information on Typescript concepts and usage.
+
+- [Firebase Documentation](https://firebase.google.com/docs/) - Official documentation for Firebase and Firestore connection.
